@@ -9,7 +9,7 @@ const server = http.createServer((req, res) => {
   const name = decodeURIComponent(new URL(req.url, 'http://localhost').pathname).replace(/^\/power-electronics\//, '');
   const file = path.resolve(root, name || 'index.html');
   if (!file.startsWith(root + path.sep) || !fs.existsSync(file)) { res.writeHead(404); res.end(); return; }
-  res.setHeader('Content-Type', file.endsWith('.js') ? 'application/javascript' : file.endsWith('.css') ? 'text/css' : 'text/html');
+  res.setHeader('Content-Type', file.endsWith('.js') ? 'application/javascript' : file.endsWith('.css') ? 'text/css' : file.endsWith('.svg') ? 'image/svg+xml' : file.endsWith('.json') ? 'application/json' : 'text/html');
   fs.createReadStream(file).pipe(res);
 });
 
@@ -50,7 +50,7 @@ const server = http.createServer((req, res) => {
     ]);
     assert.equal(remote.length, 1, 'Withdrawal reload must not load Google');
     assert.equal(await page.evaluate(() => document.cookie.includes('pe_course')), false);
-    const files = ['index.html', 'privacy.html', 'power-electronics-recap/recap.html', 'power-electronics-recap/transformer-characterization.html', 'lesson-01-buck/lesson-01.html'];
+    const files = ['index.html', 'privacy.html', 'figures.html', 'power-electronics-recap/recap.html', 'power-electronics-recap/transformer-characterization.html', 'lesson-01-buck/lesson-01.html'];
     for (const width of [1440, 390]) {
       await page.setViewportSize({width, height: 900});
       for (const file of files) {
@@ -64,6 +64,30 @@ const server = http.createServer((req, res) => {
         }));
         assert.equal(result.overflow, false, `${file} overflows at ${width}px: ${JSON.stringify(result.wide)}`);
         assert.equal(result.broken, 0, `${file} has broken figures at ${width}px`);
+        if (file === 'figures.html') {
+          assert.equal(await page.locator('.figure-card').count(), 26);
+          const figureResult = await page.evaluate(async () => {
+            const manifest = await (await fetch('circuit-figures/manifest.json')).json();
+            const combined = await (await fetch('circuit-figures/combined.json')).json();
+            const problems = [];
+            for (const entry of manifest.figures) {
+              const response = await fetch('circuit-figures/' + entry.stem + '.svg');
+              const svg = new DOMParser().parseFromString(await response.text(), 'image/svg+xml');
+              const ids = new Set([...svg.querySelectorAll('[id]')].map(e => e.id));
+              if (svg.querySelector('parsererror')) problems.push(entry.stem + ': XML parse error');
+              const drawing = [...svg.documentElement.children].find(e => e.localName === 'g');
+              if (!drawing || drawing.children.length !== entry.components) problems.push(entry.stem + ': incomplete components');
+              for (const use of svg.querySelectorAll('use')) {
+                const href = use.getAttribute('href') || use.getAttributeNS('http://www.w3.org/1999/xlink', 'href');
+                if (!href || !href.startsWith('#') || !ids.has(href.slice(1))) problems.push(entry.stem + ': missing symbol');
+              }
+            }
+            return {groups: combined.components.length, figures: manifest.figures.length, problems};
+          });
+          assert.equal(figureResult.groups, 26);
+          assert.equal(figureResult.figures, 26);
+          assert.deepEqual(figureResult.problems, []);
+        }
         if (file.includes('/')) {
           assert.ok(await page.locator('.katex').count() > 0, `${file} must use textbook math`);
           assert.equal(await page.locator('img.math').count(), 0, `${file} must not retain math images`);
@@ -94,7 +118,7 @@ const server = http.createServer((req, res) => {
       await page.waitForTimeout(300);
       await page.screenshot({path: path.join(process.env.PREVIEW_DIR, 'reading-mobile.png')});
     }
-    console.log('PASS: consent, rejection, withdrawal, scoped cookies, five pages, figures, desktop and mobile.');
+    console.log('PASS: consent, six pages, 26 complete SVGs and symbols, combined JSON, desktop and mobile.');
   } finally {
     await browser.close();
     server.close();

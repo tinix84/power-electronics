@@ -1,0 +1,481 @@
+{
+  "designer_version": "0.8.2",
+  "grid": {
+    "columns": 4,
+    "cell": [
+      2000,
+      1400
+    ]
+  },
+  "figures": [
+    {
+      "stem": "13_transformer_elements",
+      "source_sha256": "b71392ebec8864ed30b42b1641ee1caa1cb197cbb9a1f179194a9a5df88683fd",
+      "components": 34,
+      "offset": [
+        250,
+        250
+      ],
+      "font_size_adaptations": 2,
+      "svg_sha256": "01d4bcbe78c7cc537ebb79f01de959e8e1023d06d54d4ded8c09d211c7dbb4d6",
+      "bounds": [
+        51.2191,
+        223.986,
+        963.154,
+        233.253
+      ],
+      "definitions": 46
+    },
+    {
+      "stem": "14_coupled_inductors",
+      "source_sha256": "ee6616ce29ca41a7a6b6d7e6403612be3055111827f735f55ed65b3e9d4cd97d",
+      "components": 54,
+      "offset": [
+        2250,
+        250
+      ],
+      "font_size_adaptations": 2,
+      "svg_sha256": "f14e0853f7545e73089f54337dc36a206437a1175e6d36ade329b5f919fd2a79",
+      "bounds": [
+        2135.16,
+        214.285,
+        897.899,
+        225.893
+      ],
+      "definitions": 89
+    },
+    {
+      "stem": "15_real_transformer",
+      "source_sha256": "d670c1bd6886cd91aeb187d7627405962ca8441127886db6fc0e8fd31a26d52b",
+      "components": 27,
+      "offset": [
+        4250,
+        250
+      ],
+      "font_size_adaptations": 2,
+      "svg_sha256": "4a0f436d01c651b1f3f3aa01ae886911ce55db36d00ef25e787e5fab40f6c7c4",
+      "bounds": [
+        3965.36,
+        223.753,
+        777.062,
+        230.816
+      ],
+      "definitions": 40
+    },
+    {
+      "stem": "17_square_wave_transformer",
+      "source_sha256": "02ec0f6039fc1521a9d2ea1954f8fbfb2dde333a78414c27a0738775c19fc960",
+      "components": 31,
+      "offset": [
+        6250,
+        250
+      ],
+      "font_size_adaptations": 2,
+      "svg_sha256": "d5084df2bd72e3124afd61ddabc2d4e789062a95e1625d588149038c20e81c5b",
+      "bounds": [
+        5947.02,
+        201.058,
+        862.979,
+        266.933
+      ],
+      "definitions": 76
+    },
+    {
+      "stem": "20_rc_circuits",
+      "source_sha256": "10fe6f2da9dc7836d0d106d10ed0f0db53f5a9610af53b0aa643346c90775614",
+      "components": 35,
+      "offset": [
+        250,
+        1650
+      ],
+      "font_size_adaptations": 1,
+      "svg_sha256": "4338d65889c090c5720c1f09173fd8bc94f64bc992b4e1f3a64c57ad8f6cba87",
+      "bounds": [
+        143.518,
+        1627.22,
+        772.791,
+        192.36
+      ],
+      "definitions": 58
+    },
+    {
+      "stem": "21_lc_filter",
+      "source_sha256": "b87ed2c3183160c1f22374e1787f31fd92218c4fdc0a0fb1ca1980e5bfb00ca2",
+      "components": 17,
+      "offset": [
+        2250,
+        1650
+      ],
+      "font_size_adaptations": 0,
+      "svg_sha256": "33dcda0d7f95e17d00e7cdd4316f18213cdd47eb7984e146122d5d9a64e8f470",
+      "bounds": [
+        2089.57,
+        1625.11,
+        427.378,
+        195.446
+      ],
+      "definitions": 33
+    },
+    {
+      "stem": "22_middlebrook_interface",
+      "source_sha256": "2741ee99e1db8e8b866e562c508113ab90e22e4c28aaa5835f1e808648585219",
+      "components": 15,
+      "offset": [
+        4250,
+        1650
+      ],
+      "font_size_adaptations": 4,
+      "svg_sha256": "d9c7a8a91dd91e1790fcb4e09e4d543fb25028f1816986a81019b917407d9786",
+      "bounds": [
+        3995.89,
+        1593.31,
+        735.997,
+        237.785
+      ],
+      "definitions": 26
+    },
+    {
+      "stem": "23_middlebrook_damped_filter",
+      "source_sha256": "12232290dfd77c099494ec929036bf9f2f3206859158e3db1e03bc67e4d9451c",
+      "components": 22,
+      "offset": [
+        6250,
+        1650
+      ],
+      "font_size_adaptations": 1,
+      "svg_sha256": "7c2379fdc3193a1a5517118a7074e40b4f3778d391594d8ca6c92c66ee8b7a8f",
+      "bounds": [
+        6012.03,
+        1612.2,
+        634.817,
+        240.764
+      ],
+      "definitions": 74
+    },
+    {
+      "stem": "24_rc_crosstalk",
+      "source_sha256": "21ca016a3bfd1f53a9de43560a1d3131b0047305fff94f255f27ad6bef5e82ca",
+      "components": 19,
+      "offset": [
+        250,
+        3050
+      ],
+      "font_size_adaptations": 0,
+      "svg_sha256": "00d423ed4087be97aef2f7c3a67a53e6835bdf39a35afb1eda0b7eb29b77f9d7",
+      "bounds": [
+        100.821,
+        3016.96,
+        442.444,
+        205.176
+      ],
+      "definitions": 32
+    },
+    {
+      "stem": "25_thevenin_norton",
+      "source_sha256": "aa3c4b79149459dbe7a3f4f2dd254b2f7e644fc046c5dc1809631e311ad0a97d",
+      "components": 26,
+      "offset": [
+        2250,
+        3050
+      ],
+      "font_size_adaptations": 2,
+      "svg_sha256": "6f26c64ea171c1ef434488246199fd98869a99e927287d7656ccc5b25a3779d9",
+      "bounds": [
+        2038.17,
+        3014.28,
+        737.006,
+        185.674
+      ],
+      "definitions": 83
+    },
+    {
+      "stem": "26_rlc_resonators",
+      "source_sha256": "ae392a76dd02bc5447ae62747da7100aeb9f161660a10dbdd027415b7faace32",
+      "components": 30,
+      "offset": [
+        4250,
+        3050
+      ],
+      "font_size_adaptations": 2,
+      "svg_sha256": "8fcbe1574e2443819b76893499b0a0ae924654f9e38ccbc5bc8e2e6d60677239",
+      "bounds": [
+        3987.24,
+        3015.13,
+        803.486,
+        271.811
+      ],
+      "definitions": 83
+    },
+    {
+      "stem": "29_digital_pdn_ports",
+      "source_sha256": "e0798e088b198de4920a8dcc3a1048c44eea9fb1357c8d65d4d3fa1e32cf2515",
+      "components": 22,
+      "offset": [
+        6250,
+        3050
+      ],
+      "font_size_adaptations": 0,
+      "svg_sha256": "31f18fcb2cf8f374e24f57d7f4e3333ffb87c0a59b488ded4f214d3fa521fb14",
+      "bounds": [
+        6014.35,
+        3011.36,
+        650.338,
+        281.819
+      ],
+      "definitions": 64
+    },
+    {
+      "stem": "32_filter_choice_circuits",
+      "source_sha256": "e777e4fced37c4da9eca220f2332229831e950d9fac90b21e567fb5008c49b8d",
+      "components": 57,
+      "offset": [
+        250,
+        4450
+      ],
+      "font_size_adaptations": 0,
+      "svg_sha256": "6f80646eb1abfd5530fe3338470243fb7b1136aa70da391e32e1c3edc3e86a70",
+      "bounds": [
+        -61.07,
+        4414.54,
+        955.972,
+        394.394
+      ],
+      "definitions": 88
+    },
+    {
+      "stem": "45_probe_circuit",
+      "source_sha256": "7457178abcf2e8c8d6363d27d2f60231bed039939ed22403a18d49660c90bcd6",
+      "components": 16,
+      "offset": [
+        2250,
+        4450
+      ],
+      "font_size_adaptations": 0,
+      "svg_sha256": "ee5e939c57b41341b5e3b44ee9823956ab9a3281affa66b644424002c2d46f16",
+      "bounds": [
+        2056.59,
+        4425.39,
+        517.056,
+        231.355
+      ],
+      "definitions": 45
+    },
+    {
+      "stem": "46_kelvin_circuit",
+      "source_sha256": "e789e7ac97ef9f0c00d0945500214fcd83135e944220ec43789582bf1ec67db0",
+      "components": 29,
+      "offset": [
+        4250,
+        4450
+      ],
+      "font_size_adaptations": 6,
+      "svg_sha256": "0e320ab828d8807a848362f3ff23f11ea772b07283ab2df989a361af0a94d74d",
+      "bounds": [
+        3928.38,
+        4414.29,
+        945.907,
+        188.748
+      ],
+      "definitions": 46
+    },
+    {
+      "stem": "47_hotplug_circuit",
+      "source_sha256": "df64e293f1ed1cee2cfe43f4af202ca4ecd52c6fb042f10bf7edf4883a85754f",
+      "components": 15,
+      "offset": [
+        6250,
+        4450
+      ],
+      "font_size_adaptations": 0,
+      "svg_sha256": "e150c755ff89a773526bd97cb1def814c4ef766f25359af3ba73c1b7d653f15f",
+      "bounds": [
+        6069.07,
+        4423.54,
+        504.576,
+        234.64
+      ],
+      "definitions": 58
+    },
+    {
+      "stem": "49_common_mode_circuit",
+      "source_sha256": "a340da485b96c8fb87b0d81fd6d514e8e7bd5b02892eff1625bbeab1728569cb",
+      "components": 10,
+      "offset": [
+        250,
+        5850
+      ],
+      "font_size_adaptations": 1,
+      "svg_sha256": "781eccd895062e7ce37e520433102d7a519f21f6663e1ce93f37763fba063085",
+      "bounds": [
+        77.5448,
+        5815.7,
+        477.398,
+        242.558
+      ],
+      "definitions": 32
+    },
+    {
+      "stem": "50_leakage_cell",
+      "source_sha256": "5cfa5eff16eb5353a4725f30d1b2da6c2a24ef4c9dd78f3da0ca138229811687",
+      "components": 15,
+      "offset": [
+        2250,
+        5850
+      ],
+      "font_size_adaptations": 0,
+      "svg_sha256": "eeaa37d3b827f3578ccd395a735d04cc278a18cf39d337d04d8e5b4d3b905efb",
+      "bounds": [
+        2052.71,
+        5814.57,
+        553.857,
+        243.073
+      ],
+      "definitions": 65
+    },
+    {
+      "stem": "51_rectifier_circuit",
+      "source_sha256": "099f00ad8fba6815628ac3f6bed72544b1eb0f2e571b1195dd8a9cc7bd5071a5",
+      "components": 23,
+      "offset": [
+        4250,
+        5850
+      ],
+      "font_size_adaptations": 1,
+      "svg_sha256": "cd4dd3e049d26b3858b11398d5c79a106a167da5dd7bc9de2c3d3f0a54e3e635",
+      "bounds": [
+        4041.49,
+        5823.99,
+        615.337,
+        274.738
+      ],
+      "definitions": 19
+    },
+    {
+      "stem": "52_gate_slew_circuit",
+      "source_sha256": "59d3addfffe0f1a91dd20a570705db27dbd633cc8b2bc72c63eea59c1c9827b4",
+      "components": 21,
+      "offset": [
+        6250,
+        5850
+      ],
+      "font_size_adaptations": 2,
+      "svg_sha256": "16ceba116070260e4258cc8ad1ca8bdb2695a26c05593d302faa738ff02d77fd",
+      "bounds": [
+        6035.22,
+        5738.84,
+        642.405,
+        320.983
+      ],
+      "definitions": 44
+    },
+    {
+      "stem": "53_dielectric_absorption_circuit",
+      "source_sha256": "8531dc6366d3161f84caacad4275df8faea82fc14469cce0932b6f1de284d52e",
+      "components": 20,
+      "offset": [
+        250,
+        7250
+      ],
+      "font_size_adaptations": 2,
+      "svg_sha256": "6da2f6c84c10517abb255997b89d1db4cf692cf95ed316e39bab08efec0ff618",
+      "bounds": [
+        41.648,
+        7202.95,
+        620.059,
+        255.232
+      ],
+      "definitions": 46
+    },
+    {
+      "stem": "54_boost_circuit",
+      "source_sha256": "538e682e6ddaad6875ee5ca0749dfd09cd27bd93f4300cdb39e9e5221d98ce70",
+      "components": 16,
+      "offset": [
+        2250,
+        7250
+      ],
+      "font_size_adaptations": 0,
+      "svg_sha256": "f4401b750db63b9a1e93c41b087c662b0e41608cb38efb7547ede55a5284669f",
+      "bounds": [
+        2054.46,
+        7225.11,
+        567.02,
+        233.241
+      ],
+      "definitions": 44
+    },
+    {
+      "stem": "57_rc_snubber_circuits",
+      "source_sha256": "7de8394144f80664efa10e2af838e7ec045a324ee923d57e763eaf12353ea428",
+      "components": 19,
+      "offset": [
+        4250,
+        7250
+      ],
+      "font_size_adaptations": 0,
+      "svg_sha256": "f2aeaa2cc88c695b0913d96d229dac7aa4dcc6b96a64671806639ba6baf2eeb4",
+      "bounds": [
+        4040.87,
+        7214.54,
+        674.939,
+        244.814
+      ],
+      "definitions": 76
+    },
+    {
+      "stem": "60_snubber_components_layout",
+      "source_sha256": "94b38b1252d44cf856ac09c6f036cca827fa128b5f9ba067b519f772dc898792",
+      "components": 17,
+      "offset": [
+        6250,
+        7250
+      ],
+      "font_size_adaptations": 0,
+      "svg_sha256": "70bef331aa58a75c0f50593dde2ad8510c2f5cbcd0888c86523c9eec92162ee6",
+      "bounds": [
+        6036.04,
+        7221.84,
+        604.177,
+        300.757
+      ],
+      "definitions": 59
+    },
+    {
+      "stem": "61_linear_regulator_follower",
+      "source_sha256": "d85ef8fd0ab08e53fd4a023c46fee50b4446154c727d300d0c160341d8f9c463",
+      "components": 53,
+      "offset": [
+        250,
+        8650
+      ],
+      "font_size_adaptations": 0,
+      "svg_sha256": "5c13b52a488ff7e187b62febf7cb3b7b5ed90eccbec081408c886c6c13b4fc23",
+      "bounds": [
+        65.0579,
+        8610.84,
+        845.744,
+        298.286
+      ],
+      "definitions": 71
+    },
+    {
+      "stem": "62_ldo_pass_elements",
+      "source_sha256": "649722f6c3503261469601f6510f3c8f0f4bc449c7ad5dfbd255e27d9bf5f074",
+      "components": 60,
+      "offset": [
+        2250,
+        8650
+      ],
+      "font_size_adaptations": 0,
+      "svg_sha256": "11e5fb23b1ede47243edcef6418bd1120e9c713af58e8964ca0b7c6382ed19ce",
+      "bounds": [
+        2028.11,
+        8619.42,
+        882.691,
+        276.328
+      ],
+      "definitions": 55
+    }
+  ],
+  "combined_svg_sha256": "d5ed63ee6b4543ffb047b9f60565ac8bcda8ed00866a7c5d4eaac36367deef1e"
+}
