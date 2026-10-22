@@ -42,6 +42,8 @@ def build():
     for name in assets:
         source = ROOT / "content" / "circuit-figures" / name
         shutil.copyfile(source, figures_output / name)
+    if hashlib.sha256((figures_output / "combined.svg").read_bytes()).hexdigest() != manifest["combined_svg_sha256"]:
+        raise ValueError("Combined SVG hash mismatch")
     cards = []
     for entry in manifest["figures"]:
         name = entry["stem"] + ".svg"

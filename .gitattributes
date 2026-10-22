@@ -1,0 +1,2 @@
+# Keep exported vector files byte-identical to the hashes in the manifest.
+content/circuit-figures/*.svg -text
