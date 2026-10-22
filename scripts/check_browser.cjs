@@ -56,15 +56,44 @@ const server = http.createServer((req, res) => {
       for (const file of files) {
         await page.goto(base + file);
         await page.locator('#analytics-settings').waitFor();
+        await page.evaluate(() => document.fonts.ready);
         const result = await page.evaluate(() => ({
           overflow: document.documentElement.scrollWidth > innerWidth + 2,
+          wide: [...document.querySelectorAll('main *')].filter(element => element.getBoundingClientRect().right > innerWidth + 2 && getComputedStyle(element).overflowX !== 'auto').slice(0, 8).map(element => ({tag: element.tagName, class: element.className, text: element.textContent.slice(0, 100)})),
           broken: [...document.images].filter(image => !image.complete || image.naturalWidth === 0).length
         }));
-        assert.equal(result.overflow, false, `${file} overflows at ${width}px`);
+        assert.equal(result.overflow, false, `${file} overflows at ${width}px: ${JSON.stringify(result.wide)}`);
         assert.equal(result.broken, 0, `${file} has broken figures at ${width}px`);
+        if (file.includes('/')) {
+          assert.ok(await page.locator('.katex').count() > 0, `${file} must use textbook math`);
+          assert.equal(await page.locator('img.math').count(), 0, `${file} must not retain math images`);
+        }
+        if (file.endsWith('recap.html')) {
+          assert.equal(await page.locator('img[alt^="Figure 61."]').count(), 1);
+          assert.equal(await page.locator('img[alt^="Figure 62."]').count(), 1);
+        }
+        if (width === 390 && file.endsWith('recap.html')) {
+          await page.locator('.chapter-toggle-label').click();
+          assert.equal(await page.locator('nav[aria-label="Chapter contents"]').isVisible(), true);
+          await page.locator('nav a[href="#14-are-linear-regulators-dead-no-choose-the-architecture"]').click();
+          assert.equal(await page.locator('nav[aria-label="Chapter contents"]').isVisible(), false);
+        }
       }
     }
     assert.equal(remote.length, 1, 'Rejected state persists across course pages');
+    if (process.env.PREVIEW_DIR) {
+      fs.mkdirSync(process.env.PREVIEW_DIR, {recursive: true});
+      await page.setViewportSize({width: 1440, height: 1000});
+      await page.goto(base + 'power-electronics-recap/recap.html#14-2-the-simplest-regulator-zener-reference-and-emitter-follower');
+      await page.evaluate(() => document.fonts.ready);
+      await page.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; document.getElementById('14-2-the-simplest-regulator-zener-reference-and-emitter-follower').scrollIntoView(); });
+      await page.waitForTimeout(600);
+      await page.screenshot({path: path.join(process.env.PREVIEW_DIR, 'reading-desktop.png')});
+      await page.setViewportSize({width: 390, height: 844});
+      await page.evaluate(() => document.getElementById('14-2-the-simplest-regulator-zener-reference-and-emitter-follower').scrollIntoView());
+      await page.waitForTimeout(300);
+      await page.screenshot({path: path.join(process.env.PREVIEW_DIR, 'reading-mobile.png')});
+    }
     console.log('PASS: consent, rejection, withdrawal, scoped cookies, five pages, figures, desktop and mobile.');
   } finally {
     await browser.close();
