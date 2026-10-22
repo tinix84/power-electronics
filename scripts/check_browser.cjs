@@ -16,7 +16,7 @@ const server = http.createServer((req, res) => {
 (async () => {
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   const base = `http://127.0.0.1:${server.address().port}/power-electronics/`;
-  const browser = await chromium.launch(process.env.CI ? {} : {channel: 'chrome'});
+  const browser = await chromium.launch({channel: 'chrome'});
   try {
     const context = await browser.newContext();
     const page = await context.newPage();

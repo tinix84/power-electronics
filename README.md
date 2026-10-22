@@ -21,6 +21,8 @@ git push origin main
 
 Every push to `main` builds an explicit release containing the reading pages and 26 circuit SVGs, validates internal links and anchors, checks consent and desktop/mobile rendering in Chromium, uploads a Pages artifact, and deploys it. The circuit checks verify SVG hashes, component counts, symbol references and the 26-group combined JSON. Pull requests validate the build without deploying. The workflow can also be run manually from GitHub Actions. Failed validation prevents deployment. The pipeline does not rerun the scientific examples or regenerate lessons from Markdown.
 
+Browser checks use the Chrome already installed on the Ubuntu 24.04 runner, with pinned Playwright 1.62.1. This keeps the same checks without downloading another browser or reinstalling system packages on every publication.
+
 ## Reading layout, mathematics and circuits
 
 The offline builders share the teaching workspace's `reading.css` and use STIX math fonts. Web builds typeset the original TeX from each equation's accessible image label into static KaTeX HTML and MathML. The pinned renderer and embedded font files work without a CDN or runtime math scripts. Rendering errors fail the build instead of silently dropping a formula. Equation numbers and existing chapter anchors are preserved. The mobile contents menu and highlighted current chapter follow a book-style layout inspired by Quarto; this is not a Quarto project.

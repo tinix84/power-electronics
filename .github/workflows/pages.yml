@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
@@ -31,7 +31,7 @@ jobs:
       - name: Install browser checks
         run: |
           npm install --no-save playwright@1.62.1
-          npx playwright install --with-deps chromium
+          google-chrome --version
       - name: Check consent and responsive reading pages
         run: node scripts/check_browser.cjs
       - uses: actions/upload-pages-artifact@v4
