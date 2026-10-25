@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Boost exercise drafts: capacitor-charger startup and a DC bus supplying an abstract RF-stage load.">
+<title>Lesson 2 — Boost converters: draft exercises</title><style>/* Shared reading layout for the self-contained lesson copies. */
+:root{color-scheme:light;--ink:#29323b;--muted:#66717d;--link:#2563a1;--rule:#dee2e6}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}
+body{margin:0;background:#fff;color:var(--ink);font:17px/1.7 system-ui,-apple-system,'Segoe UI',sans-serif}
+a{color:var(--link);text-underline-offset:3px}a:hover{color:#174773}
+nav[aria-label="Chapter contents"]{position:fixed;inset:0 auto 0 0;width:285px;padding:34px 24px 90px;overflow:auto;background:#f8f9fa;border-right:1px solid var(--rule)}
+nav strong{display:block;font-size:14px;line-height:1.6;letter-spacing:.045em;margin-bottom:24px;color:#334155}
+nav a{display:block;font-size:13px;line-height:1.45;margin:0;padding:7px 8px;text-decoration:none;border-left:2px solid transparent}
+nav a:hover,nav a[aria-current="location"]{background:#edf2f7;border-left-color:var(--link);color:#174773}
+.course-links{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--rule)}.course-links a{font-weight:600}
+main{max-width:1145px;margin-left:285px;padding:54px 64px 100px;min-width:0}
+h1{font-size:clamp(2rem,3vw,2.8rem);line-height:1.18;letter-spacing:-.03em;margin:0 0 32px;font-weight:650}
+h2{font-size:1.75rem;line-height:1.3;letter-spacing:-.02em;margin:64px 0 22px;padding-bottom:12px;border-bottom:1px solid var(--rule);font-weight:600}
+h3{font-size:1.3rem;line-height:1.4;margin:36px 0 14px;font-weight:650}h4{margin-top:28px}
+p{margin:0 0 19px}li{margin:7px 0}strong{font-weight:650}blockquote{border-left:4px solid #a9bfd2;margin:24px 0;padding:10px 22px;background:#f5f8fa}
+img{max-width:100%;height:auto}p>img:not(.math){display:block;width:100%;margin:30px auto;padding:12px;border:1px solid #e9ecef;border-radius:4px;background:#fff}
+.math{display:inline-block;vertical-align:-.18em;max-width:none;height:auto}
+.equation{overflow-x:auto;text-align:center;padding:20px 12px;margin:22px 0 26px;background:#fafbfd;border-radius:4px;border-left:2px solid #d9e4ee}
+.equation .math{vertical-align:middle;max-width:none}.equation.tagged{display:flex;align-items:center;overflow:visible}.eqbody{flex:1 1 auto;min-width:0;overflow-x:auto;text-align:center}.eqno{flex:0 0 auto;margin-left:16px;color:var(--muted);font-size:14px;white-space:nowrap}
+table{display:block;width:100%;overflow-x:auto;border-collapse:collapse;font-size:14px;line-height:1.55;margin:26px 0 32px}th{background:#f3f5f7;text-align:left;font-weight:650}th,td{border-bottom:1px solid #dce2e7;padding:12px 14px;vertical-align:top}thead{border-top:1px solid var(--rule)}tbody tr:nth-child(even){background:#fafbfc}td .math{max-width:none}
+pre{overflow:auto;padding:18px 20px;background:#f6f8fa;border:1px solid #e5e9ed;line-height:1.5;font-size:14px;border-radius:4px}code{font:.88em ui-monospace,Consolas,monospace;overflow-wrap:anywhere}footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--rule);color:var(--muted);font-size:13px}
+#chapter-toggle{position:fixed;opacity:0;width:1px;height:1px}.chapter-toggle-label{display:none}
+@media(min-width:1600px){main{margin-left:calc(285px + (100vw - 1600px)/2)}}
+@media(max-width:1050px){.chapter-toggle-label{display:block;position:sticky;top:0;z-index:1000;background:#f8f9fa;padding:12px 22px;border-bottom:1px solid var(--rule);font-size:14px;font-weight:650;cursor:pointer}#chapter-toggle:focus-visible+.chapter-toggle-label{outline:3px solid #2563a1;outline-offset:-3px}nav[aria-label="Chapter contents"]{display:none;top:48px;z-index:999;width:290px;max-width:88vw;box-shadow:8px 0 24px #0002}#chapter-toggle:checked~nav{display:block}main{margin:0 auto;padding:36px 28px 80px;max-width:900px}h1{font-size:2.1rem}}
+@media(max-width:600px){body{font-size:16px}main{padding:28px 19px 80px}h1{font-size:1.85rem}h2{font-size:1.5rem;margin-top:46px}h3{font-size:1.18rem}table{font-size:13px}.equation{padding:16px 8px}.eqno{margin-left:10px}}
+@media print{nav,.chapter-toggle-label,#chapter-toggle{display:none!important}main{margin:0;padding:0;max-width:none}body{font-size:11pt}h1{font-size:26pt}h2{font-size:18pt;break-after:avoid}h3{break-after:avoid}.equation,table,p>img{break-inside:avoid}a{color:inherit}pre{white-space:pre-wrap}}
+</style></head>
+<body><input type="checkbox" id="chapter-toggle" aria-label="Toggle chapter contents"><label class="chapter-toggle-label" for="chapter-toggle">☰ Chapter contents</label><nav aria-label="Chapter contents"><strong>POWER ELECTRONICS<br>LESSON 2 · BOOST · DRAFT</strong><a href="#e1-the-capacitor-charger-works-at-its-target-voltage-will-it-survive-startup">E1 — The capacitor charger works at its target voltage. Will it survive startup?</a><a href="#e2-a-boost-converter-supplies-the-dc-bus-of-an-electrosurgical-rf-stage">E2 — A boost converter supplies the DC bus of an electrosurgical RF stage</a><a href="#sources-and-model-boundaries">Sources and model boundaries</a></nav>
+<main><h1 id="lesson-2-boost-converters-draft-assigned-exercises">Lesson 2 — Boost converters: draft assigned exercises</h1>
+<p><strong>Draft for teaching review.</strong> These two exercises form the assigned-exercise section of the forthcoming boost lesson. All numerical values are authored teaching assumptions, not measured hardware or component selections. Use a circuit simulator and an abstract load; the exercises do not specify a USB interface or a patient-connected circuit.</p>
+<p>As in Lesson 1, the public exercises contain Problem, Why we do it, What matters and Where it appears in practice. Worked calculations, comparisons and recommendations stay in the Enrolled solutions companion and are released after the deadline.</p>
+<h2 id="e1-the-capacitor-charger-works-at-its-target-voltage-will-it-survive-startup">E1 — The capacitor charger works at its target voltage. Will it survive startup?</h2>
+<h3 id="problem">Problem</h3>
+<p>A conventional diode boost converter charges a capacitor from a DC source. A designer calculates the duty cycle at the final voltage and applies it immediately. The output voltage rises, but the successive inductor-current valleys also rise. Is this normal CCM, an intended charging transient, or evidence that the controller is losing control of current?</p>
+<p>Use the following ideal teaching model. The inductor is linear only below the stated saturation knee. Neglect winding resistance, diode drop, switching loss and capacitor ESR for the calculations. Stop a linear calculation when it reaches the knee; no post-saturation inductance curve is supplied.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th align="right">Teaching assumption</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Input voltage</td>
+<td align="right">12 V, stiff source</td>
+</tr>
+<tr>
+<td>Target capacitor voltage</td>
+<td align="right">24 V</td>
+</tr>
+<tr>
+<td>Capacitance</td>
+<td align="right">2200 µF</td>
+</tr>
+<tr>
+<td>Inductance below its knee</td>
+<td align="right">100 µH</td>
+</tr>
+<tr>
+<td>Illustrative saturation knee</td>
+<td align="right">1.8 A</td>
+</tr>
+<tr>
+<td>Cycle-by-cycle peak-current limit, when enabled</td>
+<td align="right">1.5 A, ideal zero delay</td>
+</tr>
+<tr>
+<td>Fixed switching frequency for the CCM candidate</td>
+<td align="right">100 kHz</td>
+</tr>
+<tr>
+<td>Maximum permitted duty cycle</td>
+<td align="right">0.95</td>
+</tr>
+<tr>
+<td>Initial state for the controlled-charging study</td>
+<td align="right">Capacitor at 14 V; inductor current zero</td>
+</tr>
+<tr>
+<td>External output load during charging</td>
+<td align="right">None</td>
+</tr>
+<tr>
+<td>Charging-time requirement</td>
+<td align="right">Reach 24 V from 14 V within 60 ms</td>
+</tr>
+</tbody></table>
+<p>The 14 V initial condition represents an externally established precharge, not a prediction of natural input connection. In the first few pulses, freeze the capacitor voltage at 14 V to isolate the current mechanism. Later, allow the voltage to change. End charging at the target using an ideal supervisory stop; practical stop delay and tolerance are outside the numerical model.</p>
+<p><strong>Predict before calculating.</strong> Sketch the first four current pulses if the controller immediately applies the final-voltage CCM duty cycle. Choose a first diagnostic measurement and explain what would make you change your explanation. Does limiting duty to 0.95 solve the problem?</p>
+<ol>
+<li>Derive the on-state and off-state inductor-current slopes, and a cycle-to-cycle expression for the change in valley current. Identify the condition for a constant valley at a locally fixed capacitor voltage. Distinguish that condition from a zero valley.</li>
+<li>Disable the peak-current limit in the mathematical model. Apply the final-voltage duty cycle at the 14 V initial condition. Calculate the first three peaks and valleys. Determine whether the saturation knee is reached during the fourth pulse. Stop there; do not infer device failure from a linear model.</li>
+<li>Enable the 1.5 A peak limit. Assume a trip terminates the on interval, holds the switch off until the next clock and has no blanking, minimum on-time or delay. Find the first trip and its following valley. Explain why protected CCM can charge the capacitor without requiring zero current each cycle. Find the locally balanced duty cycle and valley at 14 V once every cycle reaches the peak limit.</li>
+<li>Replace the clocked control with ideal CrCM: start at zero current, switch off at 1.5 A, then wait for the current to reach zero before starting again. Calculate the on-time, off-time and frequency at 14 V and 24 V. Explain what zero-current detection prevents and what protection is still needed.</li>
+<li>For the CrCM candidate, derive the average input current, average output charging current and ideal charging time. Is the capacitor charged by constant current or constant power under this particular control law? Check the 60 ms requirement. Compare with the protected CCM candidate without assuming that equal peak current means equal power.</li>
+<li>Near the target, suppose the 100 kHz controller reduces its peak-current command. At a locally fixed 24 V, find the boundary peak current at which the valley just reaches zero. Sketch what must change when the command is reduced further and reverse current is blocked. Explain why the fixed-frequency CCM conversion ratio cannot simply be carried into DCM.</li>
+<li>Return to an initially uncharged capacitor at input connection. Identify the current path with switching disabled. Explain why the controlled-charging calculations above do not bound this inrush, and what additional model or measurement is needed.</li>
+</ol>
+<p>Finish by choosing protected CCM or CrCM for the stated charging task. Give one benefit, one cost and one condition that would change your choice. Separate a timing concept from a checked controller and magnetic-component selection.</p>
+<h3 id="why-we-do-it">Why we do it</h3>
+<p>A periodic steady state has no net change of inductor current over a switching period. Charging a capacitor changes the operating point continuously. A duty cycle that balances the inductor at the target can produce a large positive current increment earlier in the charge.</p>
+<p>The diagnostic task is to distinguish useful charging from uncontrolled current accumulation. CCM itself is not a fault, and a zero-current start alone does not bound the peak of the next pulse.</p>
+<h3 id="what-matters">What matters</h3>
+<ul>
+<li>Label capacitor voltage, inductor current and switch state on the same time axis. Compare successive valleys as well as peaks.</li>
+<li>Keep the input-connection transient separate from controlled charging after precharge.</li>
+<li>State whether duty, peak current, frequency or average power is held fixed before comparing modes.</li>
+<li>Distinguish current limiting from saturation. A protection trip is an event in the controller; saturation changes the magnetic component&#39;s current slope.</li>
+<li>Treat the frozen-voltage calculation as a local model. Estimate its voltage-change error before extending it to the whole charge.</li>
+</ul>
+<h3 id="where-it-appears-in-practice">Where it appears in practice</h3>
+<p>Capacitor energy-storage supplies, instrument power rails and supplies with substantial output capacitance must reach their operating point without exceeding current limits. Restart after a disturbance can revisit the same problem. A useful trace includes input connection, precharge, the first switching pulses and the approach to regulation.</p>
+<h3 id="solution">Solution</h3>
+<p>Released after the deadline in the Enrolled companion.</p>
+<h2 id="e2-a-boost-converter-supplies-the-dc-bus-of-an-electrosurgical-rf-stage">E2 — A boost converter supplies the DC bus of an electrosurgical RF stage</h2>
+<h3 id="problem-2">Problem</h3>
+<p>A boost converter supplies a DC bus. A downstream RF stage draws energy from that bus during activation. The bus must remain within its allowed voltage range when the RF stage starts and stops. Does sizing the boost for average power establish that requirement?</p>
+<p>Use this <strong>scaled, abstract bus model</strong>. It represents only the power envelope at the RF stage&#39;s DC input. It does not model RF generation, electrodes, tissue interaction, isolation or clinical performance. The 12 W quantity below is power drawn from the bus, not power delivered to tissue.</p>
+<pre><code class="language-text">12 V source → boost converter → DC bus capacitor → RF-stage input-power model
+                                      ↑
+                              bus-voltage feedback
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th align="right">Teaching assumption</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Regulated DC bus voltage before either event</td>
+<td align="right">24 V</td>
+</tr>
+<tr>
+<td>Allowed bus voltage range</td>
+<td align="right">22–25 V</td>
+</tr>
+<tr>
+<td>RF-stage bus demand while active</td>
+<td align="right">Constant 12 W over the event interval</td>
+</tr>
+<tr>
+<td>RF-stage bus demand while idle</td>
+<td align="right">0 W</td>
+</tr>
+<tr>
+<td>Activation duration / repetition period</td>
+<td align="right">20 ms / 100 ms</td>
+</tr>
+<tr>
+<td>Bus power supplied by boost during first 2 ms after activation</td>
+<td align="right">0 W</td>
+</tr>
+<tr>
+<td>Bus power available for subsequent recovery</td>
+<td align="right">Up to 15 W, tapered to 12 W at 24 V</td>
+</tr>
+<tr>
+<td>Bus power supplied during 2 ms after RF deactivation</td>
+<td align="right">15 W</td>
+</tr>
+<tr>
+<td>Additional energy delivered after that deactivation delay</td>
+<td align="right">2 mJ</td>
+</tr>
+<tr>
+<td>Initial capacitor candidates</td>
+<td align="right">470 µF and 1000 µF</td>
+</tr>
+<tr>
+<td>Capacitance tolerance for the final recommendation</td>
+<td align="right">−20% worst case</td>
+</tr>
+</tbody></table>
+<p>Study activation and deactivation as separate events, each starting at 24 V. The 2 mJ is a specified upper bound on further energy actually delivered to the bus after the 2 ms interval. It already includes residual conversion energy; do not add the inductor&#39;s energy again. The boost cannot sink bus energy. Neglect ESR, ESL, leakage and RF-cycle ripple; capacitance means effective capacitance at the operating condition before applying the stated tolerance.</p>
+<p><strong>Predict before calculating.</strong> Choose which event you expect to set the larger capacitance requirement. Would a 48 Ω resistor represent the active RF stage adequately during bus droop? State a measurement that could make you change that choice.</p>
+<ol>
+<li>Draw the power flow during activation, recovery and deactivation. Explain why the current in the boost inductor is not identical to either RF-stage input current or capacitor current.</li>
+<li>Derive the bus-energy equation using power delivered by the boost and power drawn by the RF stage. Calculate the bus voltage after the activation delay for both capacitor candidates. Compare the constant-power model with the current and power of a 48 Ω resistor at 22 V.</li>
+<li>Find the minimum capacitance for the activation requirement. For the 1000 µF candidate, estimate the recovery time after the 2 ms delay if the boost delivers 15 W until the bus returns to 24 V. Is recovery possible within the stated activation interval?</li>
+<li>Starting again at 24 V, calculate the deactivation overshoot for both candidates, including the additional 2 mJ. Find the minimum capacitance for the 25 V ceiling. Explain why reducing duty to zero does not imply that all bus charging stops immediately.</li>
+<li>Compare three remedies against the same 22–25 V limits: more capacitance, a shorter deactivation delay, or a circuit able to absorb surplus energy. For 1000 µF, calculate the largest permitted deactivation delay if the additional delivered energy remains 2 mJ. Account for −20% capacitance tolerance in your final recommendation. Do not silently relax the load demand or bus limits.</li>
+<li>Calculate the RF-stage mean bus power over the 100 ms repetition period. Explain why this number alone cannot select the converter or capacitor. Identify what bus-voltage and power-envelope measurements are needed before replacing the abstract load with a real RF stage.</li>
+</ol>
+<p>Recommend a bus-level solution conditionally. State what the calculation establishes and what must still be checked about control response, current stress, capacitor ripple and the downstream stage.</p>
+<h3 id="why-we-do-it-2">Why we do it</h3>
+<p>The boost controls the DC bus; the RF stage controls a different process downstream. The bus capacitor supplies a temporary energy deficit and accepts surplus energy when the load stops. These two events can impose different limits even when mean power is modest.</p>
+<p>Choosing the load model is part of the engineering decision. A regulated downstream stage may draw more current as the bus falls, while a resistor draws less. A constant-power approximation must therefore be tied to a measured operating range and time scale.</p>
+<h3 id="what-matters-2">What matters</h3>
+<ul>
+<li>Define the system boundary at the RF stage&#39;s DC input. Do not equate bus power with delivered RF power.</li>
+<li>Use energy balance for finite voltage excursions. Check a small-ripple approximation against it.</li>
+<li>Keep power, current and stored energy separate. The specified power envelope is an assumption, not a derived converter-control response.</li>
+<li>A larger capacitor changes startup energy and charging time as well as bus droop. Recheck startup rather than treating capacitance as a free improvement.</li>
+<li>A bus model does not establish whole-system stability. The downstream controller&#39;s bandwidth and the boost&#39;s closed-loop output impedance remain relevant.</li>
+</ul>
+<h3 id="where-it-appears-in-practice-2">Where it appears in practice</h3>
+<p>An electrosurgical generator provides the application context: a DC supply feeds a downstream RF power stage. The same bus-energy reasoning applies to a boost feeding an RF amplifier or another intermittent regulated load. The exercise establishes a power-supply requirement; it is not a design for an electrosurgical output stage.</p>
+<h3 id="solution-2">Solution</h3>
+<p>Released after the deadline in the Enrolled companion.</p>
+<h2 id="sources-and-model-boundaries">Sources and model boundaries</h2>
+<ul>
+<li>Texas Instruments, <a href="https://www.ti.com/lit/an/snva731/snva731.pdf">Working with Boost Converters, SNVA731, §5</a>: the conventional boost input-to-output path, inrush and limits of switching-based protection.</li>
+<li>Texas Instruments, <a href="https://www.ti.com/lit/sg/slyu036/slyu036.pdf">Power Topologies Handbook, boost section</a>: CCM and DCM switching intervals. CrCM and the charging comparisons here are derived for the stated ideal control laws.</li>
+<li>Covidien, <a href="https://documents.cdn.ifixit.com/dMwU3QKaw6JL2fkc.pdf">SurgiStat Low-Power Electrosurgical Generator Service Manual, functional overview, §4</a>: DC supply and RF output as distinct functional stages. That document does not establish a boost topology or the numerical values used here.</li>
+</ul>
+<p>All exercise values, delays, thresholds and load envelopes are authored. The separate solutions derive their consequences. These are simulation and analysis exercises, not validated hardware designs.</p>
+<footer>Editable source: lesson-02.md. All figures and mathematics are embedded; no network connection is needed to read this file. Ideal and averaged teaching models; assumptions are stated in the lesson.</footer></main>
+</body></html>

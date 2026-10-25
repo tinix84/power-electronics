@@ -50,7 +50,7 @@ const server = http.createServer((req, res) => {
     ]);
     assert.equal(remote.length, 1, 'Withdrawal reload must not load Google');
     assert.equal(await page.evaluate(() => document.cookie.includes('pe_course')), false);
-    const files = ['index.html', 'privacy.html', 'figures.html', 'power-electronics-recap/recap.html', 'power-electronics-recap/transformer-characterization.html', 'lesson-01-buck/lesson-01.html'];
+    const files = ['index.html', 'privacy.html', 'figures.html', 'power-electronics-recap/recap.html', 'power-electronics-recap/transformer-characterization.html', 'lesson-01-buck/lesson-01.html', 'lesson-02-boost/lesson-02.html'];
     for (const width of [1440, 390]) {
       await page.setViewportSize({width, height: 900});
       for (const file of files) {
@@ -88,7 +88,17 @@ const server = http.createServer((req, res) => {
           assert.equal(figureResult.figures, 26);
           assert.deepEqual(figureResult.problems, []);
         }
-        if (file.includes('/')) {
+        if (file === 'lesson-02-boost/lesson-02.html') {
+          assert.equal(await page.locator('h2').filter({hasText: /^E[12] —/}).count(), 2);
+          assert.equal(await page.locator('table').count(), 2);
+          assert.equal(await page.locator('img').count(), 0, 'Worked plots must stay withheld');
+          const text = await page.locator('main').innerText();
+          assert.ok(!text.includes('Possible solutions'));
+          assert.ok(!text.includes('Figure E1.1'));
+          assert.ok(!text.includes('Figure E2.1'));
+          assert.equal((text.match(/Released after the deadline in the Enrolled companion\./g) || []).length, 2);
+        }
+        if (file.includes('/') && file !== 'lesson-02-boost/lesson-02.html') {
           assert.ok(await page.locator('.katex').count() > 0, `${file} must use textbook math`);
           assert.equal(await page.locator('img.math').count(), 0, `${file} must not retain math images`);
         }
@@ -118,7 +128,7 @@ const server = http.createServer((req, res) => {
       await page.waitForTimeout(300);
       await page.screenshot({path: path.join(process.env.PREVIEW_DIR, 'reading-mobile.png')});
     }
-    console.log('PASS: consent, six pages, 26 complete SVGs and symbols, combined JSON, desktop and mobile.');
+    console.log(`PASS: consent, ${files.length} pages, 26 complete SVGs and symbols, combined JSON, desktop and mobile.`);
   } finally {
     await browser.close();
     server.close();

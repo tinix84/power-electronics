@@ -2,7 +2,7 @@
 
 Published at https://tinix84.github.io/power-electronics/ by the [tinix84.github.io](https://github.com/tinix84/tinix84.github.io) site, which includes this repository as a submodule pinned to one commit. This repository no longer deploys to Pages itself.
 
-This repository contains released, self-contained HTML reading copies. The canonical Markdown, figure generation and withheld solutions stay in the local teaching workspace. Only the three HTML files explicitly listed in `scripts/sync_content.py` are copied. No solutions companion, scratch files, third-party reference downloads or private course files are published.
+This repository contains released, self-contained HTML reading copies. The canonical Markdown, figure generation and withheld solutions stay in the local teaching workspace. Only the four HTML files explicitly listed in `scripts/sync_content.py` are copied. Lesson 2 currently contains two boost-converter exercise drafts, rather than a complete lecture. Its worked solutions and simulation plots remain withheld. No solutions companion, scratch files, third-party reference downloads or private course files are published.
 
 ## Update and publish
 
