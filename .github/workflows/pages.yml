@@ -1,4 +1,4 @@
-name: Publish course website
+name: Validate course website
 
 on:
   push:
@@ -34,21 +34,3 @@ jobs:
           google-chrome --version
       - name: Check consent and responsive reading pages
         run: node scripts/check_browser.cjs
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: _site
-  deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/configure-pages@v5
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

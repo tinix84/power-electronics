@@ -1,6 +1,6 @@
 # Power electronics course website
 
-Published at https://tinix84.github.io/power-electronics/.
+Published at https://tinix84.github.io/power-electronics/ by the [tinix84.github.io](https://github.com/tinix84/tinix84.github.io) site, which includes this repository as a submodule pinned to one commit. This repository no longer deploys to Pages itself.
 
 This repository contains released, self-contained HTML reading copies. The canonical Markdown, figure generation and withheld solutions stay in the local teaching workspace. Only the three HTML files explicitly listed in `scripts/sync_content.py` are copied. No solutions companion, scratch files, third-party reference downloads or private course files are published.
 
@@ -19,7 +19,15 @@ git commit -m 'Update public course reading'
 git push origin main
 ```
 
-Every push to `main` builds an explicit release containing the reading pages and 26 circuit SVGs, validates internal links and anchors, checks consent and desktop/mobile rendering in Chromium, uploads a Pages artifact, and deploys it. The circuit checks verify SVG hashes, component counts, symbol references and the 26-group combined JSON. Pull requests validate the build without deploying. The workflow can also be run manually from GitHub Actions. Failed validation prevents deployment. The pipeline does not rerun the scientific examples or regenerate lessons from Markdown.
+3. Publish by moving the pin in tinix84.github.io to the new commit, then merge that change; the site's deploy builds this repository with `scripts/build_site.py` and serves the release at `/power-electronics/`:
+
+```powershell
+git -C courses/power-electronics fetch
+git -C courses/power-electronics checkout <commit>
+git add courses/power-electronics
+```
+
+Every push and pull request here builds an explicit release containing the reading pages and 26 circuit SVGs, validates internal links and anchors, and checks consent and desktop/mobile rendering in Chromium. The circuit checks verify SVG hashes, component counts, symbol references and the 26-group combined JSON. Pin only a commit whose run passed. The workflow can also be run manually from GitHub Actions. The pipeline does not rerun the scientific examples or regenerate lessons from Markdown.
 
 Browser checks use the Chrome already installed on the Ubuntu 24.04 runner, with pinned Playwright 1.62.1. This keeps the same checks without downloading another browser or reinstalling system packages on every publication.
 
