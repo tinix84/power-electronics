@@ -9,7 +9,8 @@ process.stdin.on('end', () => {
   const items = JSON.parse(input);
   const dist = path.dirname(require.resolve('katex/dist/katex.min.css'));
   let css = fs.readFileSync(path.join(dist, 'katex.min.css'), 'utf8');
-  css = css.replace(/src:([^;]+);/g, (match, sources) => {
+  // Stop at "}" too: the last @font-face has no trailing ";" and the match would eat the .katex font rule.
+  css = css.replace(/src:([^;}]+);?/g, (match, sources) => {
     const font = sources.match(/url\(([^)]+\.woff2)\)/);
     if (!font) return match;
     const bytes = fs.readFileSync(path.join(dist, font[1]));
