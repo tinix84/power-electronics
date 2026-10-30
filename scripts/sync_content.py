@@ -11,6 +11,7 @@ PAGES = (
     "lesson-01-buck/lesson-01.html",
     "lesson-02-boost/lesson-02.html",
     "lesson-magnetics/appendix-area-product.html",
+    "lesson-control/lesson-control.html",
 )
 
 
