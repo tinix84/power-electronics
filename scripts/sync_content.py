@@ -10,6 +10,7 @@ PAGES = (
     "power-electronics-recap/transformer-characterization.html",
     "lesson-01-buck/lesson-01.html",
     "lesson-02-boost/lesson-02.html",
+    "lesson-magnetics/appendix-area-product.html",
 )
 
 
