@@ -2,7 +2,7 @@
 
 Published at https://tinix84.github.io/power-electronics/ by the [tinix84.github.io](https://github.com/tinix84/tinix84.github.io) site, which includes this repository as a submodule pinned to one commit. This repository no longer deploys to Pages itself.
 
-This repository contains released, self-contained HTML reading copies. The canonical Markdown, figure generation and withheld solutions stay in the local teaching workspace. Only the five HTML files explicitly listed in `scripts/sync_content.py` are copied. The magnetics Appendix A on the area product is a draft; the magnetics lesson it belongs to is not written yet. Lesson 2 currently contains two boost-converter exercise drafts, rather than a complete lecture. Its worked solutions and simulation plots remain withheld. No solutions companion, scratch files, third-party reference downloads or private course files are published.
+This repository contains released, self-contained HTML reading copies. The canonical Markdown, figure generation and withheld solutions stay in the local teaching workspace. Only the six HTML files explicitly listed in `scripts/sync_content.py` are copied. The control lesson on pole placement versus small-signal models is a draft; its instructor guide and exercise solutions stay private. The magnetics Appendix A on the area product is a draft; the magnetics lesson it belongs to is not written yet. Lesson 2 currently contains two boost-converter exercise drafts, rather than a complete lecture. Its worked solutions and simulation plots remain withheld. No solutions companion, scratch files, third-party reference downloads or private course files are published.
 
 ## Update and publish
 
