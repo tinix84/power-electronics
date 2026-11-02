@@ -89,14 +89,18 @@ const server = http.createServer((req, res) => {
           assert.deepEqual(figureResult.problems, []);
         }
         if (file === 'lesson-02-boost/lesson-02.html') {
-          assert.equal(await page.locator('h2').filter({hasText: /^E[12] —/}).count(), 2);
-          assert.equal(await page.locator('table').count(), 2);
-          assert.equal(await page.locator('img').count(), 0, 'Worked plots must stay withheld');
+          assert.equal(await page.locator('h2').filter({hasText: /^E[123] —/}).count(), 3);
+          assert.equal(await page.locator('table').count(), 3);
+          // the E3 schematic is the only figure; worked plots must stay withheld
+          const figures = page.locator('img:not(.math)');
+          assert.equal(await figures.count(), 1, 'Worked plots must stay withheld');
+          assert.ok((await figures.getAttribute('alt')).startsWith('Synchronous boost'));
           const text = await page.locator('main').innerText();
           assert.ok(!text.includes('Possible solutions'));
           assert.ok(!text.includes('Figure E1.1'));
           assert.ok(!text.includes('Figure E2.1'));
-          assert.equal((text.match(/Released after the deadline in the Enrolled companion\./g) || []).length, 2);
+          for (const withheld of ['43.75', '17.42', '16.05']) assert.ok(!text.includes(withheld));
+          assert.equal((text.match(/Released after the deadline in the Enrolled companion\./g) || []).length, 3);
         }
         if (file.includes('/') && file !== 'lesson-02-boost/lesson-02.html') {
           assert.ok(await page.locator('.katex').count() > 0, `${file} must use textbook math`);
