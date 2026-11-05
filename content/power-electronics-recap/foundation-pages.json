@@ -328,6 +328,46 @@
     "title": "17. Engineering approximation: how simple can the model be?"
   },
   {
+    "file": "chapter-18.html",
+    "title": "18. Dividers: from reference voltages to sensors and resonant converters"
+  },
+  {
+    "file": "chapter-18-01.html",
+    "title": "18.1 Start with the loaded impedance divider"
+  },
+  {
+    "file": "chapter-18-02.html",
+    "title": "18.2 Reference voltages: loading, tolerance and acquisition time"
+  },
+  {
+    "file": "chapter-18-03.html",
+    "title": "18.3 Measure an unknown impedance with a known resistor"
+  },
+  {
+    "file": "chapter-18-04.html",
+    "title": "18.4 Current division and current measurement"
+  },
+  {
+    "file": "chapter-18-05.html",
+    "title": "18.5 A Wheatstone bridge compares two dividers"
+  },
+  {
+    "file": "chapter-18-06.html",
+    "title": "18.6 Calorimetry: read temperature, then infer heat or power"
+  },
+  {
+    "file": "chapter-18-07.html",
+    "title": "18.7 The LLC tank as a frequency-dependent divider"
+  },
+  {
+    "file": "chapter-18-08.html",
+    "title": "18.8 Choose the divider model for the engineering question"
+  },
+  {
+    "file": "chapter-18-09.html",
+    "title": "18.9 Reading and numerical checks"
+  },
+  {
     "file": "resources.html",
     "title": "Recall resources by task"
   }
