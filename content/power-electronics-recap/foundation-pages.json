@@ -376,6 +376,42 @@
     "title": "18.11 Solution: loading, losses and buffer power"
   },
   {
+    "file": "chapter-19.html",
+    "title": "19. Operating points and small-signal models"
+  },
+  {
+    "file": "chapter-19-01.html",
+    "title": "19.1 The operating point, the secant and the tangent"
+  },
+  {
+    "file": "chapter-19-02.html",
+    "title": "19.2 Diode: bias determines the local resistance"
+  },
+  {
+    "file": "chapter-19-03.html",
+    "title": "19.3 MOSFET: output resistance and gate control are different derivatives"
+  },
+  {
+    "file": "chapter-19-04.html",
+    "title": "19.4 Solar panel: fix illumination and label the current direction"
+  },
+  {
+    "file": "chapter-19-05.html",
+    "title": "19.5 A controlled constant-power load: negative slope while absorbing power"
+  },
+  {
+    "file": "chapter-19-06.html",
+    "title": "19.6 Build and check a local model"
+  },
+  {
+    "file": "chapter-19-07.html",
+    "title": "19.7 Exercise: predict the change before solving the nonlinear circuit"
+  },
+  {
+    "file": "chapter-19-08.html",
+    "title": "19.8 Solution: check the slope and the model error"
+  },
+  {
     "file": "resources.html",
     "title": "Recall resources by task"
   }
