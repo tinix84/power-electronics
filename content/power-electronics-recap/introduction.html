@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Power electronics prerequisite recap, worked examples and reproducible figures.">
+<title>Start here · Circuit foundations</title><style>/* Shared reading layout for the self-contained lesson copies. */
+.foundation-pager{display:flex;justify-content:space-between;gap:24px;margin:48px 0 24px;padding-top:20px;border-top:1px solid #dee2e6}.foundation-pager a{flex:1;min-width:0;overflow-wrap:anywhere}.foundation-pager a[rel=next]{text-align:right}.foundation-breadcrumb{font-size:14px}.foundation-contents{padding-left:24px}.foundation-contents>li{margin:18px 0}.foundation-contents summary{cursor:pointer;font-size:14px;color:#66717d}.foundation-contents ul{padding-left:20px}nav a[aria-current=page]{background:#edf2f7;border-left-color:#2563a1}@media(max-width:600px){.foundation-pager{flex-direction:column}.foundation-pager a[rel=next]{text-align:left}}
+:root{color-scheme:light;--ink:#29323b;--muted:#66717d;--link:#2563a1;--rule:#dee2e6}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}
+body{margin:0;background:#fff;color:var(--ink);font:17px/1.7 system-ui,-apple-system,'Segoe UI',sans-serif}
+a{color:var(--link);text-underline-offset:3px}a:hover{color:#174773}
+nav[aria-label="Chapter contents"]{position:fixed;inset:0 auto 0 0;width:285px;padding:34px 24px 90px;overflow:auto;background:#f8f9fa;border-right:1px solid var(--rule)}
+nav strong{display:block;font-size:14px;line-height:1.6;letter-spacing:.045em;margin-bottom:24px;color:#334155}
+nav a{display:block;font-size:13px;line-height:1.45;margin:0;padding:7px 8px;text-decoration:none;border-left:2px solid transparent}
+nav a:hover,nav a[aria-current="location"]{background:#edf2f7;border-left-color:var(--link);color:#174773}
+.course-links{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--rule)}.course-links a{font-weight:600}
+main{max-width:1145px;margin-left:285px;padding:54px 64px 100px;min-width:0}
+h1{font-size:clamp(2rem,3vw,2.8rem);line-height:1.18;letter-spacing:-.03em;margin:0 0 32px;font-weight:650}
+h2{font-size:1.75rem;line-height:1.3;letter-spacing:-.02em;margin:64px 0 22px;padding-bottom:12px;border-bottom:1px solid var(--rule);font-weight:600}
+h3{font-size:1.3rem;line-height:1.4;margin:36px 0 14px;font-weight:650}h4{margin-top:28px}
+p{margin:0 0 19px}li{margin:7px 0}strong{font-weight:650}blockquote{border-left:4px solid #a9bfd2;margin:24px 0;padding:10px 22px;background:#f5f8fa}
+img{max-width:100%;height:auto}p>img:not(.math){display:block;width:100%;margin:30px auto;padding:12px;border:1px solid #e9ecef;border-radius:4px;background:#fff}
+.math{display:inline-block;vertical-align:-.18em;max-width:none;height:auto}
+.equation{overflow-x:auto;text-align:center;padding:20px 12px;margin:22px 0 26px;background:#fafbfd;border-radius:4px;border-left:2px solid #d9e4ee}
+.equation .math{vertical-align:middle;max-width:none}.equation.tagged{display:flex;align-items:center;overflow:visible}.eqbody{flex:1 1 auto;min-width:0;overflow-x:auto;text-align:center}.eqno{flex:0 0 auto;margin-left:16px;color:var(--muted);font-size:14px;white-space:nowrap}
+table{display:block;width:100%;overflow-x:auto;border-collapse:collapse;font-size:14px;line-height:1.55;margin:26px 0 32px}th{background:#f3f5f7;text-align:left;font-weight:650}th,td{border-bottom:1px solid #dce2e7;padding:12px 14px;vertical-align:top}thead{border-top:1px solid var(--rule)}tbody tr:nth-child(even){background:#fafbfc}td .math{max-width:none}
+pre{overflow:auto;padding:18px 20px;background:#f6f8fa;border:1px solid #e5e9ed;line-height:1.5;font-size:14px;border-radius:4px}code{font:.88em ui-monospace,Consolas,monospace;overflow-wrap:anywhere}footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--rule);color:var(--muted);font-size:13px}
+#chapter-toggle{position:fixed;opacity:0;width:1px;height:1px}.chapter-toggle-label{display:none}
+@media(min-width:1600px){main{margin-left:calc(285px + (100vw - 1600px)/2)}}
+@media(max-width:1050px){.chapter-toggle-label{display:block;position:sticky;top:0;z-index:1000;background:#f8f9fa;padding:12px 22px;border-bottom:1px solid var(--rule);font-size:14px;font-weight:650;cursor:pointer}#chapter-toggle:focus-visible+.chapter-toggle-label{outline:3px solid #2563a1;outline-offset:-3px}nav[aria-label="Chapter contents"]{display:none;top:48px;z-index:999;width:290px;max-width:88vw;box-shadow:8px 0 24px #0002}#chapter-toggle:checked~nav{display:block}main{margin:0 auto;padding:36px 28px 80px;max-width:900px}h1{font-size:2.1rem}}
+@media(max-width:600px){body{font-size:16px}main{padding:28px 19px 80px}h1{font-size:1.85rem}h2{font-size:1.5rem;margin-top:46px}h3{font-size:1.18rem}table{font-size:13px}.equation{padding:16px 8px}.eqno{margin-left:10px}}
+@media print{nav,.chapter-toggle-label,#chapter-toggle{display:none!important}main{margin:0;padding:0;max-width:none}body{font-size:11pt}h1{font-size:26pt}h2{font-size:18pt;break-after:avoid}h3{break-after:avoid}.equation,table,p>img{break-inside:avoid}a{color:inherit}pre{white-space:pre-wrap}}
+</style></head>
+<body><input type="checkbox" id="chapter-toggle" aria-label="Toggle chapter contents"><label class="chapter-toggle-label" for="chapter-toggle">☰ Chapter contents</label><nav aria-label="Chapter contents"><strong>CIRCUIT FOUNDATIONS</strong><a href="index.html">Contents</a><a href="introduction.html" aria-current="page">Start here</a><a href="chapter-01.html">1. Networks: what the source actually supplies</a><a href="chapter-02.html">2. Basic elements: R, L, C, transformer and coupled inductors</a><a href="chapter-03.html">3. Capacitive coupling on a PCB: why edge speed matters</a><a href="chapter-04.html">4. Worked design exercise: how close must the CPU&#x27;s source be?</a><a href="chapter-05.html">5. Average and RMS: define these before calculating power</a><a href="chapter-06.html">6. Active power, reactive power and heating</a><a href="chapter-07.html">7. DC steady state, periodic steady state and transients</a><a href="chapter-08.html">8. Linearity, time invariance and the scope of a model</a><a href="chapter-09.html">9. Laplace: from a differential equation to dynamics</a><a href="chapter-10.html">10. A switched RC: time-domain envelopes and Fourier harmonics</a><a href="chapter-11.html">11. Impedance charts and resonators</a><a href="chapter-12.html">12. Bode, LC filtering and Class-D amplifiers</a><a href="chapter-13.html">13. Semiconductor and thermal basics</a><a href="chapter-14.html">14. Are linear regulators dead? No: choose the architecture</a><a href="chapter-15.html">15. Exit questions with short answers</a><a href="chapter-16.html">16. Practical example bank: why the fundamentals matter</a><a href="resources.html">Recall resources by task</a><strong>ON THIS PAGE</strong><a href="#course-organisation-and-assessment">Course organisation and assessment</a><a href="#engineering-approach-estimate-model-then-verify">Engineering approach: estimate, model, then verify</a><a href="#learning-outcomes-and-teaching-route">Learning outcomes and teaching route</a></nav>
+<main><p class="foundation-breadcrumb"><a href="index.html">Circuit foundations</a></p><h1 id="circuit-and-electronics-foundations-for-power-electronics">Circuit and electronics foundations for power electronics</h1>
+<p><strong>Audience:</strong> electrical engineering students refreshing earlier circuit courses.<br><strong>Teaching time:</strong> two sessions of 90 minutes.<br><strong>Purpose:</strong> connect circuit laws, waveforms and system models to the design of real power converters.</p>
+<p>Use this lesson in two ways. Follow the teaching route for a refresher on circuit foundations. Later, return with a symptom and use chapter 16 to find a worked example.</p>
+<p>Most numerical examples are teaching scenarios. Device data and published measurements are identified where used. Voltages and currents follow the passive sign convention unless stated otherwise.</p>
+<p>The aim is to learn how an engineer approaches an unfamiliar circuit. Start with what you can observe. Make a prediction, choose a model and check the result. The equation should help you make a decision. Explain the benefit and cost of your choice. When another route is credible, say what would make you choose it.</p>
+<h2 id="course-organisation-and-assessment">Course organisation and assessment</h2>
+<p>The following arrangements were announced in the introductory lesson on <strong>16 October 2026</strong>. They apply to the course as a whole, separately from the technical recap and its suggested teaching route below.</p>
+<ul>
+<li><strong>Project and examination:</strong> choose a power-electronics kit from the course list, preferably a different kit for each student. Analyse its operation using the project checklist, calculations and simulation. Bring the project to the examination and explain its strengths, limitations and possible improvements, including what happens when a component value changes. The exercise mirrors an engineering assignment: understand an existing design well enough to evaluate and improve it. Project material was announced as available on the lecturer&#39;s GitHub; use the course-provided repository and checklist.</li>
+<li><strong>Mandatory exercises:</strong> assigned exercises contribute to the evaluation and must be submitted by the next lesson. Final numerical results will be supplied for comparison; these are not complete worked derivations. Regular work throughout the course is part of the assessment. No numerical weighting between exercises and the project examination was specified in the recording.</li>
+<li><strong>Books, AI and other tools:</strong> these may be used for the project and exercises. Students must understand the submitted reasoning and be able to explain and defend their calculations, models and design decisions themselves.</li>
+<li><strong>Interactive lessons:</strong> interrupt when an explanation is unclear, question assumptions and point out errors. The aim is to practise engineering judgement and problem solving, with regular breaks during the teaching afternoon.</li>
+<li><strong>Proposed company visit:</strong> a visit near the end of the course in January was discussed, potentially to Regatron in Arbon to see power supplies and EMC facilities. The destination and arrangements were tentative, not a confirmed booking.</li>
+</ul>
+<h2 id="engineering-approach-estimate-model-then-verify">Engineering approach: estimate, model, then verify</h2>
+<p>Before opening a simulator, sketch the current path. Mark the voltage references and stored energy. Estimate the expected voltage, current or time scale. Check the units.</p>
+<p>Choose the simplest model that can answer your question. Compare its result with your estimate. If they disagree, inspect the assumptions before adding more detail. Add a parasitic or nonlinearity when it could change the decision.</p>
+<p>A solver can print six digits without knowing the actual capacitance under bias or the winding temperature. More digits do not make uncertain inputs accurate. Use component data, vary uncertain values and compare with measurements where available.</p>
+<p>The roughly 30% uncertainty discussed in the lesson was an example, not a general accuracy limit. Ask what the model can establish. A simple model may explain the failure even when it cannot reproduce every switching edge.</p>
+<h2 id="learning-outcomes-and-teaching-route">Learning outcomes and teaching route</h2>
+<p>By the end, you should be able to:</p>
+<ul>
+<li>Draw the source, load and complete current path.</li>
+<li>Use circuit laws and equivalent sources to explain loading.</li>
+<li>Sketch R/L/C waveforms and apply transformer winding conventions.</li>
+<li>Choose mean, RMS or instantaneous values for the calculation.</li>
+<li>Estimate parasitic effects and check periodic balance.</li>
+<li>Read impedance and Bode plots within the model&#39;s limits.</li>
+<li>Choose a regulation architecture and explain the trade-off.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Session</th>
+<th align="right">Minutes</th>
+<th>Topic and classroom activity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="right">5</td>
+<td>Diagnostic: Ohm, waveform RMS, capacitor current, inductor voltage</td>
+</tr>
+<tr>
+<td>1</td>
+<td align="right">15</td>
+<td>Circuit laws, sources, Thévenin/Norton; divider and Kelvin-sense riddle (§16.2)</td>
+</tr>
+<tr>
+<td>1</td>
+<td align="right">15</td>
+<td>Basic elements: R/L/C, transformer and coupled inductors; field constants</td>
+</tr>
+<tr>
+<td>1</td>
+<td align="right">15</td>
+<td>CPU supply-distance exercise; local capacitors and probe-return check (§16.1)</td>
+</tr>
+<tr>
+<td>1</td>
+<td align="right">15</td>
+<td>Average/RMS waveform table; rectifier charging-current exercise (§16.7)</td>
+</tr>
+<tr>
+<td>1</td>
+<td align="right">15</td>
+<td>Active/reactive power and losses; fair AC/DC comparison</td>
+</tr>
+<tr>
+<td>1</td>
+<td align="right">10</td>
+<td>Transients and periodic balance; hot-plug overshoot riddle (§16.3)</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right">10</td>
+<td>Linearity, time invariance, and local converter models</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right">15</td>
+<td>Laplace, initial conditions and the RC transfer function</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right">20</td>
+<td>PWM-driven RC: exact time response and Fourier reconstruction</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right">15</td>
+<td>Impedance charts, series and parallel resonance</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right">15</td>
+<td>RC/LC Bode plots, Class-D filtering and feedback</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right">10</td>
+<td>Linear regulators: efficiency, architecture choice and the 12 V → 5 V thermal design; §14.2–14.4 and 14.6 as reading</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right">5</td>
+<td>Exit questions and connection to the next converter lecture</td>
+</tr>
+</tbody></table>
+<p>Chapter 16 is a reference bank. The four cases named in the teaching route fit within the two sessions. Read the longer solutions afterwards. Use the remaining cases when the corresponding problem appears in a later lecture or project.</p>
+<p>Sections <strong>16.9–16.10 are optional advanced extensions</strong>. Their dielectric-absorption and boost-zero derivations are outside the two-session assessment core. Other extensions are marked in the example index.</p>
+<nav class="foundation-pager" aria-label="Reading sequence"><a href="chapter-01.html" rel="next">Next: 1. Networks: what the source actually supplies →</a></nav><footer><a href="index.html">Foundation contents</a> · <a href="recap.html">Complete offline reading copy</a></footer></main>
+</body></html>
