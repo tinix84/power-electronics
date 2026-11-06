@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Power electronics prerequisite recap, worked examples and reproducible figures.">
+<title>19. Operating points and small-signal models · Circuit foundations</title><style>/* Shared reading layout for the self-contained lesson copies. */
+.foundation-pager{display:flex;justify-content:space-between;gap:24px;margin:48px 0 24px;padding-top:20px;border-top:1px solid #dee2e6}.foundation-pager a{flex:1;min-width:0;overflow-wrap:anywhere}.foundation-pager a[rel=next]{text-align:right}.foundation-breadcrumb{font-size:14px}.foundation-contents{padding-left:24px}.foundation-contents>li{margin:18px 0}.foundation-contents summary{cursor:pointer;font-size:14px;color:#66717d}.foundation-contents ul{padding-left:20px}nav a[aria-current=page]{background:#edf2f7;border-left-color:#2563a1}@media(max-width:600px){.foundation-pager{flex-direction:column}.foundation-pager a[rel=next]{text-align:left}}
+:root{color-scheme:light;--ink:#29323b;--muted:#66717d;--link:#2563a1;--rule:#dee2e6}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}
+body{margin:0;background:#fff;color:var(--ink);font:17px/1.7 system-ui,-apple-system,'Segoe UI',sans-serif}
+a{color:var(--link);text-underline-offset:3px}a:hover{color:#174773}
+nav[aria-label="Chapter contents"]{position:fixed;inset:0 auto 0 0;width:285px;padding:34px 24px 90px;overflow:auto;background:#f8f9fa;border-right:1px solid var(--rule)}
+nav strong{display:block;font-size:14px;line-height:1.6;letter-spacing:.045em;margin-bottom:24px;color:#334155}
+nav a{display:block;font-size:13px;line-height:1.45;margin:0;padding:7px 8px;text-decoration:none;border-left:2px solid transparent}
+nav a:hover,nav a[aria-current="location"]{background:#edf2f7;border-left-color:var(--link);color:#174773}
+.course-links{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--rule)}.course-links a{font-weight:600}
+main{max-width:1145px;margin-left:285px;padding:54px 64px 100px;min-width:0}
+h1{font-size:clamp(2rem,3vw,2.8rem);line-height:1.18;letter-spacing:-.03em;margin:0 0 32px;font-weight:650}
+h2{font-size:1.75rem;line-height:1.3;letter-spacing:-.02em;margin:64px 0 22px;padding-bottom:12px;border-bottom:1px solid var(--rule);font-weight:600}
+h3{font-size:1.3rem;line-height:1.4;margin:36px 0 14px;font-weight:650}h4{margin-top:28px}
+p{margin:0 0 19px}li{margin:7px 0}strong{font-weight:650}blockquote{border-left:4px solid #a9bfd2;margin:24px 0;padding:10px 22px;background:#f5f8fa}
+img{max-width:100%;height:auto}p>img:not(.math){display:block;width:100%;margin:30px auto;padding:12px;border:1px solid #e9ecef;border-radius:4px;background:#fff}
+.math{display:inline-block;vertical-align:-.18em;max-width:none;height:auto}
+.equation{overflow-x:auto;text-align:center;padding:20px 12px;margin:22px 0 26px;background:#fafbfd;border-radius:4px;border-left:2px solid #d9e4ee}
+.equation .math{vertical-align:middle;max-width:none}.equation.tagged{display:flex;align-items:center;overflow:visible}.eqbody{flex:1 1 auto;min-width:0;overflow-x:auto;text-align:center}.eqno{flex:0 0 auto;margin-left:16px;color:var(--muted);font-size:14px;white-space:nowrap}
+table{display:block;width:100%;overflow-x:auto;border-collapse:collapse;font-size:14px;line-height:1.55;margin:26px 0 32px}th{background:#f3f5f7;text-align:left;font-weight:650}th,td{border-bottom:1px solid #dce2e7;padding:12px 14px;vertical-align:top}thead{border-top:1px solid var(--rule)}tbody tr:nth-child(even){background:#fafbfc}td .math{max-width:none}
+pre{overflow:auto;padding:18px 20px;background:#f6f8fa;border:1px solid #e5e9ed;line-height:1.5;font-size:14px;border-radius:4px}code{font:.88em ui-monospace,Consolas,monospace;overflow-wrap:anywhere}footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--rule);color:var(--muted);font-size:13px}
+#chapter-toggle{position:fixed;opacity:0;width:1px;height:1px}.chapter-toggle-label{display:none}
+@media(min-width:1600px){main{margin-left:calc(285px + (100vw - 1600px)/2)}}
+@media(max-width:1050px){.chapter-toggle-label{display:block;position:sticky;top:0;z-index:1000;background:#f8f9fa;padding:12px 22px;border-bottom:1px solid var(--rule);font-size:14px;font-weight:650;cursor:pointer}#chapter-toggle:focus-visible+.chapter-toggle-label{outline:3px solid #2563a1;outline-offset:-3px}nav[aria-label="Chapter contents"]{display:none;top:48px;z-index:999;width:290px;max-width:88vw;box-shadow:8px 0 24px #0002}#chapter-toggle:checked~nav{display:block}main{margin:0 auto;padding:36px 28px 80px;max-width:900px}h1{font-size:2.1rem}}
+@media(max-width:600px){body{font-size:16px}main{padding:28px 19px 80px}h1{font-size:1.85rem}h2{font-size:1.5rem;margin-top:46px}h3{font-size:1.18rem}table{font-size:13px}.equation{padding:16px 8px}.eqno{margin-left:10px}}
+@media print{nav,.chapter-toggle-label,#chapter-toggle{display:none!important}main{margin:0;padding:0;max-width:none}body{font-size:11pt}h1{font-size:26pt}h2{font-size:18pt;break-after:avoid}h3{break-after:avoid}.equation,table,p>img{break-inside:avoid}a{color:inherit}pre{white-space:pre-wrap}}
+</style></head>
+<body><input type="checkbox" id="chapter-toggle" aria-label="Toggle chapter contents"><label class="chapter-toggle-label" for="chapter-toggle">☰ Chapter contents</label><nav aria-label="Chapter contents"><strong>CIRCUIT FOUNDATIONS</strong><a href="index.html">Contents</a><a href="introduction.html">Start here</a><a href="chapter-01.html">1. Networks: what the source actually supplies</a><a href="chapter-02.html">2. Basic elements: R, L, C, transformer and coupled inductors</a><a href="chapter-03.html">3. Capacitive coupling on a PCB: why edge speed matters</a><a href="chapter-04.html">4. Worked design exercise: how close must the CPU&#x27;s source be?</a><a href="chapter-05.html">5. Average and RMS: define these before calculating power</a><a href="chapter-06.html">6. Active power, reactive power and heating</a><a href="chapter-07.html">7. DC steady state, periodic steady state and transients</a><a href="chapter-08.html">8. Linearity, time invariance and the scope of a model</a><a href="chapter-09.html">9. Laplace: from a differential equation to dynamics</a><a href="chapter-10.html">10. A switched RC: time-domain envelopes and Fourier harmonics</a><a href="chapter-11.html">11. Impedance charts and resonators</a><a href="chapter-12.html">12. Bode, LC filtering and Class-D amplifiers</a><a href="chapter-13.html">13. Semiconductor and thermal basics</a><a href="chapter-14.html">14. Are linear regulators dead? No: choose the architecture</a><a href="chapter-15.html">15. Exit questions with short answers</a><a href="chapter-16.html">16. Practical example bank: why the fundamentals matter</a><a href="chapter-17.html">17. Engineering approximation: how simple can the model be?</a><a href="chapter-18.html">18. Dividers: from reference voltages to sensors and resonant converters</a><a href="chapter-19.html" aria-current="page">19. Operating points and small-signal models</a><a href="resources.html">Recall resources by task</a><strong>ON THIS PAGE</strong><a href="#19-operating-points-and-small-signal-models">19. Operating points and small-signal models</a></nav>
+<main><p class="foundation-breadcrumb"><a href="index.html">Circuit foundations</a></p><h1 id="19-operating-points-and-small-signal-models">19. Operating points and small-signal models</h1>
+<p>Why can a diode have a 650 Ω voltage/current ratio and respond to a small perturbation like 26 Ω? Why can a MOSFET need two slopes? Which current direction gives a solar panel&#39;s negative slope?</p>
+<p>This chapter develops one method across these examples. Start with the nonlinear relation, find the operating point, calculate derivatives and test a finite perturbation. Each section has a separate reading page.</p>
+<p>The numbers describe original teaching models. They are not measured device data or component selections. The exercise and its solution also have separate pages.</p>
+<p><strong>Open a curve.</strong> The plots below come from Python evaluations of the stated models. Each linked page embeds its plot.</p>
+<table>
+<thead>
+<tr>
+<th>Curve</th>
+<th>Open its reading page</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Operating point, static line and tangent</td>
+<td><a href="chapter-19-01.html#19-1-the-operating-point-the-secant-and-the-tangent">19.1: see both slopes</a></td>
+</tr>
+<tr>
+<td>Diode curve and local prediction</td>
+<td><a href="chapter-19-02.html#19-2-diode-bias-determines-the-local-resistance">19.2: diode linearization</a></td>
+</tr>
+<tr>
+<td>MOSFET output and gate characteristics</td>
+<td><a href="chapter-19-03.html#19-3-mosfet-output-resistance-and-gate-control-are-different-derivatives">19.3: two partial derivatives</a></td>
+</tr>
+<tr>
+<td>Solar-panel current and power curves</td>
+<td><a href="chapter-19-04.html#19-4-solar-panel-fix-illumination-and-label-the-current-direction">19.4: current direction and maximum power</a></td>
+</tr>
+<tr>
+<td>Constant-power current and tangent error</td>
+<td><a href="chapter-19-05.html#19-5-a-controlled-constant-power-load-negative-slope-while-absorbing-power">19.5: negative incremental resistance</a></td>
+</tr>
+</tbody></table>
+<h3>Choose a topic</h3><ul><li><a href="chapter-19-01.html">19.1 The operating point, the secant and the tangent</a></li><li><a href="chapter-19-02.html">19.2 Diode: bias determines the local resistance</a></li><li><a href="chapter-19-03.html">19.3 MOSFET: output resistance and gate control are different derivatives</a></li><li><a href="chapter-19-04.html">19.4 Solar panel: fix illumination and label the current direction</a></li><li><a href="chapter-19-05.html">19.5 A controlled constant-power load: negative slope while absorbing power</a></li><li><a href="chapter-19-06.html">19.6 Build and check a local model</a></li><li><a href="chapter-19-07.html">19.7 Exercise: predict the change before solving the nonlinear circuit</a></li><li><a href="chapter-19-08.html">19.8 Solution: check the slope and the model error</a></li></ul><nav class="foundation-pager" aria-label="Reading sequence"><a href="chapter-18-11.html" rel="prev">← Previous: 18.11 Solution: loading, losses and buffer power</a><a href="chapter-19-01.html" rel="next">Next: 19.1 The operating point, the secant and the tangent →</a></nav><footer><a href="index.html">Foundation contents</a> · <a href="recap.html">Complete offline reading copy</a></footer></main>
+</body></html>

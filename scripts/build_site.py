@@ -8,7 +8,7 @@ import json
 import re
 import subprocess
 import hashlib
-from sync_content import PAGES, figure_assets
+from sync_content import release_pages, figure_assets
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "_site"
@@ -32,6 +32,7 @@ class Page(HTMLParser):
 
 def build():
     OUTPUT.mkdir(exist_ok=True)
+    pages_to_build = release_pages()
     # Do not publish arbitrary directories or the solutions companion.
     for name in ("index.html", "privacy.html", "analytics.js", "reading.js", "site.css"):
         shutil.copyfile(ROOT / "site" / name, OUTPUT / name)
@@ -54,7 +55,7 @@ def build():
         cards.append(f'<article class="figure-card" id="figure-{entry["stem"].split("_")[0]}"><h2>{title}</h2><a href="circuit-figures/{name}"><img src="circuit-figures/{name}" alt="{title}"></a><p><a href="circuit-figures/{name}" download>Download SVG</a> · {entry["components"]} components</p></article>')
     gallery = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Circuit figure gallery · Power electronics</title><link rel="stylesheet" href="site.css"><script defer src="analytics.js"></script></head><body class="course-home"><main><p><a href="index.html">← Course home</a></p><h1>Circuit figure gallery</h1><p>26 regenerated circuit drawings, merged into one Designer JSON, exported once and split into separate SVGs.</p><aside class="figure-review"><strong>Regenerated layouts for review.</strong> These exports preserve the saved JSON geometry. Some labels overlap and need adjustment in Designer. The established lesson illustrations remain in place while these layouts are reviewed. Figures 14, 15 and 60 contain circuits only; their plots and placement illustration remain in the lesson.</aside><p><a href="circuit-figures/combined.json" download>Download combined Designer JSON</a> · <a href="circuit-figures/combined.svg" download>Download combined SVG</a> · <a href="circuit-figures/manifest.json">Export manifest</a></p><p>Each export retains its vector symbols and text outlines. The manifest records the original JSON hashes, component counts and SVG hashes. Exported with <a href="https://circuit2tikz.tf.fau.de/designer/">CircuiTikZ Designer</a>.</p><div class="figure-gallery">' + ''.join(cards) + '</div></main></body></html>'
     (OUTPUT / "figures.html").write_text(gallery, encoding="utf-8")
-    for relative in PAGES:
+    for relative in pages_to_build:
         text = (ROOT / "content" / relative).read_text(encoding="utf-8")
         matches = list(re.finditer(r'<img class="math"[^>]*alt="([^"]*)"[^>]*>', text))
         items = []
@@ -79,13 +80,14 @@ def build():
             text = text.replace('</head>', '<style>' + math['css'] + '</style></head>')
             print(f"Rendered {len(items)} KaTeX expressions in {relative}")
         course_links = '<div class="course-links"><a href="../index.html">← Course home</a><a href="../power-electronics-recap/recap.html">Circuit foundations</a><a href="../lesson-01-buck/lesson-01.html">Buck-converter design</a><a href="../lesson-02-boost/lesson-02.html">Boost-converter exercises · draft</a><a href="../lesson-magnetics/appendix-area-product.html">Magnetics: area product by kind · draft</a><a href="../lesson-control/lesson-control.html">Control: pole placement vs small-signal models · draft</a><a href="../power-electronics-recap/transformer-characterization.html">Transformer guide</a><a href="../figures.html">Circuit figure gallery</a></div>'
+        course_links = course_links.replace('power-electronics-recap/recap.html', 'power-electronics-recap/index.html')
         text = text.replace('<nav aria-label="Chapter contents">', '<nav aria-label="Chapter contents">' + course_links)
         text = text.replace('<body>', '<body class="reading-page">')
         text = text.replace("</head>", '<link rel="stylesheet" href="../site.css">\n<script defer src="../reading.js"></script>\n<script defer src="../analytics.js"></script>\n</head>')
         destination = OUTPUT / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(text, encoding="utf-8")
-    expected = {"index.html", "privacy.html", "analytics.js", "reading.js", "site.css", ".nojekyll", "figures.html", *PAGES, *("circuit-figures/" + name for name in assets)}
+    expected = {"index.html", "privacy.html", "analytics.js", "reading.js", "site.css", ".nojekyll", "figures.html", *pages_to_build, *("circuit-figures/" + name for name in assets)}
     actual = {p.relative_to(OUTPUT).as_posix() for p in OUTPUT.rglob("*") if p.is_file()}
     if actual != expected:
         raise ValueError(f"Unexpected release contents: {actual ^ expected}. Inspect before publishing.")
