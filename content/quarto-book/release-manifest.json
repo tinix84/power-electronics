@@ -1716,443 +1716,443 @@
     },
     {
       "path": "lesson-power-conversion/acac/dc-machine-vs-pmsm.html",
-      "sha256": "2bbf88536c969bd913ebb8b7f824cf3cebe6ca1466229d7b6d140e4bcafa6faf"
+      "sha256": "d9f1624c372958fcfed3fdc50b049a3b757dee90cc2d61c88cfe96c19b49aa7d"
     },
     {
       "path": "lesson-power-conversion/acac/multi-step-commutation.html",
-      "sha256": "ad5e4ee676c30817e59e3bc03bfc77d9f90b5af69ee92fdcdf253e7e0b40b06f"
+      "sha256": "214c1e64570c90fe8400d1b89511a7c52438d03018fc095a0ba75cf361203700"
     },
     {
       "path": "lesson-power-conversion/acac/rotating-field.html",
-      "sha256": "eff59f54d93a476f760f759f44e2c9c17132efee083af195733b97e7b11bac59"
+      "sha256": "dc8f58cc06fe260b865f8af4f079d5d41820d8c026e4439fcb570d8c3be70449"
     },
     {
       "path": "lesson-power-conversion/acac/speed-control-of-pmsm.html",
-      "sha256": "99bccdbe9a8730d138315b9ff8903cde99ca2983ae0a7a07207407c2465765da"
+      "sha256": "96c2ef2bf9fc08dd3a939e47dd355196d914f842c49e08eea43ca52d3ca0f4bd"
     },
     {
       "path": "lesson-power-conversion/acac/torque-control-of-pmsm.html",
-      "sha256": "56aeb300055da8c4335918039efc6edd811c6c5bacdb8e4e11d36b5abbf92777"
+      "sha256": "0aa827bb151fc0ec4a14ecead4a8c203261ba75989a4a0e9d9b15e0bcc810034"
     },
     {
       "path": "lesson-power-conversion/acac/voltage-and-current-time-behavior.html",
-      "sha256": "d6d4ee357a6dfaf9c1188ee93c04e3034a69375744626c8bc281182049cdfeb9"
+      "sha256": "cd4e4256ba44a514123879e788cb05dfa4830cfef17e4444b75f03b39ba49ac6"
     },
     {
       "path": "lesson-power-conversion/acac/zero-dc-link-curr-commutation.html",
-      "sha256": "1e036db43203ed2f66491b38827b8370ff1614a05158e8f8596fb58cca15fc51"
+      "sha256": "ec6d78654319eb9311bb4e0ea78652595b8338e2e7b567928ad4e949fa0876ba"
     },
     {
       "path": "lesson-power-conversion/acac.html",
-      "sha256": "15fa6d9fd8d502f8ee13765c6bf86752c88e63de9e3e1dd9cf616a90ddab5582"
+      "sha256": "b73773112cebd2d1ae8e4ac4c1d77761eaee90ce6acd3404648aa0e5b9784969"
     },
     {
       "path": "lesson-power-conversion/acdc/110v220v-input.html",
-      "sha256": "afc652181a9f1ce07d3ab247f38cb7cc0a957a034bd8c3c5df4a06d2ead4b9b3"
+      "sha256": "e2b355847425514358f750424ec881d22f588dc61076c5feb92ae9369cb914cd"
     },
     {
       "path": "lesson-power-conversion/acdc/234-pulse-system.html",
-      "sha256": "b7788c5ed8321de8f4fc1708c5a80a6782e627df259fe64d51cdd68c3f47774e"
+      "sha256": "e87d4090553c2743365d73e030170567622e721300cef768d0084ead9a557784"
     },
     {
       "path": "lesson-power-conversion/acdc/ac-side-inductance-cout.html",
-      "sha256": "f1fa996a944ff8dd2fc388fdc9ecbb2573b982797aa048747456b9b9154f431d"
+      "sha256": "02f97b27c3fbda2477dd4f1869f732fb857d8a5838f6262010465093824a7f7e"
     },
     {
       "path": "lesson-power-conversion/acdc/ac-side-inductance-input-current-formation-udcconst.html",
-      "sha256": "5613c5e33612de1b9d56b448342cfa35e4422187cf096e0e0214f5276d230aae"
+      "sha256": "6fdd74ee8a7a344742762681d1dc4f8c643a8de6e7ea2582128f139e972932f7"
     },
     {
       "path": "lesson-power-conversion/acdc/basic-diode-function.html",
-      "sha256": "a51624838aacfffc72e34836d96aaf86ebb3786061a327e3c905fc30dff9cb75"
+      "sha256": "b27ba1989865f9c2f1479bdd1d7a94ba0338b0967081fd45afb0d7dd09da189e"
     },
     {
       "path": "lesson-power-conversion/acdc/calculation-of-component-stresses.html",
-      "sha256": "a4701eda1b2c8a1a91b86efab1f3f19168998bea9d7fff4c1a6a0e072a26c27d"
+      "sha256": "5618047103e314890b371ee5695460976b4eaa610d1b405baa7433af7436674c"
     },
     {
       "path": "lesson-power-conversion/acdc/commutation.html",
-      "sha256": "4a5a705977d1d564a7c6e5ecd004db353acb892d4d16a48954ec488bab591f6d"
+      "sha256": "1a2229f3ad5bc55a2435ff1211fd88eeda13555a9fa37241e20ad4c022fb4a88"
     },
     {
       "path": "lesson-power-conversion/acdc/continuous-conduction-mode.html",
-      "sha256": "dc961a90f34577323d7ffdb75585acbf36150229b6440b87f378f5f0a9bfb946"
+      "sha256": "482e9acf11f4adb8847b730ed83b91ee1f64b7d4c78c7ee1299666060e599075"
     },
     {
       "path": "lesson-power-conversion/acdc/control-concept-loop-dynamics.html",
-      "sha256": "95f80019c7bd7d1e391ce1bfbbb4c0e47d61927cc774f24af080bd35314c1879"
+      "sha256": "2c9a35da8a8b0cffbf640fc7c319c38f9cfe94277942e68e13ba1728e64cc82b"
     },
     {
       "path": "lesson-power-conversion/acdc/critical-conduction-mode.html",
-      "sha256": "1ae02144d000478510e4558dfb1c5caf5c8351f484ae086b16d2efc34dfcf634"
+      "sha256": "c856d45745cbce92beca6d0cc12f5f6f4c388b74a1e6852e4b4016db9872cef8"
     },
     {
       "path": "lesson-power-conversion/acdc/dc-ac-side-inductance-cout.html",
-      "sha256": "95a3bc8bba96a7424eabcff9c76714873887807c4dc1555b8cacb9639e0847b3"
+      "sha256": "165b1b06dc95892c826d6c53364e30fb39d685764fe2d5746b2c68a25bcf4347"
     },
     {
       "path": "lesson-power-conversion/acdc/dc-side-inductance-cout.html",
-      "sha256": "593bc30a0d39017db9995e45b80d40dc020d69b1545402b48b9e6945f1f3415e"
+      "sha256": "c879b27ffd8ef371ed8f4dbca043c98623e5fa82ef1f03a8825ff2118df65349"
     },
     {
       "path": "lesson-power-conversion/acdc/discontinuous-conduction-mode.html",
-      "sha256": "8bfabb328a94c0dc94008244815c031faa5491b94e90010e92987f7c3c904544"
+      "sha256": "596db1c8c47074e7d8ac4ff85fb3478984dde4861340d724334d1fef0b705cfe"
     },
     {
       "path": "lesson-power-conversion/acdc/mains-current-distortion.html",
-      "sha256": "902f9d16e0bbd7984a4e6f089814f8062dd0bb4799ceda6030439d71a5879b91"
+      "sha256": "3ad57a21c9a9a6892ab6157addd48ccabb376fc6cc32c62b9bf2dc6d23701be4"
     },
     {
       "path": "lesson-power-conversion/acdc/mains-neutral-connection.html",
-      "sha256": "44478055b5e930aeae1ffec74f4ac7f42eebad3afe7ba412ecbae9db70890a8b"
+      "sha256": "1260012db274d41d72e75cc34c2d90e3f3595926b67b6ee8f500ac8993bf17a2"
     },
     {
       "path": "lesson-power-conversion/acdc/mains-voltage-distortion.html",
-      "sha256": "fc8520182584cc61d65f0166075add25e95e64db6df6ce38d2e269e3daa5b378"
+      "sha256": "2d4832e15ea3d8be5662c616d574fa7d9bfcc50dddc8f9c77b74c2612b9d3ac3"
     },
     {
       "path": "lesson-power-conversion/acdc/power-factor-thd.html",
-      "sha256": "9b9ec60341e9e9dc5fd63237638ffe9b7e079ebaf173dc07665a05f99b7af59e"
+      "sha256": "15be4f14ee21887e6b57bbc6ab35650247262b5aaf84d184d38c469bd0e0a604"
     },
     {
       "path": "lesson-power-conversion/acdc/purely-capacitive-smoothing-on-a-bridge-rectifier.html",
-      "sha256": "a4e85806c02b4e8bcfeb96aa72c597b46ad79702121d5b4e931e5e25c18939a3"
+      "sha256": "fb4f16c75c037c4bd38c88979235dae741911bb82945f452de1f69504a82682f"
     },
     {
       "path": "lesson-power-conversion/acdc/r-rl-c-udcconst-load.html",
-      "sha256": "c6ba2a4916411cf7adfdf08a1c2e6500123178a0b2831b39074afc52f663a110"
+      "sha256": "032884cfd1cde127f5fd340f223eda0d2147b7fef6b2c81f2c93772c61a030e7"
     },
     {
       "path": "lesson-power-conversion/acdc/single-diode-rectifier-combination.html",
-      "sha256": "7c2b237c91c0ca989aec2049a2049aeaa7f92eebf1e1f0fe97487cc3524ebe80"
+      "sha256": "d3fb4fabb05ab904d10ac2eee56a720b606207289ffeda8fbb1a15f5d4da4f52"
     },
     {
       "path": "lesson-power-conversion/acdc/single-phase-system-power-flow.html",
-      "sha256": "02f20fb8d21fb52b9411f91718bc480bf9d7474e55d64843a95e27a211780738"
+      "sha256": "ff96eb5b2c3328c0fe8f97ac744ae824f558615c65945030cfbfdb12319a7973"
     },
     {
       "path": "lesson-power-conversion/acdc/single-switch-dcm-boost.html",
-      "sha256": "4ec78540b58090fe605689098ee37784db898e838dbb038dcfefd29b600cc3f6"
+      "sha256": "83f355617f18cc41db45e95cff4c48b7351c5d5cd60985fcc0614ca80ae45f05"
     },
     {
       "path": "lesson-power-conversion/acdc/three-phase-combination-neutral-current.html",
-      "sha256": "ecb0a6644bfc65b008a8ce48961414d332fd096309996af8e1906feb3172a92d"
+      "sha256": "8892dea1eb5fe9f7ac35381535d5576484d5be609bed66db3642b6ba7c1ff450"
     },
     {
       "path": "lesson-power-conversion/acdc/three-switch-buck-boost-system-dimensioning.html",
-      "sha256": "8b1ce3158e2a15558c50c5ee1c15fd40dfff26c69f1be89f3d27eb2270024dc0"
+      "sha256": "bc63ddd9ce9ed617042283330fc0762fbffad25995dff3fafe6ee5cc07f192aa"
     },
     {
       "path": "lesson-power-conversion/acdc/three-switch-buck.html",
-      "sha256": "e7697571a4f95aad0fbbb3e30f9867a8ce18ca85a275ff62cdcffdc7504a0176"
+      "sha256": "39f9e061bcb8d2838c57a57d3ac1e721952bba49c930728487c66694582c3213"
     },
     {
       "path": "lesson-power-conversion/acdc/three-switch-ccm-boost-vienna.html",
-      "sha256": "9a6322b18626c634523ac823cbc1e85238f592b339db5b4db1d2270dbe35f18b"
+      "sha256": "42daaa50b3d968d0212b0f38d2b01f3b1acb918e7739877b091cec86051a84ec"
     },
     {
       "path": "lesson-power-conversion/acdc/unbalanced-mains.html",
-      "sha256": "566ea26efb1a6572cefed1f93c6fe17b2b08efd3265709c42dd0e1d6ae561d20"
+      "sha256": "750fd8a357402fadaf14afd8d812a5118d6843d6e667a2fa0b40bbad5bcc5cb0"
     },
     {
       "path": "lesson-power-conversion/acdc.html",
-      "sha256": "7e0d832a0ac16c72be1bebccc0737402415f6a8ce0860cf4685102417819e8bc"
+      "sha256": "8f43f09d2a75b89c36c4e6c5c0d3c3329d6451c6e28ff11f443f0a5cb9a0f8b7"
     },
     {
       "path": "lesson-power-conversion/dcac/ac-side-current-ripple.html",
-      "sha256": "eb68d53967932573c77bf8817ba6c02dec5dea4ebe815a92d1e0e1b9e15641e9"
+      "sha256": "e30d0e3fc41a8db20387bb631df3d9f0fb9731b9f7eb864c36f94d35b96ba348"
     },
     {
       "path": "lesson-power-conversion/dcac/basic-thyristor-converter-free-wheeling-diode.html",
-      "sha256": "fbb1c6ab2754391629b2c9696fa625b8c4362552b7c71a76f96dbfbeade4e7ec"
+      "sha256": "3d2ac6f165866d782afed71d031bdc7764836cc4f26cbfd7a3942feaea6bbfd0"
     },
     {
       "path": "lesson-power-conversion/dcac/basic-thyristor-converter.html",
-      "sha256": "03fc3d0e3ec77719128d2f5ad0ce927feea018dc04ef241ff03d1807349260ad"
+      "sha256": "b5a04e5e4f24712f22b637d445bc19ebf4f9cf0dac928d1ec2706c12c8ab7939"
     },
     {
       "path": "lesson-power-conversion/dcac/basis-of-pulse-width-modulation.html",
-      "sha256": "221216c4dd5fa2474c9b7a05ba1e1279ae726006638809a1a58aa8229a44b6e6"
+      "sha256": "2c39b21d423452941afb27979508b5fcb9a9c5ccb39526549f1e9981af933c29"
     },
     {
       "path": "lesson-power-conversion/dcac/bi-and-unipolar-pwm.html",
-      "sha256": "ef1c21bbd9cd69af99f4b2b0eb192609961bdecd0d303133afdbdc18a4030163"
+      "sha256": "ace912f1f5a2f946c683da3b69f0b7662f30878babcebb1eccd2f0271b0e11aa"
     },
     {
       "path": "lesson-power-conversion/dcac/commutation-converter-equivalent-circuit.html",
-      "sha256": "4d484c88febc5699a7f0a456a5a6545481176c66dd7688f3541eabdcc6ce2124"
+      "sha256": "fa0433f03a2e5f7472320ebbcae1e591ad0aaadf81459e97e6595ca387926156"
     },
     {
       "path": "lesson-power-conversion/dcac/dc-capacitor-current-stress.html",
-      "sha256": "48b2f78c0e08952afb0b8d65f31c90cdff654578e8d6b0d3160f6ee1a1908c64"
+      "sha256": "5ff444c8a1f7dbe9ec2dd01bcd6a465288dd6b5e87887b1da0a40903488857ad"
     },
     {
       "path": "lesson-power-conversion/dcac/decoupling-of-zero-sequ-quantity.html",
-      "sha256": "2fcb0ecd2bce3d6592694e67b05c170cd1ea876a342632e89f590677245536b4"
+      "sha256": "2655084b2ef2e021a5888eb4ac1659f51cba10e09ec0e38fb56e5f20651dbf7b"
     },
     {
       "path": "lesson-power-conversion/dcac/four-quadrant-converter-for-dc-drive.html",
-      "sha256": "b88929267aed31623f517f4170f36d37e230f267101fe66b64f49ae11f5a70c8"
+      "sha256": "ce2a48f58bf16ce92cdcab30cd3a43d7604bb126817bf4a5ffc0711b9e60d8ca"
     },
     {
       "path": "lesson-power-conversion/dcac/hysteresis-control-switching-frequency-variation.html",
-      "sha256": "1c32ff15be6fec2484e3b4b40fea83d90466ccce94440d12a5aaeb5d319c7bab"
+      "sha256": "ab507c37b07afd8979f09d26c85a24cadacd05b6f49e6ff36e9074ed69ff7020"
     },
     {
       "path": "lesson-power-conversion/dcac/hysteresis-current-control-current-error-details.html",
-      "sha256": "fd92ac243ae6fb0417743ccc403f497716d988b88f226966105e4670afbb3e84"
+      "sha256": "5ebabfac2f42f6e69fa4db5a17c75e23b8edd97e665391752eae76d562e52414"
     },
     {
       "path": "lesson-power-conversion/dcac/hysteresis-current-control-open-connected-neutral.html",
-      "sha256": "a2d9bc0e18dcaf3fa26227b1f841de225e97b3f775adca4fd33a3c5042c415a9"
+      "sha256": "682aac89c6ac8da98938852ea2c05324a874da08660a2cb2f1670f51bab29947"
     },
     {
       "path": "lesson-power-conversion/dcac/loss-of-commutation.html",
-      "sha256": "a30a5b08ff3928fb16c69863d7986b1f66fd9ec1c3aad5d6502a77823de4db85"
+      "sha256": "93bb43d704119bdf9288c86f1170746def630ab14cf52e996272833056fdb4d3"
     },
     {
       "path": "lesson-power-conversion/dcac/mains-distortion.html",
-      "sha256": "1650facdb79e7713b92f6e4c1a16423806ae1fd5dafffded228bd594c6b2b4dd"
+      "sha256": "047b4d7928fd354874ee4cfb52f785cce59ec9c87926edb8b30e0aaece9dee76"
     },
     {
       "path": "lesson-power-conversion/dcac/mains-unbalanced.html",
-      "sha256": "95f8266bffc28b1993ca6e5154a774eecd06b1d4124b5aa242a4838b16b2e9c9"
+      "sha256": "433a04d02b2c473ac98dcdfee3b0180aff93ec19ec05235ee80adfffe1037d8b"
     },
     {
       "path": "lesson-power-conversion/dcac/output-current-ripple-space-vector-pwm-source.html",
-      "sha256": "3223e983b41bdadc5dc10684c88e0d590937bee20ea2fbdc9a286916aa2558f5"
+      "sha256": "f7de40a158c2cb3336d89b6b8d692958ed851d99869e576c6084fb5d53cafcfe"
     },
     {
       "path": "lesson-power-conversion/dcac/output-current-ripple-space-vector-rectangular-source.html",
-      "sha256": "b35e47ae6492fc2293a4f5e32e6e812c899f61346c3f99be8d4789b2e48efdf7"
+      "sha256": "a6a8f95256dca1cc705aa4b6ffbab2341fc72aadf906cd60fde09fd2f14d2104"
     },
     {
       "path": "lesson-power-conversion/dcac/output-current-ripple-space-vector-sinusoidal-source.html",
-      "sha256": "ca3fd7da09d0edc49cf9e9d70d44b59c5e1d7eea08bfff542bd4452029a7babe"
+      "sha256": "b26622a472417624f4791f714fbca0a25e37c37f43f69ae08fb8c893e3f66565"
     },
     {
       "path": "lesson-power-conversion/dcac/overmodulation.html",
-      "sha256": "701f6b722484f7529d307216668660a9d6464564239eaa5aa1772302f81eed7c"
+      "sha256": "6076b4f2fcd5acd51d1d9dce4c88bf50ed6c67cc6b4821955b073ca41bb319e2"
     },
     {
       "path": "lesson-power-conversion/dcac/parallel-connection-with-interphase-transformer.html",
-      "sha256": "a9cdf454413cdf012182d4886ca8934f291fc865423a0922622b32d01bcd8155"
+      "sha256": "a48929b5912361a135554fb0a734a09e0139fa0e7e5fafec7fab714ad8f27f1d"
     },
     {
       "path": "lesson-power-conversion/dcac/parameters-of-current-commutation-theory.html",
-      "sha256": "2798c34601e933209bb00bdebf2a177a2ac6e7260b025a77b079b0207ac4d0ef"
+      "sha256": "a81becfa7a23b003d72bf37060e65ab86b1088ada65e7a3f41b0041d4b2b821f"
     },
     {
       "path": "lesson-power-conversion/dcac/phase-order.html",
-      "sha256": "3621dd31fb31592b4e959baf9a557b7863cad4abb4a92a8fbee9aae445dea515"
+      "sha256": "5d9c00d7fc8c31d457f445331fead408bf3ffd0401190990c16203e42b2f203b"
     },
     {
       "path": "lesson-power-conversion/dcac/phasor-diagram-operating-range.html",
-      "sha256": "4c457fb2141afa5873cc5f28b89511847bf2d6d73307996fff1dccacf78972a4"
+      "sha256": "e50dc5da5330bed3db0933dc7d6bd1fa9f8c6d08b84985f033c5dd4efdb9ea1d"
     },
     {
       "path": "lesson-power-conversion/dcac/power-flow-in-three-phase-systems.html",
-      "sha256": "4f7cdf0911e1742eff39b32300f1a0530b5e5a8cc2abc41e04385ea0e8ad7a95"
+      "sha256": "89ed5430ea0af49888190d9d208053c8bf6e37dc5419c9585edd6757145be2e4"
     },
     {
       "path": "lesson-power-conversion/dcac/single-phase-full-bridge.html",
-      "sha256": "eb4ef9bfa831f0dd1b1e04a07bd4382fcfac7d27d5d151b8689a67c956a76f5d"
+      "sha256": "2484be9cb99e0a41a302ed913dd4cc80b2c54e55b416d72183ac242cfffe2b0c"
     },
     {
       "path": "lesson-power-conversion/dcac/single-phase-half-bridge-with-transformer.html",
-      "sha256": "1b5937f9bc98bfb0af35c21b774257d1a12eed8fa78ade3143e9726791ab7609"
+      "sha256": "376037473112640bdb0d70720d46ded3baaf32469d1b0ecd0acfd0ba4c965a14"
     },
     {
       "path": "lesson-power-conversion/dcac/sinusoidal-pwm-single-carrier.html",
-      "sha256": "0df0f77f50f53878be10a567f672559139ad1b3a0886aa0faa1bf9948484a40a"
+      "sha256": "a4bf57939bea6454d7548096309b582d999a7bee03a277fac14ee37109bbb8e9"
     },
     {
       "path": "lesson-power-conversion/dcac/space-vector-modulation.html",
-      "sha256": "57860577a2d52ee539ab6cc548aea70bc05992fd25fda10e2fe08a3458ced464"
+      "sha256": "69bdf2093de52517d18ebfa0da44f4ea4e137389de60b9295aa81d0f16db3ce0"
     },
     {
       "path": "lesson-power-conversion/dcac/square-wave-operation-relation-of-dc-and-ac-quantities.html",
-      "sha256": "65f9e8e6df81efe328db123dae81298b9375fab5f4c4e4e047efe94ec18303a0"
+      "sha256": "af54cd4470d0ca7137de83cd22cbadf32e67549967a9301011d8a2448f8899e2"
     },
     {
       "path": "lesson-power-conversion/dcac/square-wave-operation.html",
-      "sha256": "b64faea7afa558b19388bf86d593ee05b2c6952a3f2478f5e9e8be97f1bb7cee"
+      "sha256": "a977769f2cca6a9c8ca92ab081d21f132836314a41e178c56ee42bd1b7c011d8"
     },
     {
       "path": "lesson-power-conversion/dcac/three-phase-full-bridge.html",
-      "sha256": "08c74371282964bcdd43e37250da186a2de8aac547efddbd93c91a7bb119d0f7"
+      "sha256": "10d3489d0a2132a2f67ce14ec41279369b75996a789585eea096a6545f30ddf9"
     },
     {
       "path": "lesson-power-conversion/dcac/three-phase-half-bridge-with-transformer.html",
-      "sha256": "749ce8744b673e0dc5f283a2150d93e64f601d80ea6a0e69cb06f54735404b51"
+      "sha256": "3daa76ae1fd8b21ae1dda875f2d6b1eb99718cca9c67ec350c1ee01eab485dcc"
     },
     {
       "path": "lesson-power-conversion/dcac/transistor-diode-current-calculator.html",
-      "sha256": "e3dce401f21636cda0bdeb7718ecbbe320f5e42136069431b0af64fc97aff69a"
+      "sha256": "d81646838ac2463ae01d1dbd0ea199dd02e141dd1db698a83973091b333cf62e"
     },
     {
       "path": "lesson-power-conversion/dcac/transistor-diode-current.html",
-      "sha256": "d581c349acada586daafacadeedc4b74bc88d7d23a45c84d5615c708a35c2968"
+      "sha256": "8e8bda1c8826c45f739edc56a081de2c17a59bf9224f3c64c99dc3f009475699"
     },
     {
       "path": "lesson-power-conversion/dcac.html",
-      "sha256": "7617811ee5c70823aef637ec76ae7b76b280ef181fde79e72426a30cbe6c8e79"
+      "sha256": "742bbe29e45230e6aae22349c279ffdd75e89a16f96ec82aed5fe5ee20b82fbf"
     },
     {
       "path": "lesson-power-conversion/dcdc/bidirectional-magnetization.html",
-      "sha256": "cd342e2cab6d344887de5c2616a5ecab0348aaf1bc915a6ae5ab573e69f8c7a8"
+      "sha256": "b520fa785db9a16d9d6a820761e2554e32d5b14124eb31c9f29c4201f7b570d1"
     },
     {
       "path": "lesson-power-conversion/dcdc/boost-converter-root-locus-diagram-rhp-zero.html",
-      "sha256": "f5319cb7eb4132ac0d04bcc5e6075b466b85f95486bc6ed3a92124cbe1e5f365"
+      "sha256": "d6150872b45fdf9908defdaeab98fbd29ce12dd496c5fdfb785b3f1452ae1b06"
     },
     {
       "path": "lesson-power-conversion/dcdc/boost-converter-u1-variable-u2-controlled.html",
-      "sha256": "bc11bc8ee7073cbc022323b9b3f35ef95dd39e57c79be8f6f1060925337b2596"
+      "sha256": "57017e4d5b450bf901a02f6ee37fdd437854496b0eff04b4c2bd54c57e73bacf"
     },
     {
       "path": "lesson-power-conversion/dcdc/buck-boost-converter-u1-variable-u2-controlled.html",
-      "sha256": "635ffdcb908efc8cb811751f922adbee00b3619a43634fdd09f31423f026ff69"
+      "sha256": "876787ae04bafd41eafb031faea10dc57190ded67e5b738df9f53cccfffa9fa8"
     },
     {
       "path": "lesson-power-conversion/dcdc/conduction-switching-losses.html",
-      "sha256": "e8fceff48f604c372428f35c8a6db9e74761cdce72bc8a717ec288adf18b2e93"
+      "sha256": "de53d11357a76d1db8b4455555dc97c56005de741de4e95ccc3ee4356b9c4fb9"
     },
     {
       "path": "lesson-power-conversion/dcdc/control-of-switching-behavior-mosfet.html",
-      "sha256": "3c9f8db7dcf48cfd15f0c2179c7096967039ee1d1de70d7d8ea1d0180615cbe1"
+      "sha256": "75cce777906f5e4c190bbed2bc95197f63f3c306114ba730010c1159c69e2fde"
     },
     {
       "path": "lesson-power-conversion/dcdc/cuk-converter.html",
-      "sha256": "41dc3ee6970a6e549cf2113abcb50ed703e8c64ad79e945b63181bc97cea22f8"
+      "sha256": "d00a75f9cdf7a54b6ccc026406e793cc28084f04ac9c170697366d5d43cd9319"
     },
     {
       "path": "lesson-power-conversion/dcdc/current-ripple.html",
-      "sha256": "c3aece8a9bd94bdad0bc2397fce5e81a67adb88543805c0e13689c904438b290"
+      "sha256": "2c006a0ce9534d1414c41a0481b8d667c36d751c65efbee21c0fff50c99e8cde"
     },
     {
       "path": "lesson-power-conversion/dcdc/dcm-principle.html",
-      "sha256": "4e12ccb4e57ae3ad522654ba5b5d9957a3e5c1a65235d5e4f48dc3a88c2d9c29"
+      "sha256": "a6e68f51521ad162e171f8a2b207ff5b0eb35f0af9a3d5962e8a49cefdf2ca17"
     },
     {
       "path": "lesson-power-conversion/dcdc/dep-of-ind-on-magn-circ-param.html",
-      "sha256": "09a96e159b08872fbd68fd72354dac4145930d290ba2e2f0e6a60a60b5bc2a17"
+      "sha256": "cfd9cf186be299b41d330e28cceeab63d47950d83260a6610f16d9f20aae7d22"
     },
     {
       "path": "lesson-power-conversion/dcdc/dynamic-behavior.html",
-      "sha256": "c35cebc2246a30bd3b848526b4ce0d8e9074267fa1538acb3a5e5c823b433433"
+      "sha256": "e2cda1fc2ae7ac2a1e1e4f66d391ac2cad697989cf3876f50d0d64f747399ebf"
     },
     {
       "path": "lesson-power-conversion/dcdc/efficiency-and-losses.html",
-      "sha256": "cec60b85fde058721f08f67bb858578641deda55ef2fc9331c697ffbdd7f5851"
+      "sha256": "c383eccf7198db27b485959df5a6cf4c56b9b4d3542574bfb982ccd08c6e61b6"
     },
     {
       "path": "lesson-power-conversion/dcdc/equivalent-circuits.html",
-      "sha256": "c402045b55087349c08c66d53621ff2467e7a33c14fffca159b13af946256bff"
+      "sha256": "2f379e3bc184d900f61692c3dc39453517b4837c04d50e84ae337812db0b4496"
     },
     {
       "path": "lesson-power-conversion/dcdc/full-bridge-current-doubler-output.html",
-      "sha256": "07b4d38895be9e8b97f8a684e91e06376b384c8736607ba52fd3565fb6c4607a"
+      "sha256": "42e6b72013e4f065d53e161efa6339497f8e2da9bb4ac48f6a0fc3adcb65967b"
     },
     {
       "path": "lesson-power-conversion/dcdc/isolated-full-bridge-converter.html",
-      "sha256": "fe33120f49c535ddd68e419ec9f94f81257065ebd3e1c0daf1ddbc0e10395b8d"
+      "sha256": "698d1239b206daa48f5717be60c2751f19f03acb7c2fdccf448421af5131d2a8"
     },
     {
       "path": "lesson-power-conversion/dcdc/lc-resonant-circuit-state-plane-trajectory-uzi-diagram.html",
-      "sha256": "e5943d22f505142612d493b7836517b3bf995f3d4b444d534eec8da04aef23fb"
+      "sha256": "d907f6302fe7a571cf60e5694d7cd979b066b037062fedba0d1a3e61354cc623"
     },
     {
       "path": "lesson-power-conversion/dcdc/magnetic-components.html",
-      "sha256": "52bd41ce3f99f72a2f88dfaa01c471c157f6f5fa61366525b76b6349fe44f8b1"
+      "sha256": "2d9ba9a983910754626849158f052ce4e3fedbe424068431c32c39a9614a6ddc"
     },
     {
       "path": "lesson-power-conversion/dcdc/magnetizing-current.html",
-      "sha256": "5141c20b9b9de4a6b11e3d1f785cdfe7e56e4f92537c232101ec6148835290b5"
+      "sha256": "6be0e08a8b6ceb37b068c9e8a1dd7639575b0852ff6c5b2f7832caec5be044c1"
     },
     {
       "path": "lesson-power-conversion/dcdc/mmf-magn-ind-magn-flux.html",
-      "sha256": "c5c00e5e5764298ae8b9680089539a17becd00bc7bead651e0e7180051306184"
+      "sha256": "1f9537aefbd61e447ea522a834b10c9462588f162d16a5ab63fa1fa684f5be9c"
     },
     {
       "path": "lesson-power-conversion/dcdc/passive-components-filter-circuits.html",
-      "sha256": "6a4837ddeb9ec2c53bbd8e3fef20682a3948941fb55afc4aa51e92a3923a6401"
+      "sha256": "67c743298245a4e4a5e41068a374dcf8e1adf910a5571b7b32170ac94a7d28a7"
     },
     {
       "path": "lesson-power-conversion/dcdc/power-semiconductor-diode.html",
-      "sha256": "7aee19be86583811ff2c1e08c711b2d3f7a9c25ffb0a893b60c750c1b2823d6f"
+      "sha256": "5d6308d88994dfc39dd84c1d1df8c7031671778a47946403f6ac71883e4c2822"
     },
     {
       "path": "lesson-power-conversion/dcdc/power-semiconductor-transistor.html",
-      "sha256": "e3e32b2bbcf87921184a4e728c0c4cfae820519152cf7a1c721af93009f474bc"
+      "sha256": "ab5adc74e9edfa4bf2c1302b4e2eec4d0bbabb1855ef01e237dbd09736c02354"
     },
     {
       "path": "lesson-power-conversion/dcdc/reluctance-model.html",
-      "sha256": "93b0c508956cd11f8279e9ce98a53a8a3f8c2ddf3d8bf8796b8790f0d3886122"
+      "sha256": "522416cdefceb2c8df8a913ab690f47e9778428451431eea653e18f56880b962"
     },
     {
       "path": "lesson-power-conversion/dcdc/sepic-converter.html",
-      "sha256": "4e53a4341cae5dcc13d098fee7741b232f000c523f8f33fb8ead96ca27381a16"
+      "sha256": "e2e5a76a357cfaad6f34d3987a8dc6238b41d4f706fa92fa4372f741e715d18b"
     },
     {
       "path": "lesson-power-conversion/dcdc/spectrum-filtering-of-square-wave.html",
-      "sha256": "cc7586982eacdccf1ac11ed9ba198f5f5ceda43d53ae23079feb4804100822a8"
+      "sha256": "5cce9b552f009ce4930b3a771a6485e480a3432a28425e12dd27675946d249b0"
     },
     {
       "path": "lesson-power-conversion/dcdc/thermal-design.html",
-      "sha256": "4d614fd31b1c18c57ef1669ffa6dcb7d361e50a177acc37b9d3eba06c127dbf9"
+      "sha256": "616ec34b1f0225b841fab9285a44b7cf7a8204bfd2aa947db0ee4df706e816a5"
     },
     {
       "path": "lesson-power-conversion/dcdc/transfomer-vol-curr-transform.html",
-      "sha256": "c60c0b2c4c2479f0d8be54f2d3a5440ddc690994508151c0b0281fa73502d648"
+      "sha256": "d3b685be7b2f047d69bb82e5cbacfb94f71afef5c14e06e3597147e49a92fed6"
     },
     {
       "path": "lesson-power-conversion/dcdc/u1-constant-load-variable.html",
-      "sha256": "7c8ba0c7f315d1ca1a560b05a6761bea80771119c96b4c4c0cf2e314f82eb034"
+      "sha256": "0fd5a42f13db3ca48c74959868736b33ab6907f32e3ef7f357ff4b1d8a45701e"
     },
     {
       "path": "lesson-power-conversion/dcdc/u1-variable-u2-controlled.html",
-      "sha256": "0d19227fd14633625e310b70a11517e6d074f9c0fcfc742791aadf8266f66737"
+      "sha256": "50da3bda85e2417220d98f3a7c2047e42890104e19aa90c91b8ca491fee2102c"
     },
     {
       "path": "lesson-power-conversion/dcdc.html",
-      "sha256": "7597796a0a88b5546edc6af97fb81d88905b043924facacfd09209694f150adf"
+      "sha256": "059945c098f24d700c0c4fc168a7be7aae18f05863642f3325c490200026d5d7"
     },
     {
       "path": "lesson-power-conversion/emc/3ph-converter-filter-damping-and-influence-to-leakage.html",
-      "sha256": "6dba8b47fc0b818bd61fdb5c833537590812075ba7b20cb525a3f79f7a734408"
+      "sha256": "9217a3242e3535ba9ecef50fe0d9dd461f2c57bd4e2b23ff7b77728d06a101ff"
     },
     {
       "path": "lesson-power-conversion/emc/3ph-converter-influence-of-the-load-capacities-to-the.html",
-      "sha256": "eb6f813de8ced8d76af98f032a9d273ea2d9926fd4d56ea5345d716509126f10"
+      "sha256": "ab73ffc959296b42c20f0c83ca14dd74b839179b53167d2cb909e37a96e09c8d"
     },
     {
       "path": "lesson-power-conversion/emc/dc-dc-converter-noise-generation-by-commutation.html",
-      "sha256": "0303f6b703b7a18c444e5cac1049075fc3134ad69caf4928d60dbfa7da3646da"
+      "sha256": "00d8539f0bf082abc57afbd64408d290ac364b2f798bda0f310fd480c37a57e5"
     },
     {
       "path": "lesson-power-conversion/emc/dc-dc-converterinfluence-of-inductive-coupling-to-filter.html",
-      "sha256": "e7da3b4f10393fd386df7e9fa49d1317a18c84fe6d4aad6061924bc310c70b35"
+      "sha256": "6c1136e642df0049e5ebcb91b3c7aa8d0e21e4dbcd7d4f175dedbf9b3daeefaa"
     },
     {
       "path": "lesson-power-conversion/emc/dc-dc-converterinfluence-of-measurement-methods-to-noise.html",
-      "sha256": "6be83dbeebc6b3e6621483eec4aaa058afae621ff8fd64b0802af857fedad5b7"
+      "sha256": "9c28fb58ab803cecb0911d06dbe9b5a262ff5222121096c1861cc651a354e50a"
     },
     {
       "path": "lesson-power-conversion/emc/dc-dc-converterinfluence-of-parasitic-components-1.html",
-      "sha256": "2504985658ef35187e70b6ef9ff7d76cfa80fea4bffc12b8735dab46c8d8cd98"
+      "sha256": "e335f480b6b72f29b1e2199bc00bd4cf2931159bb95fb18d632feee5cc6e2882"
     },
     {
       "path": "lesson-power-conversion/emc/dc-dc-converterinfluence-of-parasitic-components-2.html",
-      "sha256": "4399615e734039975d932bf1eea071b384b1365f3be2b2e6ea378f28785ecd54"
+      "sha256": "a048ef596ac86f9d89295ea7851c8c911d3a02ec2bdf02d458d1707d8c20132f"
     },
     {
       "path": "lesson-power-conversion/emc/spectral-influence-of-pulse-parameter.html",
-      "sha256": "8817b3fc1c09d1fd288ba0629c9b2a08d0d79aceef687ee2de6d5386d2f43135"
+      "sha256": "074c37d3588b66b1d23f83e8b015dac9aba5f2d23816d1ff6dacaef96d00078d"
     },
     {
       "path": "lesson-power-conversion/emc.html",
-      "sha256": "7dd3f727091b4cb154836ad2c716ad38c8d37cc1bd2706dcbabc1f1f73787d07"
+      "sha256": "eb5103d99099a43fba3da970d7bc866f438bc3ff11bb55b0a2c6585525051d00"
     },
     {
       "path": "lesson-power-conversion/power-conversion--active-rectification-and-energy-storage.html",
@@ -2720,7 +2720,7 @@
     },
     {
       "path": "search.json",
-      "sha256": "326523634ee658b484d1ca8c971fde82b1d635aa33fea24fc1053c0829b486c5"
+      "sha256": "8b099f32eb4e61d9a70e99c15522de9684d9aa5d425a2485e2d6e77817090d98"
     },
     {
       "path": "site_libs/bootstrap/bootstrap-75aae083f74c504a16c697eabd2230c2.min.css",

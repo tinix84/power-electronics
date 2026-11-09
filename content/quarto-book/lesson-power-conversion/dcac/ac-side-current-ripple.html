@@ -2044,6 +2044,7 @@ HTWG · Reading edition
    
   <ul>
   <li><a href="#inductor-ripple-on-the-ac-side" id="toc-inductor-ripple-on-the-ac-side" class="nav-link active" data-scroll-target="#inductor-ripple-on-the-ac-side">Inductor ripple on the AC side</a></li>
+  <li><a href="#practice-exercise" id="toc-practice-exercise" class="nav-link" data-scroll-target="#practice-exercise">Practice exercise</a></li>
   </ul>
 </nav>
     </div>
@@ -2087,6 +2088,16 @@ HTWG · Reading edition
 <figcaption>The +36 V command raises current for 5 µs. A zero command needs 2.5 µs to undo that rise against the 24 V source.</figcaption>
 </figure>
 </div>
+</section>
+<section id="practice-exercise" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="practice-exercise">Practice exercise</h3>
+<p>An inductance of 500 µH faces +20 V back EMF. Apply +40 V for 4 µs, then zero. Find the current rise and the zero dwell that restores the starting current.</p>
+<details>
+<summary>
+Check your reasoning
+</summary>
+<p>The active-state rise is (40 − 20) × 4 µs/500 µH = 0.16 A. During zero dwell the inductor sees −20 V and needs another 4 µs to lose 0.16 A.</p>
+</details>
 <p><a href="https://www.ecpe.org/infocentre/ecpe-online-course/dcac/ac-side-current-ripple/">Inductor ripple on the AC side (ECPE)</a></p>
 
 
