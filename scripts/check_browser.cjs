@@ -50,7 +50,7 @@ const server = http.createServer((req, res) => {
     ]);
     assert.equal(remote.length, 1, 'Withdrawal reload must not load Google');
     assert.equal(await page.evaluate(() => document.cookie.includes('pe_course')), false);
-    const files = ['index.html', 'privacy.html', 'figures.html', 'power-electronics-recap/recap.html', 'power-electronics-recap/transformer-characterization.html', 'lesson-01-buck/lesson-01.html', 'lesson-02-boost/lesson-02.html', 'lesson-magnetics/appendix-area-product.html', 'lesson-control/lesson-control.html'];
+    const files = ['index.html', 'privacy.html', 'figures.html', 'power-electronics-recap/recap.html', 'power-electronics-recap/transformer-characterization.html', 'lesson-01-buck/lesson-01.html', 'lesson-02-boost/lesson-02.html', 'lesson-magnetics/appendix-area-product.html', 'lesson-converter-tolerances/exercise.html', 'lesson-control/lesson-control.html'];
     for (const width of [1440, 390]) {
       await page.setViewportSize({width, height: 900});
       for (const file of files) {
@@ -64,6 +64,11 @@ const server = http.createServer((req, res) => {
         }));
         assert.equal(result.overflow, false, `${file} overflows at ${width}px: ${JSON.stringify(result.wide)}`);
         assert.equal(result.broken, 0, `${file} has broken figures at ${width}px`);
+        if (file === 'lesson-converter-tolerances/exercise.html') {
+          assert.ok(await page.getByRole('heading', {name: /Part H/}).count());
+          assert.equal(await page.locator('.worked-plot, a[href*="solutions"]').count(), 0);
+          assert.ok(!(await page.locator('main').innerText()).includes('27.3888'));
+        }
         if (file === 'figures.html') {
           assert.equal(await page.locator('.figure-card').count(), 26);
           const figureResult = await page.evaluate(async () => {
