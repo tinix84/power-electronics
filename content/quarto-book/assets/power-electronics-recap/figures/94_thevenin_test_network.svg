@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" role="img" aria-labelledby="title desc">
+<title id="title">Resistance test with a dependent source</title>
+<desc id="desc">The independent voltage source is shorted and the independent current source is opened. The dependent current source g Vx remains connected. A positive 1 V test source drives node a relative to b. Test current It enters the network from the right. Editable master: latex/94_thevenin_test_network.tikz.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z"/></marker></defs>
+<style>@media(max-width:600px){text{font-size:36px}text.note{display:none}}</style>
+<g fill="white" stroke="#26343f" stroke-width="2.5">
+<path fill="none" d="M70 270V70H135M195 70H335M395 70H960V142M70 270H960V198M270 70V145M270 195V270M470 70V145M470 195V270M670 70V138M670 202V270M800 70V138M800 202V270"/>
+<rect x="135" y="57" width="60" height="26"/><rect x="335" y="57" width="60" height="26"/>
+<rect x="257" y="145" width="26" height="50"/><rect x="457" y="145" width="26" height="50"/>
+<path d="M800 138L832 170L800 202L768 170Z"/>
+<path d="M800 190V151" marker-end="url(#arrow)"/><path d="M930 70H880" marker-end="url(#arrow)"/>
+<circle cx="670" cy="138" r="5"/><circle cx="670" cy="202" r="5"/>
+<circle cx="960" cy="170" r="28"/><path d="M952 156H968M960 148V164M952 185H968"/>
+<g fill="#26343f"><circle cx="270" cy="70" r="4"/><circle cx="270" cy="270" r="4"/><circle cx="470" cy="70" r="4"/><circle cx="470" cy="270" r="4"/><circle cx="670" cy="70" r="4"/><circle cx="670" cy="270" r="4"/><circle cx="800" cy="70" r="4"/><circle cx="800" cy="270" r="4"/></g>
+<circle cx="860" cy="70" r="5"/><circle cx="860" cy="270" r="5"/>
+</g>
+<g fill="#26343f" font-family="Georgia,serif" font-size="24" text-anchor="middle">
+<text x="165" y="44">R₁</text><text x="365" y="44">R₃</text><text x="270" y="38">Vₓ</text>
+<text x="235" y="180">R₂</text><text x="435" y="180">R₄</text>
+<text x="155" y="180">Vₛ = 0</text><text x="670" y="180" font-size="20">Iₛ = 0</text>
+<text x="850" y="180" text-anchor="start">gVₓ</text><text x="907" y="46">Iₜ</text><text x="1000" y="180" font-size="21" text-anchor="start">1 V</text>
+<text x="860" y="44">a</text><text x="860" y="300">b</text>
+<text class="note" x="530" y="327" font-family="system-ui,sans-serif" font-size="20">The controlled source stays active. Iₜ enters at a.</text>
+</g></svg>

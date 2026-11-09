@@ -1,0 +1,2719 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>12.2 Two poles: loaded LC – Power Electronics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../power-electronics-recap/chapter-12-03.html" rel="next">
+<link href="../power-electronics-recap/chapter-12-01.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-9c0379abf3791858875cdee823fd464c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-a95f88d54fe980bb19eed7223c61d56f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-9c0379abf3791858875cdee823fd464c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-75aae083f74c504a16c697eabd2230c2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b885f1729519789688ad0af7f56f8690.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-75aae083f74c504a16c697eabd2230c2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  
+  
+  
+
+
+
+<link rel="stylesheet" href="../reading.css">
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
+        setTimeout(() => {
+          window.scrollTo(0, scrollY);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../power-electronics-recap/introduction.html">Circuit foundations</a></li><li class="breadcrumb-item"><a href="../power-electronics-recap/chapter-12-02.html"><span class="chapter-title">12.2 Two poles: loaded LC</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Site"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
+<p class="sidebar-subtitle">
+HTWG · Reading edition
+</p>
+</div></div>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Power Electronics</a> 
+        <div class="sidebar-tools-main">
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
+    <div id="quarto-search" class="quarto-navigation-tool px-1" title="Search"></div>
+</div>
+    </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Power Electronics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Circuit foundations</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Circuit and electronics foundations for power electronics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. Networks: what the source actually supplies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. Basic elements: R, L, C, transformer and coupled inductors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-02-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.1 Ideal component models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-02-02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.2 Constants as engineering scales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-02-03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.3 A useful first estimate: 1 µH/m for a two-wire loop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-02-04.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.4 Transformer as a basic two-port element</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-02-05.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.5 Coupled inductors as a basic energy-storage element</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-02-06.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.6 Real transformer: voltage drop, losses and operating limits</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-02-07.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.7 Skin effect: why copper resistance depends on frequency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-02-08.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.8 Proximity effect and a high-power square-wave transformer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. Capacitive coupling on a PCB: why edge speed matters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-04.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. Worked design exercise: how close must the CPU’s source be?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-05.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5. Average and RMS: define these before calculating power</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-06.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6. Active power, reactive power and heating</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-07.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7. DC steady state, periodic steady state and transients</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-08.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8. Linearity, time invariance and the scope of a model</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-09.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9. Laplace: from a differential equation to dynamics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-10.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10. A switched RC: time-domain envelopes and Fourier harmonics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-11.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11. Impedance charts and resonators</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-11-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 R, L and C on logarithmic axes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-11-02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 Series resonator: an impedance minimum</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-11-03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.3 Parallel resonator: an impedance maximum</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-11-04.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.4 Two-port recall: Z, Y, transmission and scattering matrices</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-11-05.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.5 Miller theorem: a bridge impedance seen through voltage gain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-11-06.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.6 Feedback changes input impedance: distinguish the internal and external ports</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-11-07.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.7 Common and differential modes: choose a more useful vector basis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-12.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12. Bode, LC filtering and Class-D amplifiers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-12-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 One pole: RC</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-12-02.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">12.2 Two poles: loaded LC</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-12-03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 Why Class-D uses LC filtering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-12-04.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.4 Feedback and stability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-12-05.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.5 Negative incremental resistance and Middlebrook’s input-filter criterion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-12-06.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.6 Worked LC input filter: unstable without added damping, stable with an RC branch</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-12-07.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.7 Worked choice: RC, LC or ferrite bead on a low-current supply rail?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-12-08.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.8 Real 0805 bead: manufacturer curves, DC bias and a 1 MHz comparison</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-12-09.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.9 Pulsed digital-IC load: rail ripple, droop and recovery</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-13.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13. Semiconductor and thermal basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-14.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14. Are linear regulators dead? No: choose the architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-15.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15. Exit questions with short answers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16. Practical example bank: why the fundamentals matter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.1 Did the circuit ring, or did the probe? — Williams-inspired</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 Why does a precise current shunt give a 50% error? — Pease/Ott-inspired</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.3 Why did the “better” ceramic input capacitor cause failure?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-04.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.4 Why did splitting the ground plane make the system worse? — Ott-inspired</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-05.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.5 How can DC isolation transmit switching current? — Ott-inspired</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-06.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.6 Where does leakage energy go when the switch opens? — Basso-inspired</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-07.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.7 Why does a 1 A DC supply heat its transformer and capacitor?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-08.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.8 Why does a larger gate resistor reduce coupling but increase heating? — Williams-inspired</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-09.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.9 Optional advanced extension: the capacitor that remembers — Pease-inspired</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-10.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.10 Optional advanced extension: ask for more boost voltage and initially get less — Basso-inspired</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-11.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.11 Optional converter-design extension: extract and tune a series-RC snubber</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-12.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.12 Optional extension: select real snubber components and include the PCB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-13.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.13 The DC link has a huge capacitor: why does the switch still see overvoltage?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-14.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.14 Why does stopping the motor raise the DC-link voltage?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-15.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.15 Both capacitors meet their voltage ratings: why does the connector spark?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-16.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.16 Can a gate resistor see 18.8 W while dissipating only 56.4 mW on average?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-17.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.17 The precharge resistor passes average watts: why can it still overheat?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-18.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.18 The source is rated 300 W: why can it not deliver 300 W through this cable?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-19.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.19 The high-side MOSFET switches correctly: why can it not stay on?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-20.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.20 Can two converters with triangular ripple produce an almost flat total current?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-21.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.21 A T-network: when can Z be inverted to obtain Y?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-22.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.22 Two LC filters: why does multiplying their measured gains give the wrong answer?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-23.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.23 How can a 100 pF capacitor look like 1 nF without changing the component?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-24.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.24 Can a 200 Ω differential input look like 2 MΩ to the source?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-25.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.25 The EMC filter attenuates noise: can it also supply the next GPU-like pulse?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-26.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.26 A large input capacitor: why does the battery still supply the switching ripple?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-27.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.27 The secondary is shorted: why can a common-mode injector still disturb the primary?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-28.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.28 Identical pulses, different LC trajectories: did the phase or the poles change?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-29.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.29 The load sees zero volts: why does the bridge still inject a current pulse?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-30.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.30 A MOSFET has 95 pF at 400 V: does that determine its stored energy?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-31.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.31 The current peak is controlled: why do alternate cycles diverge?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-32.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.32 Only 50 ns of imbalance: why does the transformer flux keep walking?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-33.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.33 The unstable pole cancels on paper: is the system internally stable?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-34.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.34 The loop crosses 0 dB at −20 dB/decade: must it be stable?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-35.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.35 The firmware calculates the same gain: why does one PWM period make the loop unstable?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-36.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.36 The linear poles are stable: why does the digital regulator keep cycling?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-37.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.37 A LISN presents 50 Ω to the DUT: does all its disturbance power reach the receiver?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-39.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.39 Everyone draws the ideal transformer: what exactly is it, and can SPICE model it exactly? — Ben-Yaakov-inspired</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-16-40.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.40 The duty cycle is free to choose: where do the switch conduction losses go? — Ben-Yaakov-inspired</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-17.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17. Engineering approximation: how simple can the model be?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-18.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18. Dividers: from reference voltages to sensors and resonant converters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-18-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.1 Start with the loaded impedance divider</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-18-02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.2 Reference voltages: loading, tolerance and acquisition time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-18-03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.3 Measure an unknown impedance with a known resistor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-18-04.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.4 Current division and current measurement</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-18-05.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.5 A Wheatstone bridge compares two dividers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-18-06.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.6 Calorimetry: read temperature, then infer heat or power</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-18-07.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.7 The LLC tank as a frequency-dependent divider</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-18-08.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.8 Choose the divider model for the engineering question</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-18-09.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.9 Reading and numerical checks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-18-10.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.10 Exercise: two dividers and a buffer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-18-11.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.11 Solution: loading, losses and buffer power</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19. Operating points and small-signal models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.1 The operating point, the secant and the tangent</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.2 Diode: bias determines the local resistance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-03.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.3 MOSFET: output resistance and gate control are different derivatives</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-04.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.4 Solar panel: fix illumination and label the current direction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-05.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.5 A controlled constant-power load: negative slope while absorbing power</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-06.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.6 Build and check a local model</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-07.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.7 Exercise: predict the change before solving the nonlinear circuit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-08.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.8 Solution: check the slope and the model error</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-09.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.9 An LED warms up: which quantity should the driver regulate?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-10.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.10 Three drivers, one initial current</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-11.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.11 Self-heating: equilibrium, temperature limits and instability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-12.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.12 A practical linear current-source concept</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-13.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.13 Exercise: select an LED driver and cooling path</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/chapter-19-14.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.14 Solution: current regulation and thermal stability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/resources.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Recall resources by task</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Lesson 1 · Buck converters</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lesson 1 — The buck converter: what happens, why, and how to design it</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--learning-outcomes-and-teaching-route.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning outcomes and teaching route</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--1-a-12-v-20-a-synchronous-gan-buck-from-a-3060-v-source.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. A 12 V, 20 A synchronous GaN buck from a 30–60 V source</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--2-duty-cycle-extremes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. Duty-cycle extremes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--3-the-inductor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. The inductor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--4-the-output-capacitor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. The output capacitor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--5-the-input-capacitor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5. The input capacitor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--6-the-power-stage-gan-half-bridge-and-dead-time.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6. The power stage: GaN half-bridge and dead time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--7-closing-the-loop.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7. Closing the loop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--8-losses-efficiency-and-temperature.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8. Losses, efficiency and temperature</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--9-proof-by-simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9. Proof by simulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--10-what-if-four-variations-of-the-finished-design.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10. What if? Four variations of the finished design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--11-what-to-retain.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11. What to retain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--12-training-problem-driven-exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12. Training: problem-driven exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--appendix-a-what-power-electronics-does.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Appendix A — What power electronics does</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--appendix-b-why-switch.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Appendix B — Why switch?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--appendix-c-from-one-switching-event-to-pwm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Appendix C — From one switching event to PWM</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--appendix-d-the-diode-buck.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Appendix D — The diode buck</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--appendix-e-the-24-v-teaching-model-in-dcm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Appendix E — The 24 V teaching model in DCM</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--appendix-f-how-semiconductor-technology-changes-commutation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Appendix F — How semiconductor technology changes commutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-01-buck/lesson-01--13-sources-coverage-and-numerical-verification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13. Sources, coverage and numerical verification</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Lesson 2 · Boost converters</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lesson 2 — The boost converter: what happens, why, and how to design it</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--learning-outcomes-and-teaching-route.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning outcomes and teaching route</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--1-a-54-v-2-5-a-synchronous-boost-from-a-1250-v-source.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. A 54 V, 2.5 A synchronous boost from a 12–50 V source</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--2-duty-cycle-extremes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. Duty-cycle extremes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--3-the-inductor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. The inductor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--4-the-output-capacitor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. The output capacitor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--5-the-input-capacitor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5. The input capacitor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--6-the-power-stage-silicon-mosfets-body-diodes-and-a-snubber.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6. The power stage: silicon MOSFETs, body diodes and a snubber</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--7-closing-the-loop.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7. Closing the loop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--8-losses-efficiency-and-temperature.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8. Losses, efficiency and temperature</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--9-proof-by-simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9. Proof by simulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--10-what-if-four-variations-of-the-finished-design.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10. What if? Four variations of the finished design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--11-what-to-retain.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11. What to retain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--12-training-problem-driven-exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12. Training: problem-driven exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--appendix-a-the-boost-of-the-slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Appendix A — The boost of the slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--appendix-b-characteristic-values.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Appendix B — Characteristic values</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--appendix-c-the-boost-with-parasitic-elements.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Appendix C — The boost with parasitic elements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--appendix-d-critical-and-discontinuous-conduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Appendix D — Critical and discontinuous conduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--appendix-e-video-links.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Appendix E — Video links</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-02-boost/lesson-02--13-sources-coverage-and-numerical-verification.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13. Sources, coverage and numerical verification</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Control and operating points</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Control — Who is telling the truth? Pole placement versus small-signal models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control--learning-outcomes-and-teaching-route.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Learning outcomes and teaching route</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control--1-two-engineers-one-converter.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. Two engineers, one converter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control--2-the-control-engineer-s-model-an-lc-plant-and-pole-placement.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. The control engineer’s model: an LC plant and pole placement</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control--3-the-power-electronics-model-averaging-and-linearization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. The power-electronics model: averaging and linearization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control--4-buck-boost-and-buck-boost-does-the-duty-cycle-move-the-poles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. Buck, boost and buck-boost: does the duty cycle move the poles?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control--5-inverters-and-motor-drives-why-the-simple-model-often-works.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5. Inverters and motor drives: why the simple model often works</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control--6-which-model-predicts-the-switching-converter.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6. Which model predicts the switching converter?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control--7-quick-check-and-conclusion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7. Quick check and conclusion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control--8-what-to-retain.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8. What to retain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control--9-training-problem-driven-exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9. Training: problem-driven exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control--10-extension-who-owns-the-current-ccm-dcm-and-the-fourth-leg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10. Extension: who owns the current? CCM, DCM and the fourth leg</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-control/lesson-control--sources-and-checks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Sources and checks</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Power conversion and AC drives</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/power-conversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Power conversion from DC supplies and AC mains</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/power-conversion--dc-converters-under-changing-load.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DC converters under changing load</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/power-conversion--choosing-an-energy-transfer-path.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Choosing an energy-transfer path</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/power-conversion--diode-rectifiers-and-the-power-grid.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Diode rectifiers and the power grid</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/power-conversion--active-rectification-and-energy-storage.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Active rectification and energy storage</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/power-conversion--inverter-voltage-modulation-and-current-ripple.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Inverter voltage, modulation and current ripple</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/power-conversion--switching-vectors-and-device-current.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Switching vectors and device current</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/power-conversion--thyristor-bridges-and-controlled-power-flow.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Thyristor bridges and controlled power flow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/power-conversion--motor-torque-and-direct-ac-conversion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Motor torque and direct AC conversion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/power-conversion--finding-the-source-of-conducted-noise.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Finding the source of conducted noise</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-6-label">DC/DC</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DC/DC topics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/spectrum-filtering-of-square-wave.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Spectrum / Filtering of Square Wave</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/efficiency-and-losses.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Efficiency and Losses</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/control-of-switching-behavior-mosfet.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Control of Switching Behavior (MOSFET)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/passive-components-filter-circuits.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Passive Components / Filter Circuits</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/thermal-design.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Thermal Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/lc-resonant-circuit-state-plane-trajectory-uzi-diagram.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">LC Resonant Circuit State-Plane Trajectory (uZi-Diagram)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/u1-constant-load-variable.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">u1 Constant / Load Variable</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/u1-variable-u2-controlled.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">u1 Variable / u2 Controlled</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/dynamic-behavior.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Dynamic Behavior</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/boost-converter-u1-variable-u2-controlled.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Boost Converter - u1 Variable / u2 Controlled</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/boost-converter-root-locus-diagram-rhp-zero.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Boost Converter - Root Locus Diagram, RHP-Zero</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/buck-boost-converter-u1-variable-u2-controlled.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Buck-Boost Converter - u1 Variable / u2 Controlled</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/cuk-converter.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cuk Converter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/sepic-converter.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">SEPIC Converter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/mmf-magn-ind-magn-flux.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">MMF, Magn. Ind., Magn. Flux</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/magnetizing-current.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Magnetizing Current</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/reluctance-model.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Reluctance Model</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/dep-of-ind-on-magn-circ-param.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Dep. of Ind. on Magn. Circ. Param.</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/transfomer-vol-curr-transform.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Transfomer Vol. / Curr. Transform.</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/magnetic-components.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Magnetic Components</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/dcm-principle.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DCM: Principle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/equivalent-circuits.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Equivalent Circuits</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/bidirectional-magnetization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bidirectional Magnetization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/full-bridge-current-doubler-output.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Full-Bridge / Current Doubler Output</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/isolated-full-bridge-converter.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Isolated Full-Bridge Converter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/conduction-switching-losses.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conduction / Switching Losses</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/power-semiconductor-transistor.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Power Semiconductor: Transistor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/power-semiconductor-diode.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Power Semiconductor: Diode</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcdc/current-ripple.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Current Ripple</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-controls="quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-7-label">AC/DC</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-7" aria-labelledby="quarto-sidebar-section-7-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AC/DC topics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/basic-diode-function.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Basic Diode Function</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/r-rl-c-udcconst-load.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">R, RL, C, UDC=const. Load</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/single-diode-rectifier-combination.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Single Diode Rectifier Combination</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/purely-capacitive-smoothing-on-a-bridge-rectifier.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Purely Capacitive Smoothing on a Bridge Rectifier</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/ac-side-inductance-input-current-formation-udcconst.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AC-side Inductance, Input Current Formation, UDC=const</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/110v220v-input.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">110V/220V Input</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/power-factor-thd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Power Factor, THD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/mains-current-distortion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Mains Current Distortion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/mains-voltage-distortion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Mains Voltage Distortion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/three-phase-combination-neutral-current.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Three-Phase Combination / Neutral Current</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/discontinuous-conduction-mode.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Discontinuous Conduction Mode</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/critical-conduction-mode.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Critical Conduction Mode</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/continuous-conduction-mode.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Continuous Conduction Mode</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/calculation-of-component-stresses.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Calculation of Component Stresses</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/single-phase-system-power-flow.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Single-Phase System Power Flow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/control-concept-loop-dynamics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Control Concept &amp; Loop Dynamics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/dc-side-inductance-cout.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DC-side Inductance, Cout</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/ac-side-inductance-cout.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AC-side Inductance, Cout</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/commutation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Commutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/dc-ac-side-inductance-cout.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DC+AC-side Inductance, Cout</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/mains-neutral-connection.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Mains Neutral Connection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/unbalanced-mains.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unbalanced Mains</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/234-pulse-system.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2/3/4-pulse System</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/single-switch-dcm-boost.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Single-Switch DCM Boost</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/three-switch-ccm-boost-vienna.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Three-Switch CCM Boost (VIENNA)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/three-switch-buck.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Three-Switch Buck</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acdc/three-switch-buck-boost-system-dimensioning.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Three-Switch Buck &amp; Boost: System Dimensioning</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-controls="quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-8-label">DC/AC</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-8" aria-labelledby="quarto-sidebar-section-8-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DC/AC topics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/basis-of-pulse-width-modulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Basis of Pulse Width Modulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/square-wave-operation-relation-of-dc-and-ac-quantities.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Square Wave Operation / Relation of DC- and AC-Quantities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/bi-and-unipolar-pwm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bi- and Unipolar PWM</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/ac-side-current-ripple.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AC-Side Current Ripple</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/hysteresis-control-switching-frequency-variation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Hysteresis Control / Switching Frequency Variation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/phasor-diagram-operating-range.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Phasor Diagram / Operating Range</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/square-wave-operation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Square Wave Operation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/sinusoidal-pwm-single-carrier.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Sinusoidal PWM, Single Carrier</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/overmodulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Overmodulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/hysteresis-current-control-current-error-details.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Hysteresis Current Control: Current error details</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/hysteresis-current-control-open-connected-neutral.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Hysteresis Current Control, open / Connected Neutral</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/output-current-ripple-space-vector-sinusoidal-source.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Output Current Ripple Space Vector (Sinusoidal-Source)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/output-current-ripple-space-vector-rectangular-source.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Output Current Ripple Space Vector (Rectangular-Source)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/output-current-ripple-space-vector-pwm-source.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Output Current Ripple Space Vector (PWM-Source)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/mains-unbalanced.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Mains Unbalanced</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/mains-distortion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Mains Distortion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/space-vector-modulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Space Vector Modulation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/decoupling-of-zero-sequ-quantity.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Decoupling of Zero Sequ. Quantity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/phase-order.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Phase-Order</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/transistor-diode-current.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Transistor / Diode Current</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/transistor-diode-current-calculator.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Transistor / Diode Current Calculator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/power-flow-in-three-phase-systems.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Power Flow in Three-Phase Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/dc-capacitor-current-stress.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DC Capacitor Current Stress</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/basic-thyristor-converter.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Basic Thyristor Converter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/single-phase-full-bridge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Single-Phase Full-Bridge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/three-phase-full-bridge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Three-Phase Full-Bridge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/single-phase-half-bridge-with-transformer.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Single-Phase Half-Bridge with Transformer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/three-phase-half-bridge-with-transformer.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Three-Phase Half-Bridge with Transformer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/parallel-connection-with-interphase-transformer.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Parallel Connection with Interphase Transformer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/commutation-converter-equivalent-circuit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Commutation / Converter Equivalent Circuit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/loss-of-commutation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Loss of Commutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/basic-thyristor-converter-free-wheeling-diode.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Basic Thyristor Converter / Free-Wheeling Diode</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/parameters-of-current-commutation-theory.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Parameters of Current Commutation (Theory)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/dcac/four-quadrant-converter-for-dc-drive.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Four-Quadrant Converter for DC-Drive</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-controls="quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-9-label">AC/AC</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-9" aria-labelledby="quarto-sidebar-section-9-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acac.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">AC/AC topics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acac/rotating-field.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rotating Field</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acac/dc-machine-vs-pmsm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DC Machine vs.&nbsp;PMSM</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acac/torque-control-of-pmsm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Torque-Control of PMSM</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acac/speed-control-of-pmsm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Speed-Control of PMSM</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acac/multi-step-commutation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Multi-Step Commutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acac/zero-dc-link-curr-commutation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Zero DC Link Curr. Commutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/acac/voltage-and-current-time-behavior.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Voltage and Current Time Behavior</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-controls="quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-10-label">EMC</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-10" aria-labelledby="quarto-sidebar-section-10-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/emc.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">EMC topics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/emc/dc-dc-converter-noise-generation-by-commutation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DC-DC Converter: noise generation by commutation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/emc/spectral-influence-of-pulse-parameter.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Spectral influence of pulse parameter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/emc/dc-dc-converterinfluence-of-measurement-methods-to-noise.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DC-DC Converter:Influence of measurement methods to noise</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/emc/dc-dc-converterinfluence-of-parasitic-components-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DC-DC Converter:Influence of parasitic components (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/emc/dc-dc-converterinfluence-of-parasitic-components-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DC-DC Converter:Influence of parasitic components (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/emc/dc-dc-converterinfluence-of-inductive-coupling-to-filter.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">DC-DC Converter:Influence of inductive coupling to filter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/emc/3ph-converter-influence-of-the-load-capacities-to-the.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3ph Converter - Influence of the load capacities to the</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-power-conversion/emc/3ph-converter-filter-damping-and-influence-to-leakage.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3ph Converter - Filter damping and influence to leakage</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-controls="quarto-sidebar-section-11" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-11-label">Magnetics · Area product</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-11" aria-labelledby="quarto-sidebar-section-11-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-magnetics/appendix-area-product.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Magnetics · Appendix A — Area product by magnetic kind (draft)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-magnetics/appendix-area-product--a-1-what-the-area-product-says.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A.1 What the area product says</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-magnetics/appendix-area-product--a-2-which-limit-sets-the-flux-density.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A.2 Which limit sets the flux density</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-magnetics/appendix-area-product--a-3-dc-dominated-chokes-kg-at-saturation-flux.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A.3 DC-dominated chokes: Kg at saturation flux</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-magnetics/appendix-area-product--a-4-ac-flux-magnetics-kgfe.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A.4 AC-flux magnetics: Kgfe</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-magnetics/appendix-area-product--a-5-teaching-example-six-magnetics-on-one-core-family.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A.5 Teaching example: six magnetics on one core family</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-magnetics/appendix-area-product--a-6-for-kpi-owners-the-acceptance-rule.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A.6 For KPI owners: the acceptance rule</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-magnetics/appendix-area-product--a-7-what-if.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A.7 What if</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-magnetics/appendix-area-product--sources.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Sources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-magnetics/appendix-area-product--reproduce.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Reproduce</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-controls="quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-12-label">Transformer characterization</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-12" aria-labelledby="quarto-sidebar-section-12-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/transformer-characterization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Transformer characterization: the low-frequency magnetizing-inductance trap</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/transformer-characterization--1-the-riddle-is-the-measured-voltage-ratio-the-turns-ratio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. The riddle: is the measured voltage ratio the turns ratio?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/transformer-characterization--2-start-with-the-smallest-useful-circuit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. Start with the smallest useful circuit</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/transformer-characterization--3-authored-few-turn-example.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. Authored few-turn example</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/transformer-characterization--4-which-parameter-becomes-difficult-to-identify.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. Which parameter becomes difficult to identify?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/transformer-characterization--5-bode-100-measurement-plan-for-the-future-laboratory.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5. Bode 100 measurement plan for the future laboratory</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/transformer-characterization--6-recall-exercise-and-reproducibility.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6. Recall exercise and reproducibility</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-controls="quarto-sidebar-section-13" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-13-label">Matching objectives</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-13" aria-labelledby="quarto-sidebar-section-13-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/matching-objectives.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Matching objectives: maximum voltage, maximum power or maximum efficiency?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/matching-objectives--1-the-problem.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. The problem</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/matching-objectives--2-why-we-do-it.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. Why we do it</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/matching-objectives--3-what-matters.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. What matters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/matching-objectives--4-where-it-appears-in-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. Where it appears in practice</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/matching-objectives--5-part-a-resistive-thevenin-source.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5. Part A: resistive Thévenin source</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/matching-objectives--6-part-b-the-same-curve-as-a-reflection-coefficient.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6. Part B: the same curve as a reflection coefficient</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/matching-objectives--7-part-c-series-resonant-converter-at-the-fundamental.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7. Part C: series resonant converter at the fundamental</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/matching-objectives--8-pros-and-cons-of-the-three-objectives.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8. Pros and cons of the three objectives</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/matching-objectives--9-conclusion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9. Conclusion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/matching-objectives--10-literature.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10. Literature</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../power-electronics-recap/matching-objectives--11-reproducibility.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11. Reproducibility</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-controls="quarto-sidebar-section-14" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-14-label">Converter tolerances · Exercise</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-14" aria-labelledby="quarto-sidebar-section-14-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-converter-tolerances/exercise.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Converter tolerances: analytical sensitivity and Monte Carlo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-converter-tolerances/exercise--engineering-question.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Engineering question</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-converter-tolerances/exercise--given-values-and-model-boundary.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Given values and model boundary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-converter-tolerances/exercise--conversion-gain-models.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conversion-gain models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-converter-tolerances/exercise--part-a-predict-and-establish-the-nominal-point.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Part A — Predict and establish the nominal point</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-converter-tolerances/exercise--part-b-derive-the-sensitivity-weights-in-maxima.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Part B — Derive the sensitivity weights in Maxima</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-converter-tolerances/exercise--part-c-run-paired-monte-carlo-calculations.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Part C — Run paired Monte Carlo calculations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-converter-tolerances/exercise--part-d-make-box-plots-and-tornado-diagrams.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Part D — Make box plots and tornado diagrams</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-converter-tolerances/exercise--part-e-defend-an-engineering-conclusion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Part E — Defend an engineering conclusion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-converter-tolerances/exercise--part-f-compare-the-same-ideal-conversion-ratio.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Part F — Compare the same ideal conversion ratio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-converter-tolerances/exercise--part-g-adjust-duty-to-deliver-the-same-load-power.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Part G — Adjust duty to deliver the same load power</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lesson-converter-tolerances/exercise--part-h-find-the-maximum-output-voltage.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Part H — Find the maximum output voltage</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../power-electronics-recap/introduction.html">Circuit foundations</a></li><li class="breadcrumb-item"><a href="../power-electronics-recap/chapter-12-02.html"><span class="chapter-title">12.2 Two poles: loaded LC</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">12.2 Two poles: loaded LC</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span id="12-2-two-poles-loaded-lc" class="quarto-section-identifier"></span></p>
+<p>Take an ideal series L, followed by C in parallel with a resistive load R. Ignore inductor resistance for this model:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../assets/power-electronics-recap/figures/21_lc_filter.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Loaded LC low-pass: series inductor, shunt capacitor and parallel resistive load, with the Class-D example values."><img src="../assets/power-electronics-recap/figures/21_lc_filter.svg" class="img-fluid figure-img" alt="Loaded LC low-pass: series inductor, shunt capacitor and parallel resistive load, with the Class-D example values."></a></p>
+<figcaption>Loaded LC low-pass: series inductor, shunt capacitor and parallel resistive load, with the Class-D example values.</figcaption>
+</figure>
+</div>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>H</mi><mrow><mi>L</mi><mi>C</mi></mrow></msub><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>L</mi><mi>C</mi><msup><mi>s</mi><mn>2</mn></msup><mo>+</mo><mo stretchy="false">(</mo><mi>L</mi><mi mathvariant="normal">/</mi><mi>R</mi><mo stretchy="false">)</mo><mi>s</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">H_{LC}(s)=\frac1{LCs^2+(L/R)s+1}.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0813em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span><span class="mord mathnormal mtight" style="margin-right:0.0715em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.2574em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord mathnormal">L</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mclose">)</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord">.</span></span></span></span></span></span></p>
+<p><span class="math display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>ω</mi><mn>0</mn></msub><mo>=</mo><mfrac><mn>1</mn><msqrt><mrow><mi>L</mi><mi>C</mi></mrow></msqrt></mfrac><mo separator="true">,</mo><mspace width="2em"/><mi>Q</mi><mo>=</mo><mi>R</mi><msqrt><mfrac><mi>C</mi><mi>L</mi></mfrac></msqrt><mo separator="true">,</mo><mspace width="2em"/><mi>ζ</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>Q</mi></mrow></mfrac><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\omega_0=\frac1{\sqrt{LC}},\qquad Q=R\sqrt{\frac CL},\qquad \zeta=\frac1{2Q}.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">ω</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.2514em;vertical-align:-0.93em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.1833em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9267em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span></span></span><span style="top:-2.8867em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1133em;"><span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.93em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">Q</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.44em;vertical-align:-0.769em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.671em;"><span class="svg-align" style="top:-4.4em;"><span class="pstrut" style="height:4.4em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">L</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.631em;"><span class="pstrut" style="height:4.4em;"></span><span class="hide-tail" style="min-width:1.02em;height:2.48em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="2.48em" viewBox="0 0 400000 2592" preserveAspectRatio="xMinYMin slice"><path d="M424,2478
+c-1.3,-0.7,-38.5,-172,-111.5,-514c-73,-342,-109.8,-513.3,-110.5,-514
+c0,-2,-10.7,14.3,-32,49c-4.7,7.3,-9.8,15.7,-15.5,25c-5.7,9.3,-9.8,16,-12.5,20
+s-5,7,-5,7c-4,-3.3,-8.3,-7.7,-13,-13s-13,-13,-13,-13s76,-122,76,-122s77,-121,77,-121
+s209,968,209,968c0,-2,84.7,-361.7,254,-1079c169.3,-717.3,254.7,-1077.7,256,-1081
+l0 -0c4,-6.7,10,-10,18,-10 H400000
+v40H1014.6
+s-87.3,378.7,-272.6,1166c-185.3,787.3,-279.3,1182.3,-282,1185
+c-2,6,-10,9,-24,9
+c-8,0,-12,-0.7,-12,-2z M1001 80
+h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.769em;"><span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0738em;">ζ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.2019em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal">Q</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord">.</span></span></span></span></span></span></p>
+<p>Far above its poles, this low-pass falls at <strong>−40 dB/decade</strong> and its phase approaches −180°. The natural frequency is not automatically a −3 dB corner for every Q. For the Butterworth choice Q = 1/√2, it is the −3 dB corner. Critical damping instead means Q = 0.5; these are different responses.</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="../power-electronics-recap/chapter-12-01.html" class="pagination-link" aria-label="12.1 One pole: RC">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">12.1 One pole: RC</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../power-electronics-recap/chapter-12-03.html" class="pagination-link" aria-label="12.3 Why Class-D uses LC filtering">
+        <span class="nav-page-text"><span class="chapter-title">12.3 Why Class-D uses LC filtering</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Power Electronics · HTWG</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

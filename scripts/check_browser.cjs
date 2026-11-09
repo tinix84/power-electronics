@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
 const assert = require('node:assert/strict');
+const foundationsOnly = process.argv.includes('--foundations');
 const root = path.resolve(__dirname, '../_site');
 const server = http.createServer((req, res) => {
   const name = decodeURIComponent(new URL(req.url, 'http://localhost').pathname).replace(/^\/power-electronics\//, '');
@@ -50,7 +51,9 @@ const server = http.createServer((req, res) => {
     ]);
     assert.equal(remote.length, 1, 'Withdrawal reload must not load Google');
     assert.equal(await page.evaluate(() => document.cookie.includes('pe_course')), false);
-    const files = ['index.html', 'privacy.html', 'figures.html', 'power-electronics-recap/recap.html', 'power-electronics-recap/transformer-characterization.html', 'lesson-01-buck/lesson-01.html', 'lesson-02-boost/lesson-02.html', 'lesson-magnetics/appendix-area-product.html', 'lesson-converter-tolerances/exercise.html', 'lesson-control/lesson-control.html'];
+    const foundationManifest = JSON.parse(fs.readFileSync(path.resolve(root, '../content/power-electronics-recap/foundation-pages.json'), 'utf8'));
+    const foundationFiles = foundationManifest.map(entry => 'power-electronics-recap/' + entry.file);
+    const files = foundationsOnly ? ['index.html', 'power-electronics-recap/recap.html', ...foundationFiles] : ['index.html', 'privacy.html', 'figures.html', 'power-electronics-recap/recap.html', 'power-electronics-recap/transformer-characterization.html', 'lesson-01-buck/lesson-01.html', 'lesson-02-boost/lesson-02.html', 'lesson-magnetics/appendix-area-product.html', 'lesson-converter-tolerances/exercise.html', 'lesson-control/lesson-control.html', ...foundationFiles];
     for (const width of [1440, 390]) {
       await page.setViewportSize({width, height: 900});
       for (const file of files) {
@@ -107,9 +110,17 @@ const server = http.createServer((req, res) => {
           for (const withheld of ['43.75', '17.42', '16.05']) assert.ok(!text.includes(withheld));
           assert.equal((text.match(/Released after the deadline in the Enrolled companion\./g) || []).length, 3);
         }
-        if (file.includes('/') && file !== 'lesson-02-boost/lesson-02.html') {
+        if (file.includes('/') && file !== 'lesson-02-boost/lesson-02.html' && !foundationFiles.includes(file)) {
           assert.ok(await page.locator('.katex').count() > 0, `${file} must use textbook math`);
           assert.equal(await page.locator('img.math').count(), 0, `${file} must not retain math images`);
+        }
+        if (foundationFiles.includes(file)) {
+          assert.equal(await page.locator('main h1').count(), 1, `${file}: one page title`);
+          assert.equal(await page.locator('img.math').count(), 0, `${file}: use textbook math`);
+          assert.equal(await page.locator('main footer a[href="recap.html"]').count(), 1);
+          const index = foundationFiles.indexOf(file);
+          if (index > 1) assert.equal(await page.locator('.foundation-pager a[rel="prev"]').getAttribute('href'), foundationManifest[index - 1].file);
+          if (index > 0 && index < foundationFiles.length - 1) assert.equal(await page.locator('.foundation-pager a[rel="next"]').getAttribute('href'), foundationManifest[index + 1].file);
         }
         if (file.endsWith('recap.html')) {
           assert.equal(await page.locator('img[alt^="Figure 61."]').count(), 1);
@@ -124,20 +135,49 @@ const server = http.createServer((req, res) => {
       }
     }
     assert.equal(remote.length, 1, 'Rejected state persists across course pages');
+    await page.goto(base + 'power-electronics-recap/chapter-02-04.html');
+    await page.getByRole('link', {name: 'Next:', exact: false}).click();
+    assert.ok(page.url().endsWith('/chapter-02-05.html'), 'Next opens a separate topic');
+    await page.getByRole('link', {name: 'Previous:', exact: false}).click();
+    assert.ok(page.url().endsWith('/chapter-02-04.html'), 'Previous returns to the topic');
+    await page.setViewportSize({width: 390, height: 844});
+    await page.locator('.chapter-toggle-label').click();
+    await page.locator('nav[aria-label="Chapter contents"] a[href="chapter-01.html"]').click();
+    assert.ok(page.url().endsWith('/chapter-01.html'));
+    assert.equal(await page.locator('nav[aria-label="Chapter contents"]').isVisible(), false);
     if (process.env.PREVIEW_DIR) {
       fs.mkdirSync(process.env.PREVIEW_DIR, {recursive: true});
       await page.setViewportSize({width: 1440, height: 1000});
-      await page.goto(base + 'power-electronics-recap/recap.html#14-2-the-simplest-regulator-zener-reference-and-emitter-follower');
+      await page.goto(base + 'power-electronics-recap/chapter-02-04.html');
       await page.evaluate(() => document.fonts.ready);
-      await page.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; document.getElementById('14-2-the-simplest-regulator-zener-reference-and-emitter-follower').scrollIntoView(); });
       await page.waitForTimeout(600);
       await page.screenshot({path: path.join(process.env.PREVIEW_DIR, 'reading-desktop.png')});
       await page.setViewportSize({width: 390, height: 844});
-      await page.evaluate(() => document.getElementById('14-2-the-simplest-regulator-zener-reference-and-emitter-follower').scrollIntoView());
       await page.waitForTimeout(300);
       await page.screenshot({path: path.join(process.env.PREVIEW_DIR, 'reading-mobile.png')});
     }
-    console.log(`PASS: consent, ${files.length} pages, 26 complete SVGs and symbols, combined JSON, desktop and mobile.`);
+    const bookManifest = path.resolve(root, '../content/quarto-book/release-manifest.json');
+    if (!foundationsOnly && fs.existsSync(bookManifest)) {
+      for (const width of [1440,390]) {
+        await page.setViewportSize({width,height:1000});
+        for (const file of ['index.html','power-electronics-recap/chapter-01.html','power-electronics-recap/chapter-19-09.html','power-electronics-recap/chapter-19-12.html','power-electronics-recap/chapter-19-13.html','power-electronics-recap/chapter-19-14.html']) {
+          assert.equal((await page.goto(base+'quarto-book/'+file)).status(),200);
+          await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.querySelectorAll('main img')].map(i=>i.decode())); });
+          assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,file+' overflows');
+          assert.equal(await page.locator('.katex-error').count(),0);
+          assert.equal(await page.evaluate(()=>[...document.querySelectorAll('span.math')].filter(e=>!e.querySelector('.katex')).length),0);
+        }
+      }
+      await page.setViewportSize({width:1440,height:1000});
+      await page.locator('#quarto-search button').first().click();
+      await page.locator('input.aa-Input:visible').fill('LED');
+      await page.locator('.aa-Item').first().waitFor();
+      await page.keyboard.press('Escape');
+      await page.locator('.quarto-color-scheme-toggle:visible').first().click();
+      await page.waitForFunction(()=>document.body.classList.contains('quarto-dark'));
+      assert.equal(remote.length,1,'The book needs no remote reading dependencies');
+    }
+    console.log(`PASS: consent, ${files.length} pages, chapter sequence, figures, desktop and mobile${foundationsOnly ? ' (foundation scope)' : ''}.`);
   } finally {
     await browser.close();
     server.close();

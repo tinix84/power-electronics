@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" role="img" aria-label="Series winding resistance followed by ideal inductance in parallel with a loss resistor, feeding a resistive load and a capacitor with ESR">
+<rect width="1000" height="420" fill="white"/><g stroke="#24333f" stroke-width="2.5" fill="none">
+<path d="M40 120H95M95 108H165V132H95ZM165 120H230M230 90V220H320M320 208H420V232H320ZM420 220H500V90H420M230 90H300M500 120H900M650 120V185M638 185H662V235H638ZM650 235V277M632 277H668M632 291H668M650 291V350M850 120V185M838 185H862V280H838ZM850 280V350M40 350H930"/>
+<path d="M300 90c0-32 30-32 30 0c0-32 30-32 30 0c0-32 30-32 30 0c0-32 30-32 30 0"/>
+<path d="M337 47H388L380 42M388 47L380 52M540 89H590L582 84M590 89L582 94" stroke="#176b91"/>
+</g><g font-family="Segoe UI,sans-serif" font-size="18" fill="#24333f">
+<text x="35" y="100">u = vₓ</text><text x="100" y="86">rₛ</text><text x="335" y="33">iL →</text><text x="350" y="126">L</text><text x="343" y="260">Rₚ</text><text x="538" y="72">iₜ →</text><text x="680" y="214">rC · ESR</text><text x="680" y="289">C</text><text x="877" y="237">R</text><text x="884" y="102">+ vₒ</text><text x="270" y="300">iₜ = iL + vL / Rₚ</text><text x="40" y="385">rₛ carries total terminal current. Rₚ sees the voltage across the ideal inductance.</text></g>
+<g fill="#24333f"><circle cx="230" cy="120" r="4"/><circle cx="500" cy="120" r="4"/><circle cx="650" cy="120" r="4"/><circle cx="850" cy="120" r="4"/></g></svg>

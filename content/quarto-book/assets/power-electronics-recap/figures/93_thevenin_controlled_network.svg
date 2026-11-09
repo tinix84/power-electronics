@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" role="img" aria-labelledby="title desc">
+<title id="title">Controlled-source network for Thévenin practice</title>
+<desc id="desc">R1 connects the 12 V source to Vx. R2 connects Vx to b. R3 connects Vx to a. R4 connects a to b. A 1 mA source and a controlled current g Vx both inject current from b into a. All resistors are 2 kilohms. The editable circuit master is latex/93_thevenin_controlled_network.tikz.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z"/></marker></defs>
+<style>@media(max-width:600px){text{font-size:36px}text.note{display:none}}</style>
+<g fill="white" stroke="#26343f" stroke-width="2.5">
+<path fill="none" d="M70 142V70H135M195 70H335M395 70H870M70 198V270H870M270 70V145M270 195V270M470 70V145M470 195V270M670 70V142M670 198V270M800 70V138M800 202V270"/>
+<rect x="135" y="57" width="60" height="26"/><rect x="335" y="57" width="60" height="26"/>
+<rect x="257" y="145" width="26" height="50"/><rect x="457" y="145" width="26" height="50"/>
+<circle cx="70" cy="170" r="28"/><circle cx="670" cy="170" r="28"/>
+<path d="M800 138L832 170L800 202L768 170Z"/>
+<path d="M670 190V151" marker-end="url(#arrow)"/><path d="M800 190V151" marker-end="url(#arrow)"/>
+<path d="M62 156H78M70 148V164M62 185H78"/>
+<g fill="#26343f"><circle cx="270" cy="70" r="4"/><circle cx="270" cy="270" r="4"/><circle cx="470" cy="70" r="4"/><circle cx="470" cy="270" r="4"/><circle cx="670" cy="70" r="4"/><circle cx="670" cy="270" r="4"/><circle cx="800" cy="70" r="4"/><circle cx="800" cy="270" r="4"/></g>
+<circle cx="870" cy="70" r="5"/><circle cx="870" cy="270" r="5"/>
+</g>
+<g fill="#26343f" font-family="Georgia,serif" font-size="24" text-anchor="middle">
+<text x="165" y="44">R₁</text><text x="365" y="44">R₃</text><text x="270" y="38">Vₓ</text>
+<text x="235" y="180">R₂</text><text x="435" y="180">R₄</text>
+<text x="24" y="180">Vₛ</text><text x="620" y="180">Iₛ</text><text x="850" y="180" text-anchor="start">gVₓ</text>
+<text x="894" y="78">a</text><text x="894" y="278">b</text>
+<text class="note" x="460" y="316" font-family="system-ui,sans-serif" font-size="20">Vₓ uses node b as its reference. Connect the load between a and b.</text>
+</g></svg>

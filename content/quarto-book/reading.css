@@ -1,0 +1,43 @@
+/* Keep wide engineering tables scrollable within the phone reading column. */
+main :not(pre) > code {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+body.quarto-dark #TOC a,
+body.quarto-dark #quarto-sidebar .sidebar-item-text,
+body.quarto-dark #quarto-sidebar .quarto-navigation-tool {
+  color: #cbd8e5;
+}
+body.quarto-dark #TOC a.active,
+body.quarto-dark #quarto-sidebar .sidebar-item-text.active {
+  color: #78d3df !important;
+}
+body.quarto-dark .breadcrumb {
+  background: transparent;
+  color: #cbd8e5;
+}
+body.quarto-dark .breadcrumb-item.active {
+  color: #cbd8e5;
+}
+@media (max-width: 991px) {
+  main table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* Script-free duty-cycle selector of §4.4: radio buttons show one panel each. */
+.dselect{margin:28px 0;padding:18px 20px;border:1px solid var(--rule);border-radius:4px;background:#f8f9fa}
+.dselect-title{margin:0 0 12px}
+.dselect input{position:absolute;opacity:0;width:1px;height:1px}
+.dselect label{display:inline-block;margin:0 8px 12px 0;padding:6px 14px;border:1px solid #176b91;border-radius:4px;color:#176b91;background:#fff;cursor:pointer;font-weight:650}
+.dselect input:checked+label{background:#176b91;color:#fff}
+.dselect input:focus-visible+label{outline:3px solid #2563a1;outline-offset:2px}
+.dpanel{display:none}
+#dsel-02:checked~#dpanel-02,#dsel-05:checked~#dpanel-05,#dsel-08:checked~#dpanel-08{display:block}
+.dpanel dl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;margin:0}
+.dpanel dt{color:var(--muted)}
+.dpanel dd{margin:0;text-align:right;font-weight:650}
+.dpanel p{margin:12px 0 0}
+@media print{.dselect input,.dselect label{display:none}.dpanel{display:block;margin-bottom:12px}}

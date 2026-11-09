@@ -3,6 +3,7 @@ from pathlib import Path
 import shutil
 import json
 import re
+import argparse
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = (
@@ -16,6 +17,22 @@ PAGES = (
 )
 
 
+def foundation_files():
+    """Accept only the public foundation reading files named by its builder."""
+    manifest = ROOT / "content" / "power-electronics-recap" / "foundation-pages.json"
+    entries = json.loads(manifest.read_text(encoding="utf-8"))
+    files = [entry["file"] for entry in entries]
+    if len(files) != len(set(files)) or not files or files[0] != "index.html":
+        raise ValueError("Invalid foundation page list")
+    if not all(re.fullmatch(r"(?:index|introduction|resources|chapter-\d{2}(?:-\d{2})?)\.html", name) for name in files):
+        raise ValueError("Unexpected foundation release file")
+    return tuple("power-electronics-recap/" + name for name in files)
+
+
+def release_pages():
+    return (*PAGES, *foundation_files())
+
+
 def figure_assets():
     manifest = json.loads((ROOT / "content" / "circuit-figures" / "manifest.json").read_text(encoding="utf-8"))
     stems = [entry["stem"] for entry in manifest["figures"]]
@@ -24,12 +41,20 @@ def figure_assets():
     return manifest, [*(stem + ".svg" for stem in stems), "combined.json", "combined.svg", "manifest.json"]
 
 if __name__ == "__main__":
-    for relative in PAGES:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--foundations", action="store_true", help="Sync only foundation reading pages")
+    args = parser.parse_args()
+    manifest = "power-electronics-recap/foundation-pages.json"
+    shutil.copyfile(ROOT.parent / manifest, ROOT / "content" / manifest)
+    pages = ("power-electronics-recap/recap.html", *foundation_files()) if args.foundations else release_pages()
+    for relative in pages:
         source = ROOT.parent / relative
         destination = ROOT / "content" / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, destination)
         print(f"Synced {relative}: {source.stat().st_size:,} bytes")
+    if args.foundations:
+        raise SystemExit(0)
     batch = ROOT.parent / "power-electronics-recap" / "figures" / "circuitikz" / "batch"
     destination = ROOT / "content" / "circuit-figures"
     destination.mkdir(exist_ok=True)
