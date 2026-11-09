@@ -412,6 +412,30 @@
     "title": "19.8 Solution: check the slope and the model error"
   },
   {
+    "file": "chapter-19-09.html",
+    "title": "19.9 An LED warms up: which quantity should the driver regulate?"
+  },
+  {
+    "file": "chapter-19-10.html",
+    "title": "19.10 Three drivers, one initial current"
+  },
+  {
+    "file": "chapter-19-11.html",
+    "title": "19.11 Self-heating: equilibrium, temperature limits and instability"
+  },
+  {
+    "file": "chapter-19-12.html",
+    "title": "19.12 A practical linear current-source concept"
+  },
+  {
+    "file": "chapter-19-13.html",
+    "title": "19.13 Exercise: select an LED driver and cooling path"
+  },
+  {
+    "file": "chapter-19-14.html",
+    "title": "19.14 Solution: current regulation and thermal stability"
+  },
+  {
     "file": "resources.html",
     "title": "Recall resources by task"
   }

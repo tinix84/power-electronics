@@ -156,6 +156,27 @@ const server = http.createServer((req, res) => {
       await page.waitForTimeout(300);
       await page.screenshot({path: path.join(process.env.PREVIEW_DIR, 'reading-mobile.png')});
     }
+    const bookManifest = path.resolve(root, '../content/quarto-book/release-manifest.json');
+    if (!foundationsOnly && fs.existsSync(bookManifest)) {
+      for (const width of [1440,390]) {
+        await page.setViewportSize({width,height:1000});
+        for (const file of ['index.html','power-electronics-recap/chapter-01.html','power-electronics-recap/chapter-19-09.html','power-electronics-recap/chapter-19-12.html','power-electronics-recap/chapter-19-13.html','power-electronics-recap/chapter-19-14.html']) {
+          assert.equal((await page.goto(base+'quarto-book/'+file)).status(),200);
+          await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.querySelectorAll('main img')].map(i=>i.decode())); });
+          assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,file+' overflows');
+          assert.equal(await page.locator('.katex-error').count(),0);
+          assert.equal(await page.evaluate(()=>[...document.querySelectorAll('span.math')].filter(e=>!e.querySelector('.katex')).length),0);
+        }
+      }
+      await page.setViewportSize({width:1440,height:1000});
+      await page.locator('#quarto-search button').first().click();
+      await page.locator('input.aa-Input:visible').fill('LED');
+      await page.locator('.aa-Item').first().waitFor();
+      await page.keyboard.press('Escape');
+      await page.locator('.quarto-color-scheme-toggle:visible').first().click();
+      await page.waitForFunction(()=>document.body.classList.contains('quarto-dark'));
+      assert.equal(remote.length,1,'The book needs no remote reading dependencies');
+    }
     console.log(`PASS: consent, ${files.length} pages, chapter sequence, figures, desktop and mobile${foundationsOnly ? ' (foundation scope)' : ''}.`);
   } finally {
     await browser.close();

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="370" viewBox="0 0 960 370" role="img" aria-label="Asynchronous buck power stage with diode from ground to switch node">
+<rect width="960" height="370" fill="white"/><g fill="none" stroke="#24333f" stroke-width="2.5">
+<circle cx="75" cy="170" r="34"/><path d="M75 136V90H175M75 204V285H850M175 90H195M250 90H315M195 90L244 62M315 90H350M470 90H850M315 90V165M315 205V285M650 90V160M632 160H668M632 175H668M650 175V285M810 90V140M795 140H825V230H795ZM810 230V285"/>
+<path d="M350 90c0-35 30-35 30 0c0-35 30-35 30 0c0-35 30-35 30 0c0-35 30-35 30 0"/>
+<path d="M299 165H331M299 205H331L315 165Z"/>
+<path d="M75 157V177M65 167H85M66 188H84M520 61H584L576 56M584 61L576 66" stroke="#176b91"/>
+</g><g fill="#24333f" font-family="Segoe UI, sans-serif" font-size="19">
+<text x="20" y="125">Vᵢₙ</text><text x="194" y="45">Q · PWM</text><text x="285" y="65">x</text><text x="385" y="45">L, rL</text><text x="535" y="47">iL →</text><text x="675" y="175">C</text><text x="840" y="190">R · load</text><text x="850" y="77">+ Vₒ</text><text x="339" y="194">Dᶠ</text><text x="105" y="320">Common return (0 V)</text>
+<text x="25" y="355" font-size="16">Q ON: input → Q → L → output. Q OFF: return → diode → L → output.</text></g>
+<g fill="#24333f"><circle cx="315" cy="90" r="4"/><circle cx="650" cy="90" r="4"/><circle cx="810" cy="90" r="4"/></g></svg>

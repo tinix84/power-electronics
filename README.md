@@ -6,6 +6,12 @@ This repository contains released, self-contained HTML reading copies. The canon
 
 ## Update and publish
 
+The complete Quarto reading book uses the hashed public release under `content/quarto-book/`.
+Export it from the canonical course with `2026/book/scripts/export_public.py` after the public edition passes its audit.
+The website builder checks the edition, file paths and hashes before copying those files.
+It rejects lesson sources, numerical programs and enrolled material.
+The previous reading URLs remain available beside the book.
+
 1. Edit the canonical lesson Markdown in the adjacent course folders and rebuild the affected offline HTML using those folders' existing build commands and the external `ntbees2` environment.
 2. From this folder, sync the reading copies and validate the website:
 
