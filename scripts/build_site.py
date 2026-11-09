@@ -63,7 +63,7 @@ def build():
     OUTPUT.mkdir(exist_ok=True)
     pages_to_build = release_pages()
     # Do not publish arbitrary directories or the solutions companion.
-    for name in ("index.html", "privacy.html", "analytics.js", "reading.js", "site.css"):
+    for name in ("index.html", "exercises.html", "privacy.html", "analytics.js", "reading.js", "site.css"):
         shutil.copyfile(ROOT / "site" / name, OUTPUT / name)
     (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
     manifest, assets = figure_assets()
@@ -117,7 +117,7 @@ def build():
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(text, encoding="utf-8")
     book_files = copy_quarto_release()
-    expected = {"index.html", "privacy.html", "analytics.js", "reading.js", "site.css", ".nojekyll", "figures.html", *pages_to_build, *("circuit-figures/" + name for name in assets), *book_files}
+    expected = {"index.html", "exercises.html", "privacy.html", "analytics.js", "reading.js", "site.css", ".nojekyll", "figures.html", *pages_to_build, *("circuit-figures/" + name for name in assets), *book_files}
     actual = {p.relative_to(OUTPUT).as_posix() for p in OUTPUT.rglob("*") if p.is_file()}
     if actual != expected:
         raise ValueError(f"Unexpected release contents: {actual ^ expected}. Inspect before publishing.")
