@@ -2044,6 +2044,7 @@ HTWG · Reading edition
    
   <ul>
   <li><a href="#sparse-matrix-converter-timing" id="toc-sparse-matrix-converter-timing" class="nav-link active" data-scroll-target="#sparse-matrix-converter-timing">Sparse matrix converter timing</a></li>
+  <li><a href="#practice-exercise" id="toc-practice-exercise" class="nav-link" data-scroll-target="#practice-exercise">Practice exercise</a></li>
   </ul>
 </nav>
     </div>
@@ -2087,6 +2088,16 @@ HTWG · Reading edition
 <figcaption>State 100 transfers energy for 6 µs. In 000 the load freewheels, leaving a zero-current interval for the input-stage transfer.</figcaption>
 </figure>
 </div>
+</section>
+<section id="practice-exercise" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="practice-exercise">Practice exercise</h3>
+<p>The sparse converter uses state 100 for 4 µs at 250 V link voltage and +3 A phase A current, then 000 for 6 µs. Find mean AB voltage and energy transferred over the period.</p>
+<details>
+<summary>
+Check your reasoning
+</summary>
+<p>The active dwell gives +250 V across AB and 3 A link current. State 000 gives zero AB voltage and zero link current. Mean voltage is 100 V and energy is 250 × 3 × 4 µs = 3 mJ.</p>
+</details>
 <p><a href="https://www.ecpe.org/infocentre/ecpe-online-course/acac/voltage-and-current-time-behavior/">Sparse matrix converter timing (ECPE)</a></p>
 
 

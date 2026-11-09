@@ -2044,6 +2044,7 @@ HTWG · Reading edition
    
   <ul>
   <li><a href="#zero-intermediate-current-switching" id="toc-zero-intermediate-current-switching" class="nav-link active" data-scroll-target="#zero-intermediate-current-switching">Zero intermediate-current switching</a></li>
+  <li><a href="#practice-exercise" id="toc-practice-exercise" class="nav-link" data-scroll-target="#practice-exercise">Practice exercise</a></li>
   </ul>
 </nav>
     </div>
@@ -2087,6 +2088,16 @@ HTWG · Reading edition
 <figcaption>One valid schedule uses 0.30 µs guards on each side of the 0.90 µs rectifier transfer. Both guards exceed the required 0.20 µs.</figcaption>
 </figure>
 </div>
+</section>
+<section id="practice-exercise" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="practice-exercise">Practice exercise</h3>
+<p>The input rectifier needs 1.1 µs for transfer and 0.25 µs guard time on each side. Can it commute inside a 1.5 µs inverter zero dwell? State the minimum dwell.</p>
+<details>
+<summary>
+Check your reasoning
+</summary>
+<p>The transfer and guards require 1.1 + 2 × 0.25 = 1.60 µs. The proposed dwell is short by 0.10 µs. Allocate at least 1.60 µs with zero link current.</p>
+</details>
 <p><a href="https://www.ecpe.org/infocentre/ecpe-online-course/acac/zero-dc-link-curr-commutation/">Zero intermediate-current switching (ECPE)</a></p>
 
 

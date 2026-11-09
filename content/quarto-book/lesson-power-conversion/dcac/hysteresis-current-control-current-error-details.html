@@ -2044,6 +2044,7 @@ HTWG · Reading edition
    
   <ul>
   <li><a href="#current-error-at-band-crossings" id="toc-current-error-at-band-crossings" class="nav-link active" data-scroll-target="#current-error-at-band-crossings">Current error at band crossings</a></li>
+  <li><a href="#practice-exercise" id="toc-practice-exercise" class="nav-link" data-scroll-target="#practice-exercise">Practice exercise</a></li>
   </ul>
 </nav>
     </div>
@@ -2087,6 +2088,16 @@ HTWG · Reading edition
 <figcaption>The error keeps rising during the 2 µs delay. It crosses the allowed limit before the bridge changes state.</figcaption>
 </figure>
 </div>
+</section>
+<section id="practice-exercise" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="practice-exercise">Practice exercise</h3>
+<p>A bridge changes state 1.5 µs after detecting a +0.18 A error. The error continues rising at 0.04 A/µs. Can the design meet a +0.22 A ceiling?</p>
+<details>
+<summary>
+Check your reasoning
+</summary>
+<p>The peak is 0.18 + 1.5 × 0.04 = 0.24 A. The available margin is 0.04 A, so the delay must be at most 1 µs at this slope.</p>
+</details>
 <p><a href="https://www.ecpe.org/infocentre/ecpe-online-course/dcac/hysteresis-current-control-current-error-details/">Current error at band crossings (ECPE)</a></p>
 
 
