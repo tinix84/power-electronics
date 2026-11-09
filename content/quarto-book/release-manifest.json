@@ -404,535 +404,535 @@
     },
     {
       "path": "assets/lesson-power-conversion/figures/acac/dc-machine-vs-pmsm.svg",
-      "sha256": "21485740ab1573c42938ee30cc41e1c24c1e2896e15ed398485d74ff2652a096"
+      "sha256": "a99f04ed96dd56187d863318feb2120e2721c9b43fa184f9ae4e4667a01b1b05"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acac/multi-step-commutation.svg",
-      "sha256": "2758aa5dc107199d544dbf48d6de3eb6c5c819bc4325f45eba04e7844043b0fb"
+      "sha256": "636a2cce83a5e81594bc459b5c7b7d78f096f74d049f28a891a5255a785cde76"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acac/rotating-field.svg",
-      "sha256": "89e65c611dc9cc51c9251051afaae9d51f79a255c73821b8128330eb417e8fd8"
+      "sha256": "8fd74c0ffe986225fd9da3d0e9222e27ab0c37bfc75405fbb7d8f5e40fa6d52b"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acac/speed-control-of-pmsm.svg",
-      "sha256": "8a15b8014489def4239a6d7a0a31a7886716439c0354c227570e36a096e0d6e9"
+      "sha256": "f45337f11003569586b459d5159efca9b5ff2277e419576a58caeb779f6ab72c"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acac/torque-control-of-pmsm.svg",
-      "sha256": "b3e0fc2bdde0dd198be585144c654a2ecba38709f71d32727765b6f3b9124ad7"
+      "sha256": "f92c62e3828cc339941f8699e0f59a6ec5979bf7b5fda0e9880363df674bec3e"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acac/voltage-and-current-time-behavior.svg",
-      "sha256": "8b1be7e66f53384340960c770578ecfc9ad9ab2f7f233da40d870ea01f094b73"
+      "sha256": "c576bfc817dca7c15f70d671f8ea2c06c50204f26006190af4188750e69a291a"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acac/zero-dc-link-curr-commutation.svg",
-      "sha256": "5a6df4f810658b2b2f426196b2ffb37c94d4645f48fec9519c4616da26125bb8"
+      "sha256": "b9e8f0b774eb4ee03df72183d75d987b39159822b15b12f06d66207936cb1190"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/110v220v-input.svg",
-      "sha256": "b2803b050041f6ffa43f14cd3ac5c807de8f320d920445b5ec4ddfe1fdbc0263"
+      "sha256": "c76a421571535ae6314aae48b5e6444078ac13ba535bee9b611d0ca295605a8e"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/234-pulse-system.svg",
-      "sha256": "4ab7fceb435f7573fb5e1ea240b9e3c052ba9c730cbb07780776249120482af9"
+      "sha256": "38fc23bb72fc71e1b5be23a13ad37a7d76bebe60241a8c2df288839ae69079fb"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/ac-side-inductance-cout.svg",
-      "sha256": "6fca1b9f234d0794ef3940891966477228eb4f4bbf4a81d84baa8d148b99d20b"
+      "sha256": "af917e7e68d1107c2c18f0a8014e9c45a64e0ea57a3c8de1e36919c425a790b4"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/ac-side-inductance-input-current-formation-udcconst.svg",
-      "sha256": "7e91e46b2dcd9808862c3e584f89a396e00c6a0171044598fe7e8e8593b82553"
+      "sha256": "89b24a8c2269448da2efb8b6b25291c15d85189230dd9688a7f1c0365735973b"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/basic-diode-function.svg",
-      "sha256": "7e60529795dbadb320427f2934edd2e2d1f901a64ab6f499b5f545ed57867cf0"
+      "sha256": "910e278ed47751d354c8b188667fa0972ec5c4196a797c08e44e9024f7f77909"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/calculation-of-component-stresses.svg",
-      "sha256": "bda06f749f953b90ff5287bbc07e8dc1ffd0d4b536d27cb5258b78e5f5896d7e"
+      "sha256": "b7056452e97a91805830f517018c1b788f3a368b6f4299d8effb12f3b4585458"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/commutation.svg",
-      "sha256": "fef9f3b4433ebc4755ff78f3f9ea2ad52a22ce350238b72b1fa83bae0e971f6c"
+      "sha256": "94658acbfbaaabe876748087acbda83a2bc314613b4d4617716e637bc20982ed"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/continuous-conduction-mode.svg",
-      "sha256": "9f0a06c753396b0cf19176397c495e9e5afd3f7968833d4cce0acee67371f617"
+      "sha256": "35da40a34e4853855df20eeb672c960f5b8922f1d9d6b73365d69d5930548513"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/control-concept-loop-dynamics.svg",
-      "sha256": "ed08bbab2d0fba3ff24f562a2a6b2f69fa5aa7e699fd1714afd3e2ddac48eac9"
+      "sha256": "f0c101dd489a8aafa9749777428e4cc1a1d9c8e13d68b3799854b24e35bea03a"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/critical-conduction-mode.svg",
-      "sha256": "3f28b1613407bf2cc3cb86ab2a69c0f7d30e08952742e319aad32b3edd031bde"
+      "sha256": "d2dd93fda1a4c55f9db980f34cf4eafbff4d9db323b30902a74ce7033204bb97"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/dc-ac-side-inductance-cout.svg",
-      "sha256": "35bc23e6411d9ed421db2cb33c39903a33a7823bedce36f87b1f5c6e5c26cf50"
+      "sha256": "a5f738e052b3bbbf8197ce1a28b147cc99c8c1a643e62e255dddb406ff18d489"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/dc-side-inductance-cout.svg",
-      "sha256": "3a54c1b091b6521a1ff63e6388af5db883322a37b563b53e0de9174a06bb78ba"
+      "sha256": "59de5bed598bb6d9b1eb0ddfa10d852ac0343e151e986346c2b3039e1eba69ad"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/discontinuous-conduction-mode.svg",
-      "sha256": "e619c397fbaf6f43451972e6a3523284ffc979ec32ea5391efd9448202b220ad"
+      "sha256": "52257d5449149c337ae1ab517213281647a8afde7cbf9c62bd12b016ae3d1f25"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/mains-current-distortion.svg",
-      "sha256": "319e017a5474f757eaa3c55032a9f9c1742fb0b682b2c98dadc579f8edbe0608"
+      "sha256": "079a6a2e0c37e108ae5d24ff1eae146067ae9c77d77075e002b1f082ae6fc43e"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/mains-neutral-connection.svg",
-      "sha256": "427157f235fc2579b605fee0c48afdc5e4f1421be1cfdebb8858db9413e00519"
+      "sha256": "7d2904b6b49a3d8d2a05d6a5ea44120250cbaf3c645ece7f2cdd80ccfd524245"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/mains-voltage-distortion.svg",
-      "sha256": "9874ce279996d37e7549f0c4930bed2d6acc55d1bc380eb5baefc1213e66e849"
+      "sha256": "0212ff02ea5bdce0519e57ff5515eed0624f72db1d68577e0c3696c0d2b7f00e"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/power-factor-thd.svg",
-      "sha256": "c5c36c592e6485c6141970d98dc2d45054ca18701b7986e651720b110bd25c0c"
+      "sha256": "6dd636d71a6f42b954da1508c2b1435c825ddf175b22f3f59acdc83732dc8b4e"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/purely-capacitive-smoothing-on-a-bridge-rectifier.svg",
-      "sha256": "eb60f9022dc06f961493d102267b5b3086e02e2462767846901ab4fd41ca34ad"
+      "sha256": "18446919bdcfd8b7e8876be253c677bcddf7df1f6e7b8ab16f840334e3def0dc"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/r-rl-c-udcconst-load.svg",
-      "sha256": "b7958572ccedb36804d5ab540c5f9044c801a86b14fb425e76ed40b50fc9ec3b"
+      "sha256": "810ce9b7d72405107c435223cd5d5b3d02dbb7ea8adf47a156dbe551099d69f8"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/single-diode-rectifier-combination.svg",
-      "sha256": "ce67eb0e14ef8d000cfcdb7277b85a5071e3026bdb12274a613be883da02087c"
+      "sha256": "4a67100d70f53d834b6a4a58cbe719bfc80b61c4a59259d56bebe29f5266f4aa"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/single-phase-system-power-flow.svg",
-      "sha256": "696f3c6240821959762d46ade1cd817815408a494575c2af485e8c2d9a170c6a"
+      "sha256": "f4ab0e4ceff92908b3d18403e47af22951c6c9ddd23d330028160e4783caf419"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/single-switch-dcm-boost.svg",
-      "sha256": "1562f132a339f46593398039f03547c3337bfcfdf1137e03f6c8f22cc69b438f"
+      "sha256": "5c2fa034193e6480fedd5d426d7b02389bab2332014b2f4b25b5a9b14c544db7"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/three-phase-combination-neutral-current.svg",
-      "sha256": "9732baf475c1f893174874be663555a6479ffcc3c9bccf4d9c6de885d69755de"
+      "sha256": "80949a8ab1ad19428bc6b1cbf4a8abcb9349772388d3046855fbd76159563254"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/three-switch-buck-boost-system-dimensioning.svg",
-      "sha256": "28bc9fc816fc5a02acbc1cb446a3e1ab6ae211aeb956bd2a28812b6c03eafbb6"
+      "sha256": "8f0277bd901d00b7737c686154c4457260c227030ca674f953f6b5f192072de4"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/three-switch-buck.svg",
-      "sha256": "f683602a4fa5c7a85205eceeb07e0c99680c4411a31485be4a1362fa304717da"
+      "sha256": "7bb81cdfb02b2ca3f184ddd12f61921f4a5a7fb79ac35597f78455910a244109"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/three-switch-ccm-boost-vienna.svg",
-      "sha256": "f112b7aa1d9000ca23be8bdcaf98552c29de1c181e735c6b51f4d1b48cd3fe3e"
+      "sha256": "620d25672d2c659f9b0f8e8f39b299f4fb9914c266c83632261a0cb7a3b61bf6"
     },
     {
       "path": "assets/lesson-power-conversion/figures/acdc/unbalanced-mains.svg",
-      "sha256": "714a2774b30cad399eff4b66bf41834e6401a027d1c1bba0f991f0a34957900a"
+      "sha256": "3b4ccc79764f12d7cfcc2713af93fb6a52760549067c91667627705a93bc133c"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/boost.svg",
-      "sha256": "96958636e7d02fb11ffc270f19e12e68eb4f09a4b6b9875f382a6f9b1fc99409"
+      "sha256": "3ea1153ae4c7e880ea6fd6787a3836040d68bb476d73e1bd84e642d57ced4304"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/bridge-2-diode.svg",
-      "sha256": "cd17b1b0a921dad3b72dcd6315f54524444bed6db82c3dea481f13457746d6b6"
+      "sha256": "e02d3f1a6481b6adfd3682fffeb547286bc611e7d93fad6a6428b9d964e616f5"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/bridge-2-scr.svg",
-      "sha256": "92b12d57df988f98914495ee33bb679a5857b373930b3407c6a079757a1c1c95"
+      "sha256": "8c58e5503d3f1db1ef35b958fd604639112ea39a06fd7a4eba6027ad3d45515e"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/bridge-3-diode.svg",
-      "sha256": "9c14a13611ec4c2b328a26e57f2dc7c24515c6e143074ff730be0c5eb1c11e82"
+      "sha256": "5dc962f7bf4b54187268da82c607564a0fd7daf11e298b8403c211b27d6b0ff1"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/bridge-3-scr.svg",
-      "sha256": "cb6dc04369b196113f98622dc0fd352e377838faf7f6466955100a1bdaf11d62"
+      "sha256": "e1084e6aed546d1b75232b5172e25f431016bb9d823d34c85f86b89f5a344117"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/buck.svg",
-      "sha256": "5a703cfb5d584c9741223a8b7d8bbf8dc2261de9e1de09581a3721650c05aaaa"
+      "sha256": "6e0079b4d00247e46cac6e076cb1cacf2339c49fedd14989df8c09cd1ce8ee71"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/choke.svg",
-      "sha256": "8582732564c39b4c82644a69a56ec03fda79ed202521c3fb9a9f12723ca2bc51"
+      "sha256": "c204c5a27637cefc95553ae3ae705812529a7c6b335985a8059d9e290f528c68"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/cuk.svg",
-      "sha256": "eb353bd7a251d246a0c2e595cd21522faec9321acf32653810acb449fa5ca425"
+      "sha256": "37b0b4d498ab7bd5136f921dc6dd53ce634ddc55529d2c92da5f9a501167b286"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/dab.svg",
-      "sha256": "916a0dfc03c1f107117cda6283c06542af964012064128bd4677976962fe58a9"
+      "sha256": "02f37cfbe60498a212418c0cac26e07c9285c592ae4033af1189c64a00aaa1df"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/damping.svg",
-      "sha256": "5876b216e7dc8811f9f419a92fbb2e47c349c5abff023dc6ee0bb51a507b3b1c"
+      "sha256": "dc0191a93a363daae6eb788dfed0b18adc68e9aad517d2df8ca830a7af920e05"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/dc-link.svg",
-      "sha256": "cd739e68a0f7c14c572493d2056dfcf233336e0a4549f42b3a69660039d34dd9"
+      "sha256": "05deff0adf02f45bd66e4010277ec1ccff2dd278d194fd5cf63d5b33d9436190"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/doubler.svg",
-      "sha256": "3716a776ffeca0a1b209051d3e2e174521b0274f3829fb45fd2514e14f16e684"
+      "sha256": "78f4fdd0fac3e9d1c07f01148ea625c783723d65a444b74a6ff0d2ba0c17b5f4"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/flyback.svg",
-      "sha256": "83412b8a20b24bb2bf75cf90e3f718c6c6bfa0941bfd0494f30dcf2162ed1e9d"
+      "sha256": "f547aad307cd3ca7b9c54976d263ec67d0c65202284559c925b1c58ed806c3e0"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/freewheel.svg",
-      "sha256": "e37ba477d93b51afa1ae3cddf4341cb25ab07f787636ad692b365a0faa8bb6dc"
+      "sha256": "fe6a43440b25a457cd99acb72480c0d13142578d83529b95ece0f837e872b848"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/half-scr.svg",
-      "sha256": "626369d060c07ebde97295b28c796cbcfff5c033e39b9e3210d5c77d2569022d"
+      "sha256": "c471502b6386459dd7b0615296a4e8f847e41045610230ea63abf25f607ccad8"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/half-wave.svg",
-      "sha256": "d08fd674a2a88752e44cd1f5134d546331b39c1e20f0ddac067edd95215acbee"
+      "sha256": "47533177f99a058c07ac6ffd0264ac1d7b01295f293765753070b4ceee902407"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/inverter-2.svg",
-      "sha256": "4abfae1b53885eced23a2125aad8eb0bdfd2cecc201ad862cc3b67503dcf217d"
+      "sha256": "825c16330734bbc660faf4712ea16bc1f3d8c27d9144712c4a61048f7743e1ed"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/inverter-3.svg",
-      "sha256": "66a365cae9ba7ad4c63a542100ad9ac0ab4a90886764dd356c3af9950b08e896"
+      "sha256": "a5d74cdba5ee4b355fc97a8203736e6da85502b2161d1d04c7ad9740f5b677fe"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/inverter-leg.svg",
-      "sha256": "8bc09e9b8b6a0396c04bf10db1636927b0647ce5ffba5395f13e44c86f3bf37a"
+      "sha256": "4c4911ddf67a0bb14ca8179bda2eb71121d76878a00ae2fdc4d488c1cab442d4"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/inverting.svg",
-      "sha256": "66644b45d56ca1dc18fe1a8345028e6a7c1cb665ce6b8a490b219cd99f82d8d9"
+      "sha256": "350091151d612219855b65a3afd2fc8030859da3c70cf5e8b6315373c0e78dd2"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/lc-tank.svg",
-      "sha256": "32423358bb4071f018606817ecbaa3bfe6bcbd17216491d847d019a35fccac4a"
+      "sha256": "c54dadc9de7750c729f44d3ac04280ddd19d14607ec481cd432658ffdcac6f92"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/matrix-cell.svg",
-      "sha256": "84d65f72fdc8f75e00506e95e06ba75c7d66571bc06b4a46088135ee87d6cc87"
+      "sha256": "da0a1dd1ee4a0628e6439045b774e527351311be16dc660c44eb90af935598de"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/midpoint-2-diode.svg",
-      "sha256": "ac05219a47510ed4dd8f1a173b2094b53bc6c593cdaf82b7eeb681e4216eef24"
+      "sha256": "487a58ba14176bdf616116a51051fbbd93fc8762217973ed2267ab5f6642c839"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/midpoint-2-scr.svg",
-      "sha256": "c8b58c20a554ae5def1eb486d50c959a5d572ef3b2280e8eb9193f1ed6f4e133"
+      "sha256": "10efd1051b7c9cbe936c1a075c8c26bb7c11f8021eeeebb52736d0d538674526"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/midpoint-3-scr.svg",
-      "sha256": "f1b991c7b5ddb31dea556c63df373f09897007200e4621dabfe0baf256db633f"
+      "sha256": "8e1375332fea24ec2793b776f0cafe188e98dac1b5bb9400ae4a91632751ba28"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/sepic.svg",
-      "sha256": "8f4ac803e1e5d4043d62081a7e70c6391b193d0a794d74262fb8e77388e0f0ec"
+      "sha256": "dea7ecfa22ad6e73b4686ab421b340f9dc8d45ce0ead860936f555531e211600"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/vienna.svg",
-      "sha256": "bcc23343545ee2a38939e4ddc7be581c13991a7265c4d47acf0c0e3580d26274"
+      "sha256": "aacec589ac6bed7cbe17f31cb59ff2ea8bf90f4d03aeeff6f5b278294a0e9ba9"
     },
     {
       "path": "assets/lesson-power-conversion/figures/circuits/voltage-doubler.svg",
-      "sha256": "1aa5e6969e844a95c75d05b6772d68fb915f8773b72cf2b1081b1510e1010a2b"
+      "sha256": "172fd1ee982a2a7aedcc8f7cb4300290a32d4033bb6269ad3e94386fe4b408d2"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/ac-side-current-ripple.svg",
-      "sha256": "c68342d4199b500cbf5aeb58bc7f21c30676817fc48af113d17f047bb92ea439"
+      "sha256": "da7ace2bd88ef7f70c22444596b052b701126ea5b7e4d3aa26d761dfe5bcc516"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/basic-thyristor-converter-free-wheeling-diode.svg",
-      "sha256": "57d5a794cc32d6caf55480d1afeb863ec27631a343c2dad020dc931566b66701"
+      "sha256": "c7860209e00127ed42ea01448bdbe8495f79233399eb852f3d7675666b3ab154"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/basic-thyristor-converter.svg",
-      "sha256": "045210fb9671442b15dc8514680684997757349c4e549eff1256175e48d5ad99"
+      "sha256": "2891b4bc720b3b9852d29329f1fabf8b0a83839b4a756ea7cbbcccb129d3af32"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/basis-of-pulse-width-modulation.svg",
-      "sha256": "e3cabc960f6cecec1af45ea8d2664b6778cf6589543d500635ef76227530faf9"
+      "sha256": "f283306e948e5c9d951eba80fb4a56aad011931c6d56f5008c01058e69c1633c"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/bi-and-unipolar-pwm.svg",
-      "sha256": "f25c39d73602831e7deb84e194a3d088e8cd40bfc46fe7cec20726da952f4b80"
+      "sha256": "14a6058f6ff1c728e5dbbce1bfe9a6328d8ff177a3876e1b1755b06710f327ff"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/commutation-converter-equivalent-circuit.svg",
-      "sha256": "80da6ee57e63400b9612027fae67a7cd55520a95bb618d8422bcd474121ce895"
+      "sha256": "191ab54ec8e33f9b02b497bb058c320464e885e0bb58c5e3c78ca3f7e37d7a47"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/dc-capacitor-current-stress.svg",
-      "sha256": "1924f7d22507a9dfc3bc087f9ec0a8e10cd3c0a041cbdd281b57114be8875f04"
+      "sha256": "74d2348b26a593d8f8b88f813c112231bf214ec9383720de0b198a926e026f99"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/decoupling-of-zero-sequ-quantity.svg",
-      "sha256": "f8e642863aee7bb16779faa320dd2b525761b088fa2dc021320fd9a00206039a"
+      "sha256": "854cc4ee34ea892ee7e9cde5d988e1e565be0430024ca59f0234e442041dac8e"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/four-quadrant-converter-for-dc-drive.svg",
-      "sha256": "ca4e535167d554b1facc860befa03cf944385057aafc34ac3733757a4e3719e8"
+      "sha256": "e05ce716bc527a9ec2703eee2cff3a74e5e1ecc5d5e2f4583bf3467948ba4901"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/hysteresis-control-switching-frequency-variation.svg",
-      "sha256": "9556bac897a99e0b4ee371e51c70737985900e1102c6efa303f07b1fb9ea5355"
+      "sha256": "31c96d84a9a7604a6c69479a0d0a5d783865d1b5b17e7b13a431c2b318728455"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/hysteresis-current-control-current-error-details.svg",
-      "sha256": "a31dffbfea16e5d9c38f36ff7e4a64473bfe420a7294ba2c203fa49255b5984c"
+      "sha256": "e5706da6a24fc5888fb64b2e019d340dea14b8cf7be630d1fa639423feb5fe3a"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/hysteresis-current-control-open-connected-neutral.svg",
-      "sha256": "f811ce027d62017762392814b1049ae46f75f773a2bcb52b15918e238b055742"
+      "sha256": "78083cd3b9ed6bf595f50db2ea7793f8cb504efc99f2762c0337521c6d60bd08"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/loss-of-commutation.svg",
-      "sha256": "2b730331ee6aa7fbb63e731cf892ff858cce3cb2d18b98739040fd0af1667a82"
+      "sha256": "94469bbbc27ecab24f25738dd35eda7bbb96c67ab30777e0882df2a96c946548"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/mains-distortion.svg",
-      "sha256": "1bc30a4ff7ff86e1db3c6d5bdc8f0173fd34a5b8b535a16dfa194e09f41ddb17"
+      "sha256": "4507ef2a9a778d1cc1d3eb3be6d6914f010090aacdf7e7040cdfe2dcf86b9f40"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/mains-unbalanced.svg",
-      "sha256": "f8a275649c8b87b2b3ce537d8b78da4ebc9a1ab544ecfe8aedb51fb3fee80b54"
+      "sha256": "8c2396658af8741eb2908666d1880785241f910aceb6ef61bcb0a1af94137393"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/output-current-ripple-space-vector-pwm-source.svg",
-      "sha256": "e936c0e3bfd4c9c41a29a57efa6d83ac19589c22c042f1ca0bc4e531f46d1e2c"
+      "sha256": "3aef86b7b4479677c4b9fdd98ea4c293ea3f297744e71fe5ae27e6a29e73c47a"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/output-current-ripple-space-vector-rectangular-source.svg",
-      "sha256": "740848c1ea864787922b600abedd1409cae16015563f3591be015aedc580b1f0"
+      "sha256": "487fb25de91d3d5691e0f0775cb52b67cd54c16f8ace820cd350102899bbe540"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/output-current-ripple-space-vector-sinusoidal-source.svg",
-      "sha256": "5ea59130b39d099e757fc807285404b5bc4cbc4d708232c29370b6d61138e961"
+      "sha256": "a98cb1e0ec0e201d1afd837cbe529a200cf2e40790bc59627fa046b25c47873d"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/overmodulation.svg",
-      "sha256": "54bdf1cef2477552d2e5b3e34664fd4eef735d3666930c91478600387c39ac3a"
+      "sha256": "503e1bb74ee6b985098db342f344f80ac2c37fa6da897fcc1184dd935fd51c39"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/parallel-connection-with-interphase-transformer.svg",
-      "sha256": "34c4d37831cf3c4cd536f5c2f4c810aa5cf649c3075db3ca29549c42e2b705c7"
+      "sha256": "f12207286963a5ca9d540f066066288f8a61559c9614757b44189c48f2544f69"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/parameters-of-current-commutation-theory.svg",
-      "sha256": "cf0e44e224b8f9daeb20eb8350bc8294ecc0fc0509012c69afa8aa7023220f1b"
+      "sha256": "df0a02861ee3d433655e393155814239ca56c83a83a502f31aca5e0931a9d1cd"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/phase-order.svg",
-      "sha256": "0adcec0da08314b481b1d7c73abddbf4144c9806e08c433e74ff829e71055c05"
+      "sha256": "070e125af7648f4eb0ad1ca047c8da208ea8350ee6c881ddf0931b8325fcf457"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/phasor-diagram-operating-range.svg",
-      "sha256": "ea723a27da4c69679e68f05742007d390ecc1243ede804563296c9c49a0f7a02"
+      "sha256": "5d4a016fad339148c9a74da0533a27701a980781f20042ba716f92212a4716f0"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/power-flow-in-three-phase-systems.svg",
-      "sha256": "75a182e7154eedb6ef1e254af74ecf4f2aa08d3ea97c74a21067857474ead7ad"
+      "sha256": "c2b27e5729e525da3b771f5c28a2a1a060fab41aa49af44e3efcc998375cde8a"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/single-phase-full-bridge.svg",
-      "sha256": "c18f11df49e5eea36cf532be66aec6b1d033b04d8384d0629cdb05dbc4fbacc2"
+      "sha256": "6a4bd2a06cade2a2003973a8d9b0d139f4df168910b0988afc306eb5fe2cdf7a"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/single-phase-half-bridge-with-transformer.svg",
-      "sha256": "b6b9acf0b5e8fc894cd57b50a5c98fb130b46f390c012cf10394126aad87e619"
+      "sha256": "d8fdea1ddec30b9b27a1bd61f39b4b42b8705a89256c3f38f06958368d7fee6c"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/sinusoidal-pwm-single-carrier.svg",
-      "sha256": "8d3a3188a457a89c4420324cde0a2387bd662cbb2053d481a1bf694052b16735"
+      "sha256": "825924728e1a91025b791a894f692917c1093eb14987c87a78a596b964b7adb8"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/space-vector-modulation.svg",
-      "sha256": "08d9b59ac047bbe9a2587ece05aff9bd973b8c47bc8eae9d4ac29564838a0253"
+      "sha256": "95c47c6f8fad439877c2d3c9df038d987875a1f748063e5de30f43306eaba63d"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/square-wave-operation-relation-of-dc-and-ac-quantities.svg",
-      "sha256": "59df8a7c67262a30a4d71b3a6696556dedfafcdae729f64f18d783f203f7a2cf"
+      "sha256": "8e1b0c3b2d338c8af24f3af39e0757b5dbae0379d4875fd42b44d1ef1d6d4a31"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/square-wave-operation.svg",
-      "sha256": "932cc286710de2b94517ec7fba15452fb7532b778d8508197d0642549bd63df2"
+      "sha256": "171483290655fa684d09b84bae01f2a615fcce4d3cb6de36e620eb37faa0637f"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/three-phase-full-bridge.svg",
-      "sha256": "57def427dc4d6b765f2172be3531388c8e456005972a8d0f8ab526d6f8a15d86"
+      "sha256": "5e72f24978a5e8d1487295fcc12533d5e41d3cb540898e3843c6eb3a2beb3967"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/three-phase-half-bridge-with-transformer.svg",
-      "sha256": "96f88a8cc6819ed8d02419a31ddfe4001d6058923ba4d5da9283d3184dc26dd3"
+      "sha256": "de4249b366fc837621192b2e0ec3f0d519c68b8ed054c40976f9dcc79dc189e9"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/transistor-diode-current-calculator.svg",
-      "sha256": "df8a8a10fa0621d631304c5535988ee4df39bc142bbb14a0004c0a7c246bc28e"
+      "sha256": "6035c6efff5a6cff3e46ede7e276416a5c0b77334348a8940943c7cfb1d18a34"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcac/transistor-diode-current.svg",
-      "sha256": "e065c656bd58e030457f8a501e0c45561501332f137bf66d09a9b5f660aad18f"
+      "sha256": "03911326f6c4c135bf2b1738f61a6b81cf5171628a540dafd361d046df6ff26d"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/bidirectional-magnetization.svg",
-      "sha256": "acfaa22d25bc946cd8f4ec1e604aeb30e73b56a53ac697d8ee17ab7df682a19c"
+      "sha256": "dfbc66107f90be91753dd3d1ff92926f54e9a15f6e0a15fc86a15645bed3cf11"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/boost-converter-root-locus-diagram-rhp-zero.svg",
-      "sha256": "e6e1e02c5a60557fe342f9b79df540bae8bb14c06c699692909afce64674abea"
+      "sha256": "114536bca931175a509ea1da5d93cf4632f6b38b77dcdec4ed4a646058120bf5"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/boost-converter-u1-variable-u2-controlled.svg",
-      "sha256": "f4250b05379575ca37b9e05452ec380149314917793608deaf27644bf87160ab"
+      "sha256": "836d0bff33408be5329eab934baa20cfbdf603636f740c07a3c5805f9f918ae2"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/buck-boost-converter-u1-variable-u2-controlled.svg",
-      "sha256": "049fb8f034b99630d4b1a122397721f7eeb6fb3fd1f27c1b94f8df0eec0d4544"
+      "sha256": "55a6ee16378d5a0893a5aff4ab1ce85661b0b3167eae434981432aaa00a18fe7"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/conduction-switching-losses.svg",
-      "sha256": "ed306785185d30f59a0e9cfd90f16e6ceb0c162f606d16882f9a191a5ee2d36e"
+      "sha256": "ec5c7891e08c9990f76825853576ac6ae2baefa584b4888ed3b6af4fbf748baf"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/control-of-switching-behavior-mosfet.svg",
-      "sha256": "94d0b1946f4130708d02a0b546d632a57870ecd8121ff07faefd0c5cb06b74df"
+      "sha256": "d07130b79ac1a28b021165df32fff5d2d9567814e2e4f381f59da514c66ad7b4"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/cuk-converter.svg",
-      "sha256": "ef1c544f0b2f0dfe3affeaa0c97a90babd6ccc7e44623e233feef341bcf2b4e6"
+      "sha256": "07e050c6349234a47ad3be169fe3e8e501d436250405b23581ec8ce6e9e6eabe"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/current-ripple.svg",
-      "sha256": "59d39aa6c35146b7cf04e2f48290c774685d552b58cd54e2308a0b625495a011"
+      "sha256": "2340348856aa8152d7deb0cd900fb84d00c61338e06af8800bf1f58e88ffdb1b"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/dcm-principle.svg",
-      "sha256": "05320f4b392649ef032b82fcb95e1d3aa832d4ee297d90fbadb3b533d88fce61"
+      "sha256": "1488bdb189a2856ee476374f1b731206fb01650a4f57a62328263af879ddde50"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/dep-of-ind-on-magn-circ-param.svg",
-      "sha256": "129a05db1c8678833ef06f90afad4e997321738d90e0effd8c6255f48bc13bc6"
+      "sha256": "9d1d461ba3722dfd091b4aaad7ccda94b8588d28c9f3678c04d4309ac284812c"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/dynamic-behavior.svg",
-      "sha256": "8dab6b0237a5409eec4bf7c6a8ca143c63426d6e06055f347d0e8e4918744ce9"
+      "sha256": "a24241dd1b718b5c5f266182e325f63fb8b795e4431832a24dd45b18d1b645c2"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/efficiency-and-losses.svg",
-      "sha256": "ca8411d08251eb3e764c4ea386da951a79cd6c67e33b283d55e50dfa0250cd56"
+      "sha256": "300b1a4a0038126dd71b20151610a00b43abd39d015e5f0c3a38d8c969dca545"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/equivalent-circuits.svg",
-      "sha256": "ddcc70440df0f950f6d600f011df9e95c5f5e0acee9b8ce12b9d2af57c1df573"
+      "sha256": "436683c5dc9bc87f8d8749897f8c535e1aa3d5916c108ca32f2e6efff558b671"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/full-bridge-current-doubler-output.svg",
-      "sha256": "49974be760289fd962d41a2c8410dcbed1effa56c1a542de7114151b69bebfb4"
+      "sha256": "24f4036617d7a44bf71600d093a8f056fdf3f34ac68c85b8dd9bfe4865243ab1"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/isolated-full-bridge-converter.svg",
-      "sha256": "f82252b2c881ae84726cbb748ff70e716a1b1ff9066a5fd5ba9d884ba00b267b"
+      "sha256": "fb761da56a7e4c6b3680aeb55a9a27e1015626ebd5ad2ffe74b710014922cc12"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/lc-resonant-circuit-state-plane-trajectory-uzi-diagram.svg",
-      "sha256": "c52dc4f570265ae0f2e78bc4ffaad13eb3a99a08574f1df7b2339f45535bfa7b"
+      "sha256": "a13c2cb4042a962df5e230942d1fe49538025091d12cc505d736deea4e80acb7"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/magnetic-components.svg",
-      "sha256": "93ae67647b537e6fb31a6afcd297b3906ead4ed8a2bb119a7ed56a5423eb511b"
+      "sha256": "63fa43a9c06e98eba3b8d7858682a09ab1b3579c8af07c488e841499cf15b570"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/magnetizing-current.svg",
-      "sha256": "8c6a04f1aec8887ed12f03c7e3d75fffff5e5f236f504608aff9fb85e3568faf"
+      "sha256": "1a68f6111ef0609513378d24bb392f2709ad7cefc0ad8d00ffc4e8f4f87cf52c"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/mmf-magn-ind-magn-flux.svg",
-      "sha256": "44530a5a429525268c99d822613df2b99f886bb81f89880ab694c99c393fa4ed"
+      "sha256": "a123c5bcf2f42b854384466c7aa7ee928c1c4b3ca383623cf2c56ec94ce1d97e"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/passive-components-filter-circuits.svg",
-      "sha256": "3ed0b511f7b1324f413db65823d3ead3d6cb01a5016bac5a1b4b653d48e49ea6"
+      "sha256": "54e95294f74d00aedf65d0b4249ac037970fdbe1c240016bfaac8a08b7aaa405"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/power-semiconductor-diode.svg",
-      "sha256": "84fd7450c5e00d927543d0d517af282a133296b89d9dd310104d0473624b5d49"
+      "sha256": "7df480972357af2bc1c472a579bed00c438ea53cfe83304bcb8a8c53aae0034b"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/power-semiconductor-transistor.svg",
-      "sha256": "6158783f3f40111ccf3af663af2480e08b27a25134d1fb14c9d3880c14c38f4e"
+      "sha256": "f30b605b7ce676a6f2151ea30db247d4c1c9e47982925df2ced1a6bab0156c2c"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/reluctance-model.svg",
-      "sha256": "341ebc2b6f1d6b9b621d9f88b0207a01ef5422b02318cc5c4c739ea36a5cc75f"
+      "sha256": "bbf5d125870e31b3f7b0b1abccae436d552be05551bb45eb433bed39e3507080"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/sepic-converter.svg",
-      "sha256": "0d072fee410087325c0179548b5e36ed5bc78d87dc6d8e8f8d035404530e0a09"
+      "sha256": "ab775fe7e4dcb163183c73b8a561fbaa149133a54819f699f2ce1e1e5eca0aec"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/spectrum-filtering-of-square-wave.svg",
-      "sha256": "e35b6354cd9bcab287b57791c1cf093fd4d28aaf028a01958b45b148c56e8ec0"
+      "sha256": "d4c69e3ae40aa47de04e0ea56cae07a10cac9756ab42c34993fb87af3bdf7b7a"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/thermal-design.svg",
-      "sha256": "e050decf20ad62fa790326addb9c354851845e2690d0917a74f8f4219740826b"
+      "sha256": "93949f2637f1b60d8a1a492f9e6d27761b1e3552183d7995003b26c4e2012adf"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/transfomer-vol-curr-transform.svg",
-      "sha256": "8814548a9eed6b2d8a869c9c0a0c0c95ec78db115f9f3e105a84b7255fd88863"
+      "sha256": "1527e84d8687e9c67f4e04f27238417c7fea4597bf092a49b963a1428f675025"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/u1-constant-load-variable.svg",
-      "sha256": "6a5f25e61cd090600812d217cfe489d64f6f37ab471117785ecfe6fb49eda6e1"
+      "sha256": "ac25c4dc4260b565112a20cf8438b256b2526335ccbe39d3490d5176bc9410ad"
     },
     {
       "path": "assets/lesson-power-conversion/figures/dcdc/u1-variable-u2-controlled.svg",
-      "sha256": "46c32105b4c5adfff9ab54ebacfe32879a8773a977d7cff037afb17b8ec036db"
+      "sha256": "40b761babe7988941c62a3b38d991e7359bf1087dff7f4ccbe94caf539c0b2a9"
     },
     {
       "path": "assets/lesson-power-conversion/figures/emc/3ph-converter-filter-damping-and-influence-to-leakage.svg",
-      "sha256": "bc0d33cf15c44e13e7286c10c237be1d2eaa22f93cd6f45dafc4ccb715bcb08a"
+      "sha256": "ca218faff90b392e79ffb0e9b4b6fde450b5e4b7e9fb8211397ad11832a40449"
     },
     {
       "path": "assets/lesson-power-conversion/figures/emc/3ph-converter-influence-of-the-load-capacities-to-the.svg",
-      "sha256": "c2442258a9c1e3503961dc6fb720db709dd00e147a2c3735e9c0ffe4fde171ed"
+      "sha256": "492a32db09afdc3227d4737eca9519092e8f49129d37fa8802379cdebe23646f"
     },
     {
       "path": "assets/lesson-power-conversion/figures/emc/dc-dc-converter-noise-generation-by-commutation.svg",
-      "sha256": "089652320af149c97c12c0543e03adc9950de0f5696e9c82868e4bc600871482"
+      "sha256": "af831245d314de34250466c5d3220e9b213dfccb5d3fdc28be15f9e1dac989ac"
     },
     {
       "path": "assets/lesson-power-conversion/figures/emc/dc-dc-converterinfluence-of-inductive-coupling-to-filter.svg",
-      "sha256": "6e14f75d1a5b9f305021dbc57a8086866d55e28c5a0157d8e5944dd9c58b4d95"
+      "sha256": "d8a6828ac9640cde75346a25ad43696e11254cb36e8dd5c08ff9e4b3c894d2b1"
     },
     {
       "path": "assets/lesson-power-conversion/figures/emc/dc-dc-converterinfluence-of-measurement-methods-to-noise.svg",
-      "sha256": "769104f2b26535ac611b19e10966508c0efe7a5dc2043a96a30df336b44d5ce2"
+      "sha256": "dff0c48dc824a7f0a17e5b7795eb6c7e5e9b4f56abc76c221d5912a856181069"
     },
     {
       "path": "assets/lesson-power-conversion/figures/emc/dc-dc-converterinfluence-of-parasitic-components-1.svg",
-      "sha256": "4ebdd28a9a4bf43eaf45ff137de8782dffcefbbc27eb03581e71a3156fcd5b82"
+      "sha256": "a1f97f3d1e6ee533b518eda6a71126356e6be905574a8b351859bf8d805b2907"
     },
     {
       "path": "assets/lesson-power-conversion/figures/emc/dc-dc-converterinfluence-of-parasitic-components-2.svg",
-      "sha256": "4f5076f5ff0f412b56e7f3a97b13587d5053515bf704395087d4642e6dcdf546"
+      "sha256": "febc43363fb86ca2c017cac7963d9107c985174067aed36eff1a618567ee609b"
     },
     {
       "path": "assets/lesson-power-conversion/figures/emc/spectral-influence-of-pulse-parameter.svg",
-      "sha256": "03adbad25e42c4c8139e5fb6313f384cf6e808752c6bc46bbb3014b3201a0b27"
+      "sha256": "4294a8dd856a242504c0d8078e3b50089318bb09e201c52fc92479be1d09a551"
     },
     {
       "path": "assets/power-electronics-recap/figures/01_two_wire_inductance.svg",
