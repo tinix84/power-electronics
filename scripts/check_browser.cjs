@@ -51,13 +51,9 @@ const server = http.createServer((req, res) => {
     ]);
     assert.equal(remote.length, 1, 'Withdrawal reload must not load Google');
     assert.equal(await page.evaluate(() => document.cookie.includes('pe_course')), false);
-<<<<<<< HEAD
-    const files = ['index.html', 'privacy.html', 'figures.html', 'power-electronics-recap/recap.html', 'power-electronics-recap/transformer-characterization.html', 'lesson-01-buck/lesson-01.html', 'lesson-02-boost/lesson-02.html', 'lesson-magnetics/appendix-area-product.html', 'lesson-converter-tolerances/exercise.html', 'lesson-control/lesson-control.html'];
-=======
     const foundationManifest = JSON.parse(fs.readFileSync(path.resolve(root, '../content/power-electronics-recap/foundation-pages.json'), 'utf8'));
     const foundationFiles = foundationManifest.map(entry => 'power-electronics-recap/' + entry.file);
-    const files = foundationsOnly ? ['index.html', 'power-electronics-recap/recap.html', ...foundationFiles] : ['index.html', 'privacy.html', 'figures.html', 'power-electronics-recap/recap.html', 'power-electronics-recap/transformer-characterization.html', 'lesson-01-buck/lesson-01.html', 'lesson-02-boost/lesson-02.html', 'lesson-magnetics/appendix-area-product.html', 'lesson-control/lesson-control.html', ...foundationFiles];
->>>>>>> origin/codex/foundations-chapters
+    const files = foundationsOnly ? ['index.html', 'power-electronics-recap/recap.html', ...foundationFiles] : ['index.html', 'privacy.html', 'figures.html', 'power-electronics-recap/recap.html', 'power-electronics-recap/transformer-characterization.html', 'lesson-01-buck/lesson-01.html', 'lesson-02-boost/lesson-02.html', 'lesson-magnetics/appendix-area-product.html', 'lesson-converter-tolerances/exercise.html', 'lesson-control/lesson-control.html', ...foundationFiles];
     for (const width of [1440, 390]) {
       await page.setViewportSize({width, height: 900});
       for (const file of files) {

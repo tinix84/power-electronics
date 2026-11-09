@@ -30,6 +30,35 @@ class Page(HTMLParser):
                 self.links.append(attrs[key])
 
 
+def copy_quarto_release():
+    """Copy only the hashed public book files named by its release manifest."""
+    source = ROOT / 'content' / 'quarto-book'
+    manifest = source / 'release-manifest.json'
+    if not manifest.is_file():
+        return set()
+    release = json.loads(manifest.read_text(encoding='utf-8'))
+    if release.get('edition') != 'public':
+        raise ValueError('Only the public book can enter the website release')
+    names = [entry['path'] for entry in release['files']]
+    if not names or len(names) != len(set(names)):
+        raise ValueError('Invalid public book file list')
+    forbidden = {'.md', '.qmd', '.py', '.csv', '.ipynb', '.m', '.tex', '.tikz'}
+    for entry in release['files']:
+        relative = Path(entry['path'])
+        if relative.is_absolute() or '..' in relative.parts or relative.suffix.lower() in forbidden:
+            raise ValueError(f'Invalid public book path: {entry["path"]}')
+        file = source / relative
+        if not file.resolve().is_relative_to(source.resolve()):
+            raise ValueError('Public book path escapes the release folder')
+        if hashlib.sha256(file.read_bytes()).hexdigest() != entry['sha256']:
+            raise ValueError(f'Public book hash mismatch: {entry["path"]}')
+    for name in [*names, 'release-manifest.json']:
+        destination = OUTPUT / 'quarto-book' / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source / name, destination)
+    return {'quarto-book/' + name for name in [*names, 'release-manifest.json']}
+
+
 def build():
     OUTPUT.mkdir(exist_ok=True)
     pages_to_build = release_pages()
@@ -79,19 +108,16 @@ def build():
             text = ''.join(pieces)
             text = text.replace('</head>', '<style>' + math['css'] + '</style></head>')
             print(f"Rendered {len(items)} KaTeX expressions in {relative}")
-<<<<<<< HEAD
         course_links = '<div class="course-links"><a href="../index.html">← Course home</a><a href="../power-electronics-recap/recap.html">Circuit foundations</a><a href="../lesson-01-buck/lesson-01.html">Buck-converter design</a><a href="../lesson-02-boost/lesson-02.html">Boost-converter exercises · draft</a><a href="../lesson-magnetics/appendix-area-product.html">Magnetics: area product by kind · draft</a><a href="../lesson-converter-tolerances/exercise.html">Converter tolerances exercise</a><a href="../lesson-control/lesson-control.html">Control: pole placement vs small-signal models · draft</a><a href="../power-electronics-recap/transformer-characterization.html">Transformer guide</a><a href="../figures.html">Circuit figure gallery</a></div>'
-=======
-        course_links = '<div class="course-links"><a href="../index.html">← Course home</a><a href="../power-electronics-recap/recap.html">Circuit foundations</a><a href="../lesson-01-buck/lesson-01.html">Buck-converter design</a><a href="../lesson-02-boost/lesson-02.html">Boost-converter exercises · draft</a><a href="../lesson-magnetics/appendix-area-product.html">Magnetics: area product by kind · draft</a><a href="../lesson-control/lesson-control.html">Control: pole placement vs small-signal models · draft</a><a href="../power-electronics-recap/transformer-characterization.html">Transformer guide</a><a href="../figures.html">Circuit figure gallery</a></div>'
         course_links = course_links.replace('power-electronics-recap/recap.html', 'power-electronics-recap/index.html')
->>>>>>> origin/codex/foundations-chapters
         text = text.replace('<nav aria-label="Chapter contents">', '<nav aria-label="Chapter contents">' + course_links)
         text = text.replace('<body>', '<body class="reading-page">')
         text = text.replace("</head>", '<link rel="stylesheet" href="../site.css">\n<script defer src="../reading.js"></script>\n<script defer src="../analytics.js"></script>\n</head>')
         destination = OUTPUT / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(text, encoding="utf-8")
-    expected = {"index.html", "privacy.html", "analytics.js", "reading.js", "site.css", ".nojekyll", "figures.html", *pages_to_build, *("circuit-figures/" + name for name in assets)}
+    book_files = copy_quarto_release()
+    expected = {"index.html", "privacy.html", "analytics.js", "reading.js", "site.css", ".nojekyll", "figures.html", *pages_to_build, *("circuit-figures/" + name for name in assets), *book_files}
     actual = {p.relative_to(OUTPUT).as_posix() for p in OUTPUT.rglob("*") if p.is_file()}
     if actual != expected:
         raise ValueError(f"Unexpected release contents: {actual ^ expected}. Inspect before publishing.")
