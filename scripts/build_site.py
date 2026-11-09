@@ -129,6 +129,8 @@ def build():
             if parsed.scheme or parsed.netloc:
                 continue
             target = (path.parent / unquote(parsed.path)).resolve() if parsed.path else path
+            if target.is_dir():
+                target /= 'index.html'
             if not target.is_relative_to(OUTPUT.resolve()) or not target.is_file():
                 errors.append(f"{path.name}: missing or escaped {link}")
             elif parsed.fragment and target in pages and unquote(parsed.fragment) not in pages[target].ids:
