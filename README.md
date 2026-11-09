@@ -2,7 +2,11 @@
 
 Published at https://tinix84.github.io/power-electronics/ by the [tinix84.github.io](https://github.com/tinix84/tinix84.github.io) site, which includes this repository as a submodule pinned to one commit. This repository no longer deploys to Pages itself.
 
+<<<<<<< HEAD
 This repository contains released, self-contained HTML reading copies. The canonical Markdown, figure generation and withheld solutions stay in the local teaching workspace. Only the seven HTML files explicitly listed in `scripts/sync_content.py` are copied. The control lesson on pole placement versus small-signal models is a draft; its instructor guide and exercise solutions stay private. The magnetics Appendix A on the area product is a draft; the magnetics lesson it belongs to is not written yet. Lesson 2 currently contains two boost-converter exercise drafts, rather than a complete lecture. Its worked solutions and simulation plots remain withheld. No solutions companion, scratch files, third-party reference downloads or private course files are published.
+=======
+This repository contains released, self-contained HTML reading copies. The canonical Markdown, figure generation and withheld solutions stay in the local teaching workspace. Only the six named lesson copies and the foundation pages in the validated `foundation-pages.json` release list are copied. The control lesson on pole placement versus small-signal models is a draft; its instructor guide and exercise solutions stay private. The magnetics Appendix A on the area product is a draft; the magnetics lesson it belongs to is not written yet. Lesson 2 currently contains two boost-converter exercise drafts, rather than a complete lecture. Its worked solutions and simulation plots remain withheld. No solutions companion, scratch files, third-party reference downloads or private course files are published.
+>>>>>>> origin/codex/foundations-chapters
 
 ## Update and publish
 
@@ -30,6 +34,15 @@ git add courses/power-electronics
 Every push and pull request here builds an explicit release containing the reading pages and 26 circuit SVGs, validates internal links and anchors, and checks consent and desktop/mobile rendering in Chromium. The circuit checks verify SVG hashes, component counts, symbol references and the 26-group combined JSON. Pin only a commit whose run passed. The workflow can also be run manually from GitHub Actions. The pipeline does not rerun the scientific examples or regenerate lessons from Markdown.
 
 Browser checks use the Chrome already installed on the Ubuntu 24.04 runner, with pinned Playwright 1.62.1. This keeps the same checks without downloading another browser or reinstalling system packages on every publication.
+
+## Foundation reading pages
+
+Start foundations at `power-electronics-recap/index.html`. Readers choose one section or worked example at a time.
+Each page has previous/next links and a link to the contents. `recap.html` keeps the complete reading copy and its existing anchors.
+Edit the private chapter Markdown sources, then run the foundation builder and the sync commands above.
+Use `scripts/sync_content.py --foundations` to sync only these pages.
+The sync validates every additional filename against the foundation page naming scheme.
+Run `node scripts/check_browser.cjs PATH_TO_PLAYWRIGHT --foundations` for the foundation browser checks.
 
 ## Reading layout, mathematics and circuits
 
