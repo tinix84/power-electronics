@@ -158,9 +158,18 @@ const server = http.createServer((req, res) => {
     }
     const bookManifest = path.resolve(root, '../content/quarto-book/release-manifest.json');
     if (!foundationsOnly && fs.existsSync(bookManifest)) {
+      const release = JSON.parse(fs.readFileSync(bookManifest, 'utf8'));
+      const newLessonPrefixes = ['lesson-03-buck-boost/', 'lesson-four-switch-buck-boost/', 'lesson-capacitors/'];
+      const newLessonPages = release.files.map(entry => entry.path).filter(file => file.endsWith('.html') && newLessonPrefixes.some(prefix => file.startsWith(prefix)));
+      assert.ok(newLessonPages.length >= 40, 'The three complete lessons must be published');
+      assert.equal(release.files.some(entry => /lesson-(?:03|four-switch|capacitors)-solutions|\.(?:md|qmd|py|ipynb|pdf)$/.test(entry.path)), false, 'Withheld companions and source documents must remain private');
+      await page.goto(base);
+      for (const entry of ['lesson-03-buck-boost/lesson-03.html', 'lesson-four-switch-buck-boost/lesson-four-switch.html', 'lesson-capacitors/lesson-capacitors.html']) {
+        assert.equal(await page.locator(`a.course-card[href="quarto-book/${entry}"]`).count(), 1);
+      }
       for (const width of [1440,390]) {
         await page.setViewportSize({width,height:1000});
-        for (const file of ['index.html','power-electronics-recap/chapter-01.html','power-electronics-recap/chapter-19-09.html','power-electronics-recap/chapter-19-12.html','power-electronics-recap/chapter-19-13.html','power-electronics-recap/chapter-19-14.html']) {
+        for (const file of ['index.html','power-electronics-recap/chapter-01.html','power-electronics-recap/chapter-19-09.html','power-electronics-recap/chapter-19-12.html','power-electronics-recap/chapter-19-13.html','power-electronics-recap/chapter-19-14.html', ...newLessonPages]) {
           assert.equal((await page.goto(base+'quarto-book/'+file)).status(),200);
           await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.querySelectorAll('main img')].map(i=>i.decode())); });
           assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,file+' overflows');
