@@ -1,2 +1,5 @@
 # Keep exported vector files byte-identical to the hashes in the manifest.
 content/circuit-figures/*.svg -text
+
+# Preserve every exported public-book byte used by the release hash manifest.
+content/quarto-book/** -text

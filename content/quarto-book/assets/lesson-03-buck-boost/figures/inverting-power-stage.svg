@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="285" viewBox="0 0 880 285" role="img" aria-labelledby="title desc">
+<title id="title">PMP30916 inverting power paths</title>
+<desc id="desc">Q1 charges the inductor. Q5 connects the switch node to the negative output. The load and capacitor connect to system ground.</desc>
+<rect width="880" height="620" fill="white"/>
+<g font-family="Arial,sans-serif" font-size="17" fill="#24333f">
+<text x="30" y="30" font-size="23" font-weight="bold">PMP30916 — negative output</text>
+<text x="30" y="58">Switch blocks show controlled power paths; gate-drive circuits omitted.</text>
+<g stroke="#2563a1" stroke-width="3" fill="none">
+<path d="M70 110H180 M260 110H410 M410 110H530 M610 110H780 M410 110V145 M410 215V245 M70 245H780 M70 245V180 M70 140V110 M780 110V155 M780 180V245"/>
+<circle cx="70" cy="160" r="20"/>
+<rect x="180" y="90" width="80" height="40" rx="5"/>
+<rect x="530" y="90" width="80" height="40" rx="5"/>
+<path d="M410 145 C435 145 435 162.5 410 162.5 C435 162.5 435 180 410 180 C435 180 435 197.5 410 197.5 C435 197.5 435 215 410 215"/>
+<path d="M755 155H805 M755 180H805"/>
+<path d="M700 110V145 M700 215V245"/>
+<rect x="687" y="145" width="26" height="70"/>
+</g>
+<text x="45" y="100">+Vin</text><text x="59" y="166">+</text>
+<text x="206" y="116">Q1</text><text x="556" y="116">Q5</text>
+<text x="430" y="185">L2</text><text x="760" y="98">−8 V</text>
+<text x="750" y="211">Cout</text><text x="640" y="187">Load</text><text x="80" y="270">System ground, 0 V</text>
+<text x="350" y="95">SW</text>
+<text x="510" y="78">Controller ground = negative output</text>
+<text x="30" y="312" font-size="23" font-weight="bold">LM5176EVM-HP — positive output, common ground</text>
+<g stroke="#2563a1" stroke-width="3" fill="none">
+<path d="M160 365H290V390 M290 430V475 M290 475V500 M290 540V570 M290 475H415 M485 475H650 M650 365V390 M650 430V475 M650 475V500 M650 540V570 M650 365H790 M160 570H790"/>
+<rect x="250" y="390" width="80" height="40" rx="5"/>
+<rect x="250" y="500" width="80" height="40" rx="5"/>
+<rect x="610" y="390" width="80" height="40" rx="5"/>
+<rect x="610" y="500" width="80" height="40" rx="5"/>
+<path d="M415 475 C415 450 432.5 450 432.5 475 C432.5 450 450 450 450 475 C450 450 467.5 450 467.5 475 C467.5 450 485 450 485 475"/>
+<circle cx="290" cy="475" r="4" fill="#2563a1"/>
+<circle cx="650" cy="475" r="4" fill="#2563a1"/>
+</g>
+<text x="145" y="353">+Vin, 6–36 V</text><text x="710" y="353">+12 V out</text>
+<text x="260" y="416">Q1 ∥ Q2</text><text x="275" y="526">Q3</text>
+<text x="635" y="416">Q5</text><text x="635" y="526">Q7</text>
+<text x="432" y="450">L1</text><text x="340" y="458">A / SW1</text><text x="530" y="458">B / SW2</text>
+<text x="160" y="603">Common ground, 0 V. Capacitor banks and sense shunts omitted for clarity.</text>
+</g>
+</svg>
