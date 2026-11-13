@@ -2394,6 +2394,16 @@ HTWG · Reading edition
 <td>§10: critical conduction, DCM with diode emulation, diode rectifier, bypass. Figures 09–10</td>
 </tr>
 <tr class="even">
+<td><code>sensitivity-checks.json</code></td>
+<td><code>sensitivity_analysis.py</code></td>
+<td>§5.1–5.2: ranked parameter ranges, direct RC integration, failed six-part and checked nine-part input banks</td>
+</tr>
+<tr class="odd">
+<td><code>simulation-checks.json</code> (inside <code>ti-pmp21274</code>)</td>
+<td><code>run_qspice.py</code></td>
+<td>§9.3: twelve external switching runs, physical traces, settling, power balance and step convergence</td>
+</tr>
+<tr class="even">
 <td><code>ripple-checks.json</code></td>
 <td><code>ripple_checks.py</code></td>
 <td>§9.1: ripple at C5–C8, at VOUT and at the input against TI’s captures, C20 ESR sweep</td>
@@ -2437,6 +2447,11 @@ HTWG · Reading edition
 <td>E1–E3: worked figures, switched boost start-up and bus-power events</td>
 </tr>
 <tr class="odd">
+<td><code>data/printed-claim-checks.json</code></td>
+<td><code>printed_claims.py</code></td>
+<td>Named derived quantities in the enrolled exercise prose, including pulse charge, deadline margin and event-energy remedies</td>
+</tr>
+<tr class="even">
 <td><code>html-checks.json</code></td>
 <td><code>check_html.cjs</code></td>
 <td>Browser check of <code>lesson-02.html</code></td>
@@ -2444,6 +2459,7 @@ HTWG · Reading edition
 </tbody>
 </table>
 <p>Run all scripts with <code>C:\Users\tinix\miniconda3\envs\ntbees2\python.exe -X utf8</code>. The tests in <code>tests/</code> check the structure of the lesson, the numbers it quotes and each script’s results.</p>
+<p><code>calculation-ledger.json</code> inventories the numeric fields, generators and independent-check families. It separates vendor evidence from course calculations. The text-number tests still sample quoted values; the ledger does not by itself prove that every printed number has an exact independent assertion.</p>
 </section>
 <section id="13-3-slide-map" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="13-3-slide-map">13.3 Slide map</h2>

@@ -2286,6 +2286,7 @@ HTWG · Reading edition
   <ul>
   <li><a href="#9-1-python-waveform-checks-against-ti-s-scope-captures" id="toc-9-1-python-waveform-checks-against-ti-s-scope-captures" class="nav-link active" data-scroll-target="#9-1-python-waveform-checks-against-ti-s-scope-captures">9.1 Python waveform checks against TI’s scope captures</a></li>
   <li><a href="#9-2-plecs-models-pending" id="toc-9-2-plecs-models-pending" class="nav-link" data-scroll-target="#9-2-plecs-models-pending">9.2 PLECS models (pending)</a></li>
+  <li><a href="#9-3-executed-qspice-power-stage-checks" id="toc-9-3-executed-qspice-power-stage-checks" class="nav-link" data-scroll-target="#9-3-executed-qspice-power-stage-checks">9.3 Executed QSPICE power-stage checks</a></li>
   </ul>
 </nav>
     </div>
@@ -2445,7 +2446,7 @@ HTWG · Reading edition
 </tr>
 </tbody>
 </table>
-<p>The sweep’s best is 0.35 Ω, with 21 mV rms error. The loop gap of §7.2 points the same way. Two independent measurements, the loop gain and the ripple, agree that C20’s ESR on the board is about half the BOM’s 0.7 Ω. The C5–C8 derating, 2.0 µF each at 54 V, is ours and moves the result as well. TI’s trace adds the switching spikes from the probe loop and the ESL, which the model leaves out. <strong>We keep 0.7 Ω in the base model and report the gap.</strong> Tuning it to 0.35 Ω would hide the one question an impedance measurement can answer.</p>
+<p>The sweep’s best is 0.35 Ω, with 21 mV rms error. The loop gap of §7.2 points the same way. Both model comparisons improve when assumed C20 ESR is lower. They share component assumptions and do not independently measure ESR. The result makes a lower ESR plausible; it does not identify the board value. The C5–C8 derating, 2.0 µF each at 54 V, is ours and moves the result as well. TI’s trace adds the switching spikes from the probe loop and the ESL, which the model leaves out. <strong>We keep 0.7 Ω in the base model and report the gap.</strong> Tuning it to 0.35 Ω would hide the one question an impedance measurement can answer.</p>
 <p><strong>What these checks prove.</strong> They show that the two-stage ripple model, with one plausible input changed, reproduces four captures in shape and size. They do not prove that C20’s ESR is 0.35 Ω: the ceramic derating and the probe also move the result. The loop gap and the ripple gap point to the same part. That makes C20 the first part to measure, not a solved question.</p>
 <p><strong>Input ripple.</strong> The model gives 174 mV at 12 V, 312 mV at 24 V, 337 mV at 36 V and 188 mV at 48 V, with the source path open (ours). TI did not capture it. §5’s <strong>No!</strong> stands until a measurement replaces the model.</p>
 <p>The other two proofs are already on the page: the efficiency curve against TI’s measured points (§8.3) and the averaged load step against TI’s capture (§7.3).</p>
@@ -2498,6 +2499,133 @@ HTWG · Reading edition
 <p><strong>Output-port order</strong> (fixed for the pyplecs signal map): 1 <code>i_L1</code>, 2 <code>v_out</code>, 3 <code>v_sw</code>, 4 <code>i_in</code>, 5 <code>v_cin</code>, 6 <code>v_a</code>, 7 <code>i_S1</code>, 8 <code>i_S2</code>, 9 <code>i_Co1</code>, 10 <code>i_L2</code>, 11 <code>g_S2</code>. Model 2 adds 12 <code>v_comp</code>.</p>
 <p>PLECS leaves out the losses that Python adds analytically: output charge, turn-on overlap, reverse recovery, gate drive, controller bias and core loss. Its efficiency will therefore come out higher than TI’s. When the lecturer draws both models, their results replace the word <em>pending</em> here. Investigate any disagreement with the Python model. Do not average it away.</p>
 <p><strong>Choose the model for the question.</strong> Use the averaged model for the loop and the load step. Use a switching model for ripple, commutation and the body-diode intervals. The first is simpler to inspect. The second needs more detail and computation. Compare their overlapping predictions before trusting either.</p>
+</section>
+<section id="9-3-executed-qspice-power-stage-checks" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="9-3-executed-qspice-power-stage-checks">9.3 Executed QSPICE power-stage checks</h2>
+<p>QSPICE is available, so we use it for the external switching evidence. PLECS remains an alternative pending a drawn model. The editable netlist is <code>ti-pmp21274/qspice/pmp21274_boost.cir</code>. Its README maps the existing parameters and eleven output signals to the PLECS guide. The simulator uses generic switches with the stated hot resistance and body-diode assumptions. It contains both input capacitor branches, the source impedance and the two-stage output filter. It does not contain the LM5122 control loop.</p>
+<p>Predict what fixed duty will leave unresolved when the forced-PWM current valley crosses zero. A negative valley permits reverse current through a synchronous stage. It is not the three-interval DCM of a diode boost.</p>
+<p>The source is 12, 24, 36 or 48 V; each row uses the resistance corresponding to 54 V at the named load. Frequency is 230 kHz. Duty is calculated from conduction balance before each run, not fitted to its output. The comparison band for mean output is 54 V ±2% (ours). The 540 mV output-ripple and 100 mV low-line input-ripple targets are also ours.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Input</th>
+<th style="text-align: right;">Named load</th>
+<th style="text-align: right;">Mean output</th>
+<th style="text-align: right;">Output ripple</th>
+<th style="text-align: right;">Inductor valley / peak</th>
+<th>Output band</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">12 V</td>
+<td style="text-align: right;">2.5 A</td>
+<td style="text-align: right;">53.957 V</td>
+<td style="text-align: right;">380.0 mV</td>
+<td style="text-align: right;">9.442 / 13.467 A</td>
+<td>Pass</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24 V</td>
+<td style="text-align: right;">2.5 A</td>
+<td style="text-align: right;">53.925 V</td>
+<td style="text-align: right;">290.5 mV</td>
+<td style="text-align: right;">2.728 / 8.552 A</td>
+<td>Pass</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">36 V</td>
+<td style="text-align: right;">2.5 A</td>
+<td style="text-align: right;">53.942 V</td>
+<td style="text-align: right;">204.7 mV</td>
+<td style="text-align: right;">1.117 / 6.381 A</td>
+<td>Pass</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48 V</td>
+<td style="text-align: right;">2.5 A</td>
+<td style="text-align: right;">53.988 V</td>
+<td style="text-align: right;">79.3 mV</td>
+<td style="text-align: right;">1.633 / 3.996 A</td>
+<td>Pass</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12 V</td>
+<td style="text-align: right;">1.25 A</td>
+<td style="text-align: right;">53.961 V</td>
+<td style="text-align: right;">194.3 mV</td>
+<td style="text-align: right;">3.655 / 7.704 A</td>
+<td>Pass</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24 V</td>
+<td style="text-align: right;">1.25 A</td>
+<td style="text-align: right;">54.592 V</td>
+<td style="text-align: right;">167.6 mV</td>
+<td style="text-align: right;">-0.000 / 5.824 A</td>
+<td>Pass</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">36 V</td>
+<td style="text-align: right;">1.25 A</td>
+<td style="text-align: right;">55.413 V</td>
+<td style="text-align: right;">156.7 mV</td>
+<td style="text-align: right;">-0.786 / 4.745 A</td>
+<td>Fail</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48 V</td>
+<td style="text-align: right;">1.25 A</td>
+<td style="text-align: right;">53.988 V</td>
+<td style="text-align: right;">68.4 mV</td>
+<td style="text-align: right;">0.233 / 2.581 A</td>
+<td>Pass</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12 V</td>
+<td style="text-align: right;">0.1 A</td>
+<td style="text-align: right;">58.643 V</td>
+<td style="text-align: right;">26.2 mV</td>
+<td style="text-align: right;">-1.543 / 2.621 A</td>
+<td>Fail</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24 V</td>
+<td style="text-align: right;">0.1 A</td>
+<td style="text-align: right;">56.173 V</td>
+<td style="text-align: right;">87.9 mV</td>
+<td style="text-align: right;">-2.759 / 3.253 A</td>
+<td>Fail</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">36 V</td>
+<td style="text-align: right;">0.1 A</td>
+<td style="text-align: right;">55.415 V</td>
+<td style="text-align: right;">130.3 mV</td>
+<td style="text-align: right;">-2.599 / 2.926 A</td>
+<td>Fail</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48 V</td>
+<td style="text-align: right;">0.1 A</td>
+<td style="text-align: right;">55.084 V</td>
+<td style="text-align: right;">74.0 mV</td>
+<td style="text-align: right;">-1.229 / 1.473 A</td>
+<td>Fail</td>
+</tr>
+</tbody>
+</table>
+<p>The full-load output passes this mean/ripple check. Fixed-duty light-load regulation does not pass everywhere. A controller must change duty; these failures cannot be used as evidence that TI’s closed-loop board fails. At low line/full load the input ripple is 176 mV: the original bank still fails our 100 mV target. The separate uncertainty/redesign calculation in §5.2 does not alter this base-model trace.</p>
+<p>Each run retains adaptive-time samples over more than twenty complete gate-aligned periods. Period-mean output drift is below 10 mV. The power audit integrates source, winding, shunt, capacitor-ESR and device conduction losses and subtracts stored-energy drift. Its residual is at most 13.4 mW over the matrix, inside the stated 20 mW or 1% loss criterion. A 12 V/full-load repeat halves maximum step from one period/400 to one period/800. Mean output changes by 0.217 mV, output ripple by less than 0.004 mV and inductor ripple by less than 0.08 mA. These are numerical checks on this model.</p>
+<p>The model excludes core, gate, Coss, recovery and overlap losses. Its port-power difference therefore cannot be compared with TI’s full efficiency as if it were a complete loss prediction. It also excludes startup, protection and closed-loop transients. Use it to check steady-state current, ripple and conduction balance. Use the measured loop and loss comparisons in §7–8 for their stated purposes, and a controller model or bench test when a dynamic requirement determines the choice.</p>
 
 
 </section>

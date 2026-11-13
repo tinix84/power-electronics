@@ -2279,8 +2279,15 @@ HTWG · Reading edition
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#5-1-which-uncertainty-changes-input-ripple-most" id="toc-5-1-which-uncertainty-changes-input-ripple-most" class="nav-link active" data-scroll-target="#5-1-which-uncertainty-changes-input-ripple-most">5.1 Which uncertainty changes input ripple most?</a></li>
+  <li><a href="#5-2-close-the-low-line-ripple-target-then-check-the-cost" id="toc-5-2-close-the-low-line-ripple-target-then-check-the-cost" class="nav-link" data-scroll-target="#5-2-close-the-low-line-ripple-target-then-check-the-cost">5.2 Close the low-line ripple target, then check the cost</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
@@ -2377,12 +2384,98 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 </tr>
 </tbody>
 </table>
+<p><strong>The boost’s input is easy.</strong> This is the “continuous input current” of the opening, with numbers. A solar panel or a fuel cell sees a nearly constant current, which the MPPT can modulate slowly. The EMC filter must remove only a triangle, not a train of rectangles (lecture of 2026-10-30).</p>
 <p><strong>The worst case is not at 12 V.</strong> The input ripple grows with <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mi>I</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">\Delta I_L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>, which peaks at 27 V (§3.1). The ceramics also lose capacitance as the input rises. The fitted model of §9.1 gives 174 mV at 12 V, 312 mV at 24 V, 337 mV at 36 V and 188 mV at 48 V (ours, <code>ripple-checks.json</code>). Our target covers only 12 V. If the 100 mV applied over the range, the bank would need even more capacitance at 36 V.</p>
 <p><strong>What the model leaves out.</strong> The model leaves the source path open: all AC current flows into the bank. On the bench the source and its leads take part of it. The PLECS model of §9.2 includes a 5 mΩ, 2 µH bench source (ours) to show this effect.</p>
 <p><strong>Decision.</strong> The benefit of TI’s small bank is cost and area: 1.17 A RMS do not need more ceramics for heating. The cost is a ripple of 175 mV against our 100 mV, and more at mid-range. If 100 mV is mandatory, add effective ceramic capacitance first: (5.1b) asks for 22.1 µF at 12 V, at least six 4.7 µF parts at 4.2 µF each. A credible alternative is a small LC filter ahead of the bank, which a solar or automotive input often needs anyway for EMC. A measurement of the input ripple at 24 and 36 V would decide which.</p>
 <p><strong>Your choice.</strong> The source is a solar panel with 2 m of cable. Would you still add ceramics at the board input, or rely on the cable and an input filter? Name the measurement that decides it.</p>
+<section id="5-1-which-uncertainty-changes-input-ripple-most" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="5-1-which-uncertainty-changes-input-ripple-most">5.1 Which uncertainty changes input ripple most?</h2>
+<p>Before the sweep, predict whether effective capacitance, inductance or ceramic ESR will dominate. Keep 12 V input, 54 V output, 2.5 A load and 228 kHz fixed. Use the fitted steady-state loss model from §8.4 and the same open-source-path ripple model as §9.1. This is a local uncertainty study, not a comparison of load models.</p>
+<p>The base result is 173.84 mV. Change one parameter at a time. The signed changes below correspond to each range’s low and high endpoints. The capacitance and ESR ranges are teaching assumptions. They are not measured tolerances.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Range and basis</th>
+<th>Signed ripple change, low / high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>C_in</td>
+<td>Ours: ±20% effective-capacitance uncertainty including bias; not a guaranteed supplier bound</td>
+<td>+42.99 mV / -28.78 mV</td>
+</tr>
+<tr class="even">
+<td>L1</td>
+<td>Coilcraft Doc644-1 ±10% nominal tolerance; excludes additional hot/bias droop</td>
+<td>+19.31 mV / -15.80 mV</td>
+</tr>
+<tr class="odd">
+<td>rC_in</td>
+<td>Ours: half to twice assumed ceramic-bank ESR; no measured ESR</td>
+<td>+0.13 mV / -0.12 mV</td>
+</tr>
+</tbody>
+</table>
+<p>Effective input capacitance moves ripple most within these ranges. Inductance ranks second. Ceramic ESR has little effect on this result. Its small signed effect includes current sharing with C19; it is not a general rule that larger ESR reduces ripple. <code>ti-pmp21274/scripts/sensitivity_analysis.py</code> checks the harmonic calculation against direct time integration of the two physical RC branches. The source path remains a separate modeling choice.</p>
+</section>
+<section id="5-2-close-the-low-line-ripple-target-then-check-the-cost" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="5-2-close-the-low-line-ripple-target-then-check-the-cost">5.2 Close the low-line ripple target, then check the cost</h2>
+<p>Our 100 mV target applies at 12 V and full load. It is a teaching requirement, not a TI specification. Predict whether doubling the three-ceramic bank is enough after effective capacitance and inductance move to their low endpoints.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Parallel 4.7 µF, 80 V ceramics</th>
+<th style="text-align: right;">Assumed effective C at 12 V</th>
+<th style="text-align: right;">Nominal ripple</th>
+<th style="text-align: right;">Ripple at C −20%, L −10%</th>
+<th>Meets 100 mV in both cases?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">12.6 µF</td>
+<td style="text-align: right;">173.8 mV</td>
+<td style="text-align: right;">240.9 mV</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">25.2 µF</td>
+<td style="text-align: right;">87.3 mV</td>
+<td style="text-align: right;">121.1 mV</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">37.8 µF</td>
+<td style="text-align: right;">58.2 mV</td>
+<td style="text-align: right;">80.9 mV</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Six parts pass nominally but fail the stated uncertainty check. Nine parts close this steady-state ripple requirement. At the checked low-capacitance/low-inductance corner, ceramic-bank RMS current is 1.287 A, about 0.143 A per identical branch. The assumed ESR gives 0.92 mW total ceramic loss. This is a loss estimate, not a manufacturer RMS-current qualification. Thermal impedance and current sharing still need checking. All parts retain the original 80 V rating; at the 50 V operating limit this leaves nominal voltage margin, but source transients, DC-bias loss and layout remain qualification checks.</p>
+<p>The cost is six added parts, approximately three times the ceramic footprint and more connection/inrush charge. Keep the published C19 bulk branch. With the assumed 5 mΩ / 2 µH bench source, the passive source-to-bank gain peaks at 2.88 near 18.9 kHz for the checked nine-part corner, versus 1.74 for the three-part corner. More capacitance meets switching-ripple limits but increases resonance in this source model. This check does not establish closed-loop stability or EMC performance.</p>
+<p>Choose the nine-part bank if the 100 mV low-line requirement and the stated uncertainty envelope apply, and verify damping and thermal behavior before hardware selection. Prefer a damped input-filter design when the actual cable/source impedance or EMC requirement dominates. Measure source impedance and bank voltage together; that evidence can change the choice. <code>ti-pmp21274/sensitivity-checks.json</code> retains the failed six-part option and the source-network comparison.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

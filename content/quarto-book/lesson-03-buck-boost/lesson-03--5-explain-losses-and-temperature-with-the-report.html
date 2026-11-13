@@ -2279,8 +2279,14 @@ HTWG · Reading edition
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#5-1-compare-an-untuned-loss-estimate-with-published-efficiency" id="toc-5-1-compare-an-untuned-loss-estimate-with-published-efficiency" class="nav-link active" data-scroll-target="#5-1-compare-an-untuned-loss-estimate-with-published-efficiency">5.1 Compare an untuned loss estimate with published efficiency</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
@@ -2308,11 +2314,71 @@ HTWG · Reading edition
 <p><span id="5-explain-losses-and-temperature-with-the-report" class="quarto-section-identifier"></span></p>
 <p>At 24 V, our winding and MOSFET conduction estimates sum to only 0.352 W. At 48 V they fall to 0.271 W. Yet high input increases switching voltage. A conduction-only explanation is therefore incomplete.</p>
 <p>The schematic’s C18/R19 damping branch illustrates the missing mechanism. If a capacitor fully charges and discharges each period, its dissipation scale is <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><msubsup><mi>V</mi><mrow><mi>s</mi><mi>w</mi><mi>i</mi><mi>n</mi><mi>g</mi></mrow><mn>2</mn></msubsup><msub><mi>f</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">CV_{swing}^2f_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.2089em;vertical-align:-0.3948em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4413em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight" style="margin-right:0.0269em;">w</span><span class="mord mathnormal mtight">in</span><span class="mord mathnormal mtight" style="margin-right:0.0359em;">g</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3948em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>. For 1 nF and 400 kHz, this is 0.410 W at 32 V swing and 1.254 W at 56 V swing. This scale is not an exact snubber-loss prediction. R19 and the ringing network determine the waveform.</p>
+<p>Predict which part gets hotter before reading the thermal image. Name the observation that would change the diagnosis.</p>
 <p>TIDT280 §2.5 supports the diagnosis: at 48 V input and 2 A load, R19 reads 106.6 °C and Q1 reads 86.1 °C. These are published surface temperatures. They are not junction temperatures or a new thermal measurement. The report does not establish our assumed laboratory ambient.</p>
-<p>Predict which part gets hotter before reading the thermal image. If high-line heat dominates, investigate switching and damping loss before reducing winding resistance. Removing damping may reduce dissipation while increasing overshoot. Accept that trade only after voltage and EMI measurements pass.</p>
-<p>For efficiency, compare <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><msub><mi>P</mi><mi>o</mi></msub><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><msub><mi>P</mi><mi>o</mi></msub><mo>+</mo><msub><mi>P</mi><mrow><mi>l</mi><mi>o</mi><mi>s</mi><mi>s</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\eta=P_o/(P_o+P_{loss})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">η</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">o</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0197em;">l</span><span class="mord mathnormal mtight">oss</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span> with TIDT280 Figures 2-1, 2-2 and 2-5 at the same input and load. The report gives plots, not a numerical efficiency table. No digitized efficiency dataset or fitted coefficient is claimed here.</p>
+<p>If high-line heat dominates, investigate switching and damping loss before reducing winding resistance. Removing damping may reduce dissipation while increasing overshoot. Accept that trade only after voltage and EMI measurements pass.</p>
+<section id="5-1-compare-an-untuned-loss-estimate-with-published-efficiency" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="5-1-compare-an-untuned-loss-estimate-with-published-efficiency">5.1 Compare an untuned loss estimate with published efficiency</h2>
+<p><code>data/ti-measured-comparisons.json</code> contains twelve manual readouts from TIDT280 p.&nbsp;3, Figure 2-1: 0.5, 1 and 2 A at 9, 24, 48 and 56 V. Readout uncertainty is ±0.7 percentage point. These are digitized TI results, not a new measurement. The 408 kHz prototype and shorted R3/R6 configuration remain explicit.</p>
+<p>Our estimate uses the actual power-stage parts. It applies assumed hot factors of 1.3 to the BOM’s 33 mΩ winding and 1.5 to the MOSFET’s 16.3 mΩ/6 V resistance. The archived BSC117N08NS5 Rev.&nbsp;2.1 supplies gate-charge and Coss references. Interpolation to 7.5 V and the timing, recovery and core-loss factors are ours. The Coss curve is normalized to the published 19 nC at 40 V. The snubber term retains the full-swing <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><msup><mi>V</mi><mn>2</mn></msup><mi>f</mi></mrow><annotation encoding="application/x-tex">CV^2f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span></span> scale, not an exact measured loss.</p>
+<p>At 408 kHz the estimate includes conduction, overlap, Coss, a declared recovery fraction, gate drive, controller consumption, dead time, core assumption and damping scale. No coefficient is fitted to the TI readouts.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Input, 2 A</th>
+<th style="text-align: right;">Calculated loss</th>
+<th style="text-align: right;">Calculated efficiency</th>
+<th style="text-align: right;">TI readout</th>
+<th style="text-align: right;">Error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">9 V</td>
+<td style="text-align: right;">1.776 W</td>
+<td style="text-align: right;">90.01%</td>
+<td style="text-align: right;">90.7% ±0.7 pp</td>
+<td style="text-align: right;">-0.69 pp</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24 V</td>
+<td style="text-align: right;">1.904 W</td>
+<td style="text-align: right;">89.36%</td>
+<td style="text-align: right;">89.0% ±0.7 pp</td>
+<td style="text-align: right;">+0.36 pp</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">48 V</td>
+<td style="text-align: right;">3.264 W</td>
+<td style="text-align: right;">83.06%</td>
+<td style="text-align: right;">82.0% ±0.7 pp</td>
+<td style="text-align: right;">+1.06 pp</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">56 V</td>
+<td style="text-align: right;">3.859 W</td>
+<td style="text-align: right;">80.57%</td>
+<td style="text-align: right;">79.7% ±0.7 pp</td>
+<td style="text-align: right;">+0.87 pp</td>
+</tr>
+</tbody>
+</table>
+<p>The RMS error over all twelve points is 1.34 percentage points. Readout uncertainty does not cover uncertainty in our charge, temperature, switching or magnetic assumptions. <code>data/loss-estimate-checks.json</code> retains the terms and errors.</p>
+<div class="course-plot" tabindex="0" aria-label="Scrollable course plot">
+<img src="../assets/lesson-03-buck-boost/figures/efficiency-comparison.svg" alt="Untuned course efficiency estimates with separate digitized TI markers and readout-error bars.">
+</div>
+<p><span class="plot-scroll-hint">On a narrow screen, scroll the figure horizontally.</span> Figure 3.4 — Calculated scenarios versus published TI efficiency readouts at matched line/load and 408 kHz. Markers are digitized measurements; curves are estimates.</p>
+<p>If high-line heat determines the choice, measure damping and edge losses before selecting a lower-DCR part. Prefer a winding change only when its checked loss benefit dominates the added switching/control/size costs. A good curve fit alone would not identify the missing physical loss.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

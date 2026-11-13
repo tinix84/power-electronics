@@ -2316,14 +2316,16 @@ HTWG · Reading edition
 <p>Can the local DC-link capacitor keep a 10 MHz commutation current out of the supply cable?</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../../assets/lesson-power-conversion/figures/circuits/dc-link.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The noise current divides between the local capacitor branch with loop inductance and the supply cable."><img src="../../assets/lesson-power-conversion/figures/circuits/dc-link.svg" class="img-fluid figure-img" alt="The noise current divides between the local capacitor branch with loop inductance and the supply cable."></a></p>
+<div class="course-plot course-native-diagram" role="region" tabindex="0" aria-label="Scrollable course diagram"><a href="../../assets/lesson-power-conversion/figures/circuits/dc-link.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The noise current divides between the local capacitor branch with loop inductance and the supply cable."><img src="../../assets/lesson-power-conversion/figures/circuits/dc-link.svg" class="img-fluid figure-img" alt="The noise current divides between the local capacitor branch with loop inductance and the supply cable."></a></div>
+<span class="plot-scroll-hint">On a narrow screen, scroll the figure horizontally.</span>
 <figcaption>The noise current divides between the local capacitor branch with loop inductance and the supply cable.</figcaption>
 </figure>
 </div>
 <p>Model its branch as 1 µF in series with 5 nH, and the supply branch as 50 nH. Neglect resistance. At 10 MHz the capacitor branch is inductive, with reactance 0.314 − 0.0159 = 0.298 Ω. The supply branch has 3.14 Ω. Current division sends 0.298/(3.14 + 0.298) = 8.7% of the noise current into the cable. Raising capacitor-loop inductance to 20 nH increases that share to 28%. Shorten the local return path and compare cable current at the same frequency.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../../assets/lesson-power-conversion/figures/emc/dc-dc-converterinfluence-of-parasitic-components-1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="At 10 MHz a longer local capacitor loop diverts more of the commutation noise current into the cable."><img src="../../assets/lesson-power-conversion/figures/emc/dc-dc-converterinfluence-of-parasitic-components-1.svg" class="img-fluid figure-img" alt="At 10 MHz a longer local capacitor loop diverts more of the commutation noise current into the cable."></a></p>
+<div class="course-plot course-native-diagram" role="region" tabindex="0" aria-label="Scrollable course diagram"><a href="../../assets/lesson-power-conversion/figures/emc/dc-dc-converterinfluence-of-parasitic-components-1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="At 10 MHz a longer local capacitor loop diverts more of the commutation noise current into the cable."><img src="../../assets/lesson-power-conversion/figures/emc/dc-dc-converterinfluence-of-parasitic-components-1.svg" class="img-fluid figure-img" alt="At 10 MHz a longer local capacitor loop diverts more of the commutation noise current into the cable."></a></div>
+<span class="plot-scroll-hint">On a narrow screen, scroll the figure horizontally.</span>
 <figcaption>At 10 MHz a longer local capacitor loop diverts more of the commutation noise current into the cable.</figcaption>
 </figure>
 </div>

@@ -53,9 +53,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-75aae083f74c504a16c697eabd2230c2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-b885f1729519789688ad0af7f56f8690.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-75aae083f74c504a16c697eabd2230c2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -2426,12 +2423,10 @@ HTWG · Reading edition
 </section>
 <section id="8-3-the-estimate-against-ti-s-measurement" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="8-3-the-estimate-against-ti-s-measurement">8.3 The estimate against TI’s measurement</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../assets/lesson-01-buck/ti-pmp31349/figures/06_estimate_vs_measured.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Our datasheet estimate is optimistic everywhere, by 2.65 pp rms, and most at light load where the fixed losses dominate."><img src="../assets/lesson-01-buck/ti-pmp31349/figures/06_estimate_vs_measured.svg" class="img-fluid figure-img" alt="Our datasheet estimate is optimistic everywhere, by 2.65 pp rms, and most at light load where the fixed losses dominate."></a></p>
-<figcaption>Our datasheet estimate is optimistic everywhere, by 2.65 pp rms, and most at light load where the fixed losses dominate.</figcaption>
-</figure>
+<div class="course-plot" tabindex="0" aria-label="Scrollable course plot">
+<img src="../assets/lesson-01-buck/ti-pmp31349/figures/06_estimate_vs_measured.svg" alt="Our datasheet estimate is optimistic everywhere, by 2.65 pp rms, and most at light load where the fixed losses dominate.">
 </div>
+<p><span class="plot-scroll-hint">On a narrow screen, scroll the figure horizontally.</span> Figure 1.3 — Our datasheet estimate is optimistic everywhere, by 2.65 pp rms, and most at light load where the fixed losses dominate.</p>
 <p>TI’s data have 147 rows, three of them at 0 A. Against the 144 measured points with nonzero load, the datasheet estimate errs by 2.65 pp (percentage points) rms (ours vs TI). It is optimistic everywhere, and most at light load, by up to 14.2 pp at 60 V and 0.5 A, where the fixed losses dominate.</p>
 <p>Our curves have a kink between 2 A and 2.5 A at 48 V and 60 V, and between 1.5 A and 2 A at 30 V. There the model’s high-side turn-on becomes hard (§6.2).</p>
 </section>
@@ -2488,18 +2483,14 @@ HTWG · Reading edition
 </table>
 <p>The core-loss gap is mainly <strong>our method’s bias, not a measurement surprise</strong>. Würth publishes no core-loss data for this part. Our <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span></span></span></span></span> therefore comes from the impedance-curve peak, <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">R_p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span> = 4.28 kΩ at 16.4 MHz, which we take as frequency independent. Steinmetz scaling makes the loss per volt² rise toward lower frequency. The extrapolation from 16 MHz to 350 kHz therefore biases our core loss low by roughly an order of magnitude.</p>
 <p>Our 0.11 W is a lower bound. A REDEXPERT core-loss figure at 350 kHz would replace it.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../assets/lesson-01-buck/ti-pmp31349/figures/01_efficiency_fit.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Fitted to TI’s 144 points, the six-term loss model tracks the measurement to 0.33 pp rms: calibration, not prediction."><img src="../assets/lesson-01-buck/ti-pmp31349/figures/01_efficiency_fit.svg" class="img-fluid figure-img" alt="Fitted to TI’s 144 points, the six-term loss model tracks the measurement to 0.33 pp rms: calibration, not prediction."></a></p>
-<figcaption>Fitted to TI’s 144 points, the six-term loss model tracks the measurement to 0.33 pp rms: calibration, not prediction.</figcaption>
-</figure>
+<div class="course-plot" tabindex="0" aria-label="Scrollable course plot">
+<img src="../assets/lesson-01-buck/ti-pmp31349/figures/01_efficiency_fit.svg" alt="Fitted to TI's 144 points, the six-term loss model tracks the measurement to 0.33 pp rms: calibration, not prediction.">
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../assets/lesson-01-buck/ti-pmp31349/figures/02_loss_breakdown_48v.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Calibrated breakdown at 48 V (ours, calibrated to TI): at full load the fitted overlap and core terms rival the conduction losses, and at light load the core loss dominates."><img src="../assets/lesson-01-buck/ti-pmp31349/figures/02_loss_breakdown_48v.svg" class="img-fluid figure-img" alt="Calibrated breakdown at 48 V (ours, calibrated to TI): at full load the fitted overlap and core terms rival the conduction losses, and at light load the core loss dominates."></a></p>
-<figcaption>Calibrated breakdown at 48 V (ours, calibrated to TI): at full load the fitted overlap and core terms rival the conduction losses, and at light load the core loss dominates.</figcaption>
-</figure>
+<p><span class="plot-scroll-hint">On a narrow screen, scroll the figure horizontally.</span> Figure 1.4 — Fitted to TI’s 144 points, the six-term loss model tracks the measurement to 0.33 pp rms: calibration, not prediction.</p>
+<div class="course-plot" tabindex="0" aria-label="Scrollable course plot">
+<img src="../assets/lesson-01-buck/ti-pmp31349/figures/02_loss_breakdown_48v.svg" alt="Calibrated breakdown at 48 V (ours, calibrated to TI): at full load the fitted overlap and core terms rival the conduction losses, and at light load the core loss dominates.">
 </div>
+<p><span class="plot-scroll-hint">On a narrow screen, scroll the figure horizontally.</span> Figure 1.5 — Calibrated breakdown at 48 V (ours, calibrated to TI): at full load the fitted overlap and core terms rival the conduction losses, and at light load the core loss dominates.</p>
 <p>With the fitted terms the model gives 95.62 % at 48 V and 20 A (ours, calibrated to TI) against TI’s measured 95.5 %. <strong>Never present the fitted curve as a prediction</strong>: it agrees with TI because we fitted it to TI.</p>
 </section>
 <section id="8-5-junction-temperature" class="level2 unnumbered">
@@ -3089,38 +3080,6 @@ HTWG · Reading edition
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 

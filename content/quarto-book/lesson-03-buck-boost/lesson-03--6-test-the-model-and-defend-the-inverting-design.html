@@ -2274,8 +2274,22 @@ HTWG · Reading edition
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#6-1-execute-the-coupled-switching-model" id="toc-6-1-execute-the-coupled-switching-model" class="nav-link active" data-scroll-target="#6-1-execute-the-coupled-switching-model">6.1 Execute the coupled switching model</a></li>
+  <li><a href="#6-2-which-parameter-changes-ripple-most" id="toc-6-2-which-parameter-changes-ripple-most" class="nav-link" data-scroll-target="#6-2-which-parameter-changes-ripple-most">6.2 Which parameter changes ripple most?</a></li>
+  <li><a href="#6-3-what-if-three-changes-to-the-finished-design" id="toc-6-3-what-if-three-changes-to-the-finished-design" class="nav-link" data-scroll-target="#6-3-what-if-three-changes-to-the-finished-design">6.3 What if? Three changes to the finished design</a>
+  <ul class="collapse">
+  <li><a href="#6-3-1-reduce-the-inductance-to-10-h" id="toc-6-3-1-reduce-the-inductance-to-10-h" class="nav-link" data-scroll-target="#6-3-1-reduce-the-inductance-to-10-h">6.3.1 Reduce the inductance to 10 µH</a></li>
+  <li><a href="#6-3-2-lower-switching-frequency-to-300-khz" id="toc-6-3-2-lower-switching-frequency-to-300-khz" class="nav-link" data-scroll-target="#6-3-2-lower-switching-frequency-to-300-khz">6.3.2 Lower switching frequency to 300 kHz</a></li>
+  <li><a href="#6-3-3-increase-the-output-bank" id="toc-6-3-3-increase-the-output-bank" class="nav-link" data-scroll-target="#6-3-3-increase-the-output-bank">6.3.3 Increase the output bank</a></li>
+  </ul></li>
+  <li><a href="#6-4-a-stricter-ripple-requirement-forces-a-redesign" id="toc-6-4-a-stricter-ripple-requirement-forces-a-redesign" class="nav-link" data-scroll-target="#6-4-a-stricter-ripple-requirement-forces-a-redesign">6.4 A stricter ripple requirement forces a redesign</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content" tabindex="-1">
@@ -2335,8 +2349,206 @@ HTWG · Reading edition
 </table>
 <p>TI limits its ripple capture to 20 MHz and its transient voltage capture to 10 kHz. Preserve those conditions when comparing waveforms. An unfiltered switching simulation and a bandwidth-limited capture can disagree without a circuit error.</p>
 <p><strong>Conditional recommendation.</strong> PMP30916 is a suitable worked example when a negative rail is required. Retain its fitted power stage for evidence comparison. Qualify any changed voltage range against the summed stress and any changed load against the current limit and thermal result. A diode variation belongs in the theory comparison, not in an unchanged claim about TI’s tested synchronous board.</p>
+<section id="6-1-execute-the-coupled-switching-model" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="6-1-execute-the-coupled-switching-model">6.1 Execute the coupled switching model</h2>
+<p>The editable external model is <code>qspice/pmp30916_inverting.cir</code>. QSPICE uses generic resistive switches and diodes, the negative controller reference, both distinct input-capacitor banks, output ESR, winding resistance and C18/R19. C18/R19 return to the negative output across Q5, as the schematic shows. Bias envelopes, bench source, hot resistance and dead time are stated assumptions. The controller loop, startup, protection, core loss and complete transistor switching losses are absent.</p>
+<p>The analytical voltage/current predictions are not substituted for the simulator result. Fixed duty comes from a declared conduction-balance calculation. The matrix uses 9, 24, 48 and 56 V at 2 A and 0.2 A, with 408 kHz. The 0.2 A cases can have reverse current in forced synchronous operation; they are not diode-emulation DCM.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Input</th>
+<th style="text-align: right;">Named load</th>
+<th style="text-align: right;">Mean output</th>
+<th style="text-align: right;">Output ripple</th>
+<th>Mode</th>
+<th>Output within −8 V ±2%?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">9 V</td>
+<td style="text-align: right;">2 A</td>
+<td style="text-align: right;">-7.9989 V</td>
+<td style="text-align: right;">19.17 mV</td>
+<td>positive-current CCM</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24 V</td>
+<td style="text-align: right;">2 A</td>
+<td style="text-align: right;">-7.9986 V</td>
+<td style="text-align: right;">10.71 mV</td>
+<td>positive-current CCM</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">48 V</td>
+<td style="text-align: right;">2 A</td>
+<td style="text-align: right;">-8.0662 V</td>
+<td style="text-align: right;">8.59 mV</td>
+<td>positive-current CCM</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">56 V</td>
+<td style="text-align: right;">2 A</td>
+<td style="text-align: right;">-8.1108 V</td>
+<td style="text-align: right;">8.77 mV</td>
+<td>positive-current CCM</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9 V</td>
+<td style="text-align: right;">0.2 A</td>
+<td style="text-align: right;">-8.0793 V</td>
+<td style="text-align: right;">2.34 mV</td>
+<td>positive-current CCM</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24 V</td>
+<td style="text-align: right;">0.2 A</td>
+<td style="text-align: right;">-8.2394 V</td>
+<td style="text-align: right;">3.17 mV</td>
+<td>forced synchronous with current reversal</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">48 V</td>
+<td style="text-align: right;">0.2 A</td>
+<td style="text-align: right;">-8.4478 V</td>
+<td style="text-align: right;">4.24 mV</td>
+<td>forced synchronous with current reversal</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">56 V</td>
+<td style="text-align: right;">0.2 A</td>
+<td style="text-align: right;">-8.5139 V</td>
+<td style="text-align: right;">4.51 mV</td>
+<td>forced synchronous with current reversal</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>The ±2% comparison band is ours. All four full-load rows pass it and the original 80 mV ripple target. The fixed-duty light-load failures remain visible. A controller must correct the operating point; these rows do not establish failure of TI’s controlled board.</p>
+<p>All matrix points pass the 5 mV period-mean settling check and 20 mW power-balance residual criterion. The audit accounts for every modeled passive/device loss and stored-energy drift. Halving maximum step from one period/400 to one period/800 at 9 V/2 A changes mean output by 0.014 mV and ripple by 0.004 mV. The exported adaptive traces and source hashes are in <code>data/simulation-checks.json</code>. No full-efficiency or hardware claim follows from this conduction/snubber model.</p>
+</section>
+<section id="6-2-which-parameter-changes-ripple-most" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="6-2-which-parameter-changes-ripple-most">6.2 Which parameter changes ripple most?</h2>
+<p>Predict whether output capacitance, cross-rail capacitance or inductance will dominate. Keep the 9 V source, 4 Ω load (2 A at −8 V), 408 kHz, duty and other circuit parameters fixed. The ranges are declared screening envelopes, not guaranteed part curves. Each sweep changes only its named parameter.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 28%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Assumed range</th>
+<th style="text-align: right;">Signed ripple changes at low / high endpoint</th>
+<th style="text-align: right;">Largest absolute change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cout</td>
+<td>0.8–1.2 × base</td>
+<td style="text-align: right;">+4.343 mV / -2.914 mV</td>
+<td style="text-align: right;">4.343 mV</td>
+</tr>
+<tr class="even">
+<td>Ccross</td>
+<td>0.7–1.3 × base</td>
+<td style="text-align: right;">+3.479 mV / -2.490 mV</td>
+<td style="text-align: right;">3.479 mV</td>
+</tr>
+<tr class="odd">
+<td>L</td>
+<td>0.8–1.2 × base</td>
+<td style="text-align: right;">-0.056 mV / -0.0004 mV</td>
+<td style="text-align: right;">0.056 mV</td>
+</tr>
+</tbody>
+</table>
+<p>Output capacitance ranks first over these ranges, with cross-rail capacitance close behind. Inductance changes ripple much less in this operating-point model. Its high-end change is below the step-refinement difference and is not a resolved physical effect. The largest-effect ranking is conditional on the ranges and the source/bank assumptions. Independent integration of exported output-capacitor current checks the voltage-ripple reconstruction and units. Solver refinement gives a separate numerical-sensitivity bound.</p>
+<p>This also explains why the 36.8 mV uncoupled charge estimate in §3 differs from the approximately 19.2 mV coupled result. The cross-rail bank changes how charge reaches the negative rail. Keep both physical node pairs and source impedance when investigating that gap. Do not treat two different circuit models as a capacitor-tolerance sweep.</p>
+</section>
+<section id="6-3-what-if-three-changes-to-the-finished-design" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="6-3-what-if-three-changes-to-the-finished-design">6.3 What if? Three changes to the finished design</h2>
+<p>Keep the original input range, −8 V/2 A requirement and stated voltage ratings. These are checked calculation scenarios, not qualified replacement hardware. Predict one benefit and one cost before each comparison.</p>
+<section id="6-3-1-reduce-the-inductance-to-10-h" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="6-3-1-reduce-the-inductance-to-10-h">6.3.1 Reduce the inductance to 10 µH</h3>
+<p>At 9 V and 408 kHz, ripple rises from 0.472 to 1.038 A and peak current from 4.014 to 4.297 A. The same-DCR assumption isolates ripple effects; it is not a selected 10 µH part. Lower stored energy can help size or response. Peak/RMS current, bias behavior, losses and compensation can remove that benefit. Choose this route only after the replacement part and loop pass those checks.</p>
+</section>
+<section id="6-3-2-lower-switching-frequency-to-300-khz" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="6-3-2-lower-switching-frequency-to-300-khz">6.3.2 Lower switching frequency to 300 kHz</h3>
+<p>At the same low-line port requirement and 22 µH, ripple becomes 0.642 A and peak 4.099 A. The uncoupled capacitive ripple rises from 36.0 to 49.0 mV. The full-swing damping scale falls in proportion to frequency, by 26.5%. Prefer this scenario when switching/damping heat dominates and the new ripple, RT, compensation and EMI checks pass. Keep 408 kHz when those costs dominate the thermal benefit.</p>
+</section>
+<section id="6-3-3-increase-the-output-bank" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="6-3-3-increase-the-output-bank">6.3.3 Increase the output bank</h3>
+<p>Doubling effective output capacitance from 64 to 128 µF halves the uncoupled charge ripple from 36.0 to 18.0 mV at 9 V/2 A. It adds four original 22 µF/25 V parts and changes the loop. Prefer it when ripple or charge margin dominates area, after checking bias, RMS sharing and compensation. It does not by itself prove a load-step improvement.</p>
+</section>
+</section>
+<section id="6-4-a-stricter-ripple-requirement-forces-a-redesign" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="6-4-a-stricter-ripple-requirement-forces-a-redesign">6.4 A stricter ripple requirement forces a redesign</h2>
+<p>Now change one requirement explicitly: our teaching scenario requires at most <strong>10 mV</strong> switching ripple at 9 V/2 A, rather than the original 80 mV. Predict whether doubling the bank remains enough at 20% low effective capacitance. Keep the source, coupled input banks, duty, 408 kHz and all other base conditions. The output-bank alternatives change capacitance and ESR together.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Output-bank case</th>
+<th style="text-align: right;">Effective capacitance used</th>
+<th style="text-align: right;">Modeled ESR</th>
+<th style="text-align: right;">Simulated ripple</th>
+<th>Meets new 10 mV target?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Original, four parts</td>
+<td style="text-align: right;">64.0 µF</td>
+<td style="text-align: right;">0.5000 mΩ</td>
+<td style="text-align: right;">19.16 mV</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Doubled, eight parts, −20% C</td>
+<td style="text-align: right;">102.4 µF</td>
+<td style="text-align: right;">0.3125 mΩ</td>
+<td style="text-align: right;">12.18 mV</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Tripled, twelve parts, −20% C</td>
+<td style="text-align: right;">153.6 µF</td>
+<td style="text-align: right;">0.2083 mΩ</td>
+<td style="text-align: right;">8.21 mV</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>The tripled-bank corner gives -7.9992 V mean output. Its output-bank current is 0.986 A RMS, about 0.082 A per identical ceramic under equal sharing. All parts retain the 25 V rating at an 8 V rail. The model scales ESR inversely with effective capacitance. The 20% capacitance reduction therefore adds a 25% ESR corner above count-only scaling. Thermal impedance, current sharing, bias curves, startup, layout and loop stability still need qualification.</p>
+<p>Choose the twelve-part candidate if the new ripple target justifies eight added parts and the dynamic/thermal checks pass. Prefer the original bank for the original 80 mV target when area and inrush matter more. The tighter target is ours; this sequence does not establish that the TI design fails its published requirements. <code>data/variation-checks.json</code> keeps each scenario, benefit, cost and winning condition.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
