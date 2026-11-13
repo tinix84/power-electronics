@@ -2286,6 +2286,8 @@ HTWG · Reading edition
   <ul>
   <li><a href="#9-1-python-waveform-checks-against-ti-s-scope-captures" id="toc-9-1-python-waveform-checks-against-ti-s-scope-captures" class="nav-link active" data-scroll-target="#9-1-python-waveform-checks-against-ti-s-scope-captures">9.1 Python waveform checks against TI’s scope captures</a></li>
   <li><a href="#9-2-plecs-models-pending" id="toc-9-2-plecs-models-pending" class="nav-link" data-scroll-target="#9-2-plecs-models-pending">9.2 PLECS models (pending)</a></li>
+  <li><a href="#9-3-executed-qspice-evidence-at-350-khz" id="toc-9-3-executed-qspice-evidence-at-350-khz" class="nav-link" data-scroll-target="#9-3-executed-qspice-evidence-at-350-khz">9.3 Executed QSPICE evidence at 350 kHz</a></li>
+  <li><a href="#9-4-repair-the-input-ripple-and-check-the-trade-off" id="toc-9-4-repair-the-input-ripple-and-check-the-trade-off" class="nav-link" data-scroll-target="#9-4-repair-the-input-ripple-and-check-the-trade-off">9.4 Repair the input ripple and check the trade-off</a></li>
   </ul>
 </nav>
     </div>
@@ -2370,6 +2372,119 @@ HTWG · Reading edition
 </ul>
 <p>When the lecturer draws both, their results replace the word <em>pending</em> here. Investigate any disagreement with the Python model. Do not average it away.</p>
 <p><strong>Choose the model for the question.</strong> Use the averaged model for the local loop and load step. Use a switching model for ripple and commutation. The first is simpler to inspect. The second needs more detail and computation. Compare their overlapping predictions before trusting either.</p>
+</section>
+<section id="9-3-executed-qspice-evidence-at-350-khz" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="9-3-executed-qspice-evidence-at-350-khz">9.3 Executed QSPICE evidence at 350 kHz</h2>
+<p>The eighteen preserved QSPICE exports now have a headless acceptance analysis: <code>ti-pmp31349/scripts/analyze_waveforms.py</code> writes <code>ti-pmp31349/simulation-checks.json</code>. The notebook imports the same analyzer. The raw adaptive samples remain unchanged. Their seven-digit timestamps can coincide at an edge; the analyzer retains both sides as a zero-duration jump and uses complete gate-aligned periods.</p>
+<p>These runs use 350 kHz and conduction losses. They do not replace the 344.9 kHz calibrated comparison in §9.1. The ideal variant has a stiff input. The nonideal variant uses the stated filter, hot resistances, dead times and mixed capacitor branches. Both use fixed duty and a resistive load; no LM5148 control loop is simulated.</p>
+<p>Before the results, predict what the 20 ns high-side turn-on delay does to mean output. The <code>.m</code> duty calculation treats the high-side conduction interval as <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><msub><mi>T</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">DT_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>. With positive valley current, the gate model makes it approximately <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>D</mi><mo>−</mo><msub><mi>t</mi><mi>d</mi></msub><msub><mi>f</mi><mi>s</mi></msub><mo stretchy="false">)</mo><msub><mi>T</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">(D-t_df_s)T_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>. This removes roughly <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><msub><mi>t</mi><mi>d</mi></msub><msub><mi>f</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">V_{in}t_df_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">in</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> from mean output before the smaller resistance corrections. A closed loop would need to change duty.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Input</th>
+<th style="text-align: right;">Named load</th>
+<th style="text-align: right;">Ideal mean output</th>
+<th style="text-align: right;">Nonideal mean output</th>
+<th style="text-align: right;">Nonideal output ripple</th>
+<th style="text-align: right;">Nonideal input ripple</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">30 V</td>
+<td style="text-align: right;">20 A</td>
+<td style="text-align: right;">11.9996 V</td>
+<td style="text-align: right;">11.7895 V</td>
+<td style="text-align: right;">36.19 mV</td>
+<td style="text-align: right;">1.30600 V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">30 V</td>
+<td style="text-align: right;">10 A</td>
+<td style="text-align: right;">11.9995 V</td>
+<td style="text-align: right;">11.7948 V</td>
+<td style="text-align: right;">36.27 mV</td>
+<td style="text-align: right;">0.65416 V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">30 V</td>
+<td style="text-align: right;">2 A</td>
+<td style="text-align: right;">11.9991 V</td>
+<td style="text-align: right;">12.0298 V</td>
+<td style="text-align: right;">36.50 mV</td>
+<td style="text-align: right;">0.14906 V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48 V</td>
+<td style="text-align: right;">20 A</td>
+<td style="text-align: right;">12.0002 V</td>
+<td style="text-align: right;">11.6668 V</td>
+<td style="text-align: right;">45.13 mV</td>
+<td style="text-align: right;">1.00949 V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">48 V</td>
+<td style="text-align: right;">10 A</td>
+<td style="text-align: right;">12.0002 V</td>
+<td style="text-align: right;">11.6684 V</td>
+<td style="text-align: right;">44.64 mV</td>
+<td style="text-align: right;">0.50373 V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48 V</td>
+<td style="text-align: right;">2 A</td>
+<td style="text-align: right;">12.0004 V</td>
+<td style="text-align: right;">12.0267 V</td>
+<td style="text-align: right;">45.60 mV</td>
+<td style="text-align: right;">0.11824 V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">60 V</td>
+<td style="text-align: right;">20 A</td>
+<td style="text-align: right;">11.9994 V</td>
+<td style="text-align: right;">11.5846 V</td>
+<td style="text-align: right;">47.74 mV</td>
+<td style="text-align: right;">0.85366 V</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">60 V</td>
+<td style="text-align: right;">10 A</td>
+<td style="text-align: right;">11.9992 V</td>
+<td style="text-align: right;">11.5839 V</td>
+<td style="text-align: right;">47.28 mV</td>
+<td style="text-align: right;">0.42566 V</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">60 V</td>
+<td style="text-align: right;">2 A</td>
+<td style="text-align: right;">11.9991 V</td>
+<td style="text-align: right;">12.0255 V</td>
+<td style="text-align: right;">48.49 mV</td>
+<td style="text-align: right;">0.10160 V</td>
+</tr>
+</tbody>
+</table>
+<p>The nonideal 48 V/full-load result is 11.6668 V, outside our assumed ±2% comparison band around 12 V. The 1.00949 V input ripple also fails the unchanged 1.0 V target. Do not call these design passes. They show the limits of the stated fixed-duty calculation and input bank, not a failure of TI’s controlled board. At 2 A the current valley is negative, so the dead-time paths differ from positive-current CCM.</p>
+<p><strong>Check current as well as voltage.</strong> All six full-load traces have positive inductor peaks of 21.83–22.92 A (S, retained QSPICE exports). Each exceeds the 20.9 A typical 10% inductance-droop reference in the <a href="https://www.we-online.com/components/products/datasheet/74439370047.pdf">Würth 74439370047 datasheet</a>. Each remains below the nominal 35 A peak-current limit in <a href="https://www.ti.com/lit/pdf/TIDMDL2">TI’s schematic</a>. The <a href="https://www.ti.com/lit/ds/symlink/lm5148.pdf">LM5148 datasheet</a> specifies peak sensing: 60 mV across the parallel 3 mΩ and 4 mΩ shunts gives 35 A (C). The acceptance file records both reference comparisons for all eighteen traces.</p>
+<p>The 20.9 A reference describes gradual inductance droop, not a hard saturation boundary. These models use fixed inductance and open-loop gates. They therefore validate neither saturation behavior nor controller protection. The 35 A comparison excludes threshold tolerance, sense filtering and turn-off delay. Use a nonlinear magnetic model and a controller model before judging overload behavior.</p>
+<p>The downstream power audit includes simulated device-port products, winding/shunt and output ESR losses, and the change in stored inductor/capacitor energy. Its residual is below 36 mW over the original matrix. The input-filter entry is net port-power difference, including filter storage, not an independent filter-loss measurement. A 50 mW acceptance allowance covers this audit and the rounded historical exports.</p>
+<p>Two retained solver-refinement runs preserve the original eighteen files. At nonideal 48 V/20 A and ideal 60 V/20 A, maximum step falls from one period/200 to one period/800 and relative tolerance tightens from 1e-4 to 1e-6. Mean output changes by less than 0.1 mV and output ripple by less than 0.05 mV. This is selected-point convergence evidence, not a convergence sweep of the whole matrix. It leaves the 1.0 V failure intact. The publication repair runs no new simulation. The refinement manifest retains its prior source hashes separately from the reviewed current dependencies.</p>
+</section>
+<section id="9-4-repair-the-input-ripple-and-check-the-trade-off" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="9-4-repair-the-input-ripple-and-check-the-trade-off">9.4 Repair the input ripple and check the trade-off</h2>
+<p>Keep the 48 V/full-load requirement, 350 kHz, filter damping and fixed-duty gate scheme. Predict whether twice the input ceramics will still meet 1.0 V when effective capacitance is 20% below its assumed value.</p>
+<p>The original bank has seven 4.7 µF/100 V parts, assumed to give 1.5 µF each at 48 V. The candidate uses fourteen of the same parts: 21 µF assumed effective, or 16.8 µF at the stated low endpoint. Bank ESR falls from 1 mΩ to an assumed 0.5 mΩ. This is a design scenario, not a new supplier guarantee.</p>
+<p>The finer-step candidate run gives 0.63039 V input ripple, so it meets this target. Total input-bank current is 8.468 A RMS. If all of it went into fourteen identical ceramics, each would carry about 0.605 A RMS. The bulk/damping branch shares some current, so this is a conservative equal-branch screening value. The assumed ceramic-bank ESR gives at most about 36 mW of loss. Actual current sharing and thermal impedance still need a part/layout check. The 100 V rating exceeds the 60 V specified input limit, but does not establish surge qualification.</p>
+<p>The benefit is ripple margin. The cost is seven extra parts, twice the ceramic footprint and more inrush charge. In the passive differential source/filter model the gain peak rises from 1.44 to 1.62 near 9 kHz at this corner, despite retaining the damping branch. Verify the cable/filter interaction and closed-loop input impedance before accepting hardware. The candidate also retains the fixed-duty output error: changing input capacitance does not close the voltage loop.</p>
+<p>Choose the fourteen-part bank if the 1.0 V requirement and this uncertainty envelope apply and the damping/thermal checks are acceptable. Prefer a filter and damping redesign when input-network interaction, area or surge behavior dominates. Measure input ripple and source/filter impedance under load; those results can change the choice. <code>data/sim/refinement-checks.json</code> preserves the candidate and selected convergence results separately from the original matrix.</p>
 
 
 </section>

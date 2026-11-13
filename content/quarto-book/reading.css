@@ -27,6 +27,23 @@ body.quarto-dark .breadcrumb-item.active {
   }
 }
 
+/* Marked course figures keep readable labels inside a horizontal scroller. */
+.course-plot{max-width:100%;overflow-x:auto;margin:24px 0}
+.course-plot img{display:block;width:100%;height:auto}
+.course-native-diagram,.course-native-diagram img{background:#fff}
+.plot-scroll-hint{display:none}
+@media(max-width:600px){
+  .course-plot img{min-width:700px;max-width:none}
+  .course-plot-wide img{min-width:1000px}
+  .plot-scroll-hint{display:block;font-size:12px;color:#586674;margin:-12px 0 20px}
+}
+.nav-page{min-width:0}
+.nav-page-text{overflow-wrap:anywhere;min-width:0}
+body.quarto-dark .plot-scroll-hint,
+body.quarto-dark .quarto-secondary-nav .breadcrumb-item a,
+body.quarto-dark .quarto-secondary-nav .quarto-btn-toggle,
+body.quarto-dark .quarto-secondary-nav .quarto-btn-toggle .bi{color:#cbd8e5}
+
 /* Script-free duty-cycle selector of §4.4: radio buttons show one panel each. */
 .dselect{margin:28px 0;padding:18px 20px;border:1px solid var(--rule);border-radius:4px;background:#f8f9fa}
 .dselect-title{margin:0 0 12px}

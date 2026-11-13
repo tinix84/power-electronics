@@ -53,9 +53,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-75aae083f74c504a16c697eabd2230c2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-b885f1729519789688ad0af7f56f8690.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-75aae083f74c504a16c697eabd2230c2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -2361,12 +2358,10 @@ HTWG · Reading edition
 </tr>
 </tbody>
 </table>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../assets/lesson-01-buck/ti-pmp31349/figures/07_loop_bode.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Our model crosses about 1.5 times higher than TI measured, with 27–30° more phase: the max-rated polymer ESR puts its zero at crossover."><img src="../assets/lesson-01-buck/ti-pmp31349/figures/07_loop_bode.svg" class="img-fluid figure-img" alt="Our model crosses about 1.5 times higher than TI measured, with 27–30° more phase: the max-rated polymer ESR puts its zero at crossover."></a></p>
-<figcaption>Our model crosses about 1.5 times higher than TI measured, with 27–30° more phase: the max-rated polymer ESR puts its zero at crossover.</figcaption>
-</figure>
+<div class="course-plot" tabindex="0" aria-label="Scrollable course plot">
+<img src="../assets/lesson-01-buck/ti-pmp31349/figures/07_loop_bode.svg" alt="Our model crosses about 1.5 times higher than TI measured, with 27–30° more phase: the max-rated polymer ESR puts its zero at crossover.">
 </div>
+<p><span class="plot-scroll-hint">On a narrow screen, scroll the figure horizontally.</span> Figure 1.1 — Our model crosses about 1.5 times higher than TI measured, with 27–30° more phase: the max-rated polymer ESR puts its zero at crossover.</p>
 <p>The model crosses about 1.5 times higher and with 27–30° more phase. The cause is an input, not Ridley’s model. We gave the model the polymer ESR at its maximum rating, 65 mΩ per part, which puts the ESR zero at 16.3 kHz, right at crossover.</p>
 <p>That zero adds phase lead and lifts the mid-band gain onto a flat ESR shelf. At TI’s 15.27 kHz the model’s <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>T</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|T|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.1389em;">T</span><span class="mord">∣</span></span></span></span></span> is only +1.9 dB, so a small gain change moves <span class="math inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">f_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span> far. The table sweeps only the polymer ESR at 48 V and 10 A (<code>loop-checks.json</code>, <code>esr_sensitivity</code>):</p>
 <table class="caption-top table">
@@ -2401,12 +2396,10 @@ HTWG · Reading edition
 </section>
 <section id="7-3-the-load-step-and-the-price-of-a-lower-crossover" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="7-3-the-load-step-and-the-price-of-a-lower-crossover">7.3 The load step, and the price of a lower crossover</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../assets/lesson-01-buck/ti-pmp31349/figures/08_load_step.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="The averaged model drops 233 mV on the 10 → 20 A step, TI measured −276 mV, both inside our 360 mV limit."><img src="../assets/lesson-01-buck/ti-pmp31349/figures/08_load_step.svg" class="img-fluid figure-img" alt="The averaged model drops 233 mV on the 10 → 20 A step, TI measured −276 mV, both inside our 360 mV limit."></a></p>
-<figcaption>The averaged model drops 233 mV on the 10 → 20 A step, TI measured −276 mV, both inside our 360 mV limit.</figcaption>
-</figure>
+<div class="course-plot" tabindex="0" aria-label="Scrollable course plot">
+<img src="../assets/lesson-01-buck/ti-pmp31349/figures/08_load_step.svg" alt="The averaged model drops 233 mV on the 10 → 20 A step, TI measured −276 mV, both inside our 360 mV limit.">
 </div>
+<p><span class="plot-scroll-hint">On a narrow screen, scroll the figure horizontally.</span> Figure 1.2 — The averaged model drops 233 mV on the 10 → 20 A step, TI measured −276 mV, both inside our 360 mV limit.</p>
 <p>On the 10 → 20 A step at 48 V the averaged model drops 233 mV (ours) and recovers within about 90 µs. TI measured −276 mV (TIDT427A fig.&nbsp;3-7, scope minimum including switching ripple and noise). Both sit inside our 360 mV. The model is optimistic because it crosses higher than the board.</p>
 <p>Our 35 kHz target sized the bank at 126.3 µF with (4.2a). TI crossed at ≈15.3 kHz, and its schematic notes “fcc ~15 kHz” as the design intent. At that crossover the same estimate asks for 290 µF. Our 126.3 µF would drop ≈825 mV and fail the 360 mV limit. TI’s 340 µF gives ≈307 mV by the same estimate.</p>
 <p><strong>TI pairs a lower crossover with more capacitance.</strong> Our 126.3 µF holds only if the loop really reaches 35 kHz. With the type II network R23, C57, C56, TI measured about 15 kHz crossover at every input voltage. The phase margin was 67–73° and the gain margin 17–19 dB. We keep TI’s compensation with its larger bank. A smaller bank or a higher crossover is a new design target: redesign the compensation and verify the load step again.</p>
@@ -2989,38 +2982,6 @@ HTWG · Reading edition
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 

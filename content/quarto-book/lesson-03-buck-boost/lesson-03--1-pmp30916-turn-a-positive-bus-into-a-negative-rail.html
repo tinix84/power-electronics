@@ -2359,10 +2359,12 @@ HTWG · Reading edition
 <p>The LM5146-Q1 drives Q1 and Q5. Q1 connects the source to the inductor during charging. Q5 replaces the classical diode during discharge. The controller ground connects to the negative rail. System ground is the load’s positive terminal.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../assets/lesson-03-buck-boost/figures/inverting-power-stage.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Simplified power paths of the inverting converter"><img src="../assets/lesson-03-buck-boost/figures/inverting-power-stage.svg" class="img-fluid figure-img" alt="Simplified power paths of the inverting converter"></a></p>
-<figcaption>Simplified power paths of the inverting converter</figcaption>
+<div class="course-plot course-native-diagram" role="region" tabindex="0" aria-label="Scrollable course diagram"><a href="../assets/lesson-03-buck-boost/figures/inverting-power-stage.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Simplified power paths of the inverting converter"><img src="../assets/lesson-03-buck-boost/figures/inverting-power-stage.svg" class="img-fluid figure-img" alt="Simplified power paths of the inverting converter"></a></div>
+<span class="plot-scroll-hint">On a narrow screen, scroll the figure horizontally.</span>
+
 </figure>
 </div>
+<p>Figure 3.1 — Simplified power paths of the inverting converter</p>
 <p>Cout and the load connect between the negative output and system ground. The switch blocks omit device symbols and driver details. Use the TI schematic for pin-level checks.</p>
 <p><strong>Choose before reading on.</strong> Would a buck or boost alone satisfy the required polarity? Which additional cost buys the synchronous rectifier? A diode version is credible at lower current, but compare its forward loss and light-load behavior.</p>
 <p>TI’s <a href="https://www.ti.com/lit/df/tidmah2/tidmah2.pdf">schematic TIDMAH2</a> and <a href="https://www.ti.com/lit/df/tidmah3/tidmah3.pdf">BOM TIDMAH3</a> identify the fitted parts:</p>
