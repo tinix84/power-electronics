@@ -14,7 +14,7 @@
     "href": "index.html#reading-route",
     "title": "Power Electronics",
     "section": "",
-    "text": "Circuit foundations\nLesson 1 · Buck converters\nLesson 2 · Boost converters\nLesson 3 · Inverting buck–boost\nFour-switch non-inverting buck–boost\nCapacitors\nControl and operating points\nPower conversion and AC drives\nDC/DC\nAC/DC\nDC/AC\nAC/AC\nEMC\nMagnetics · Area product\nTransformer characterization\nMatching objectives\nConverter tolerances · Exercise",
+    "text": "Circuit foundations\nLesson 1 · Buck converters\nLesson 2 · Boost converters\nLesson 3 · Inverting buck–boost\nFour-switch non-inverting buck–boost\nCapacitors\nControl and operating points\nPower conversion and AC drives\nDC/DC\nAC/DC\nDC/AC\nAC/AC\nEMC\nMagnetics · Area product\nTransformer characterization\nMatching objectives\nConverter tolerances · Exercise\nMonte Carlo · Feedback-divider worked example",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Power Electronics</span>"
     ]
@@ -8773,6 +8773,94 @@
     "crumbs": [
       "Converter tolerances · Exercise",
       "<span class='chapter-number'>368</span>  <span class='chapter-title'>Part H — Find the maximum output voltage</span>"
+    ]
+  },
+  {
+    "objectID": "lesson-converter-tolerances/monte-carlo-example.html",
+    "href": "lesson-converter-tolerances/monte-carlo-example.html",
+    "title": "Monte Carlo worked example: a feedback divider",
+    "section": "",
+    "text": "Public worked example · Calculated static teaching model",
+    "crumbs": [
+      "Monte Carlo · Feedback-divider worked example",
+      "<span class='chapter-number'>369</span>  <span class='chapter-title'>Monte Carlo worked example: a feedback divider</span>"
+    ]
+  },
+  {
+    "objectID": "lesson-converter-tolerances/monte-carlo-example--learning-outcomes-and-teaching-route.html",
+    "href": "lesson-converter-tolerances/monte-carlo-example--learning-outcomes-and-teaching-route.html",
+    "title": "Learning outcomes and teaching route",
+    "section": "",
+    "text": "After this example, you can turn component tolerances into an output distribution. You can distinguish output spread, Monte Carlo sampling error, and a deterministic corner bound. You can also select a tolerance improvement against a stated voltage band.\nThe teaching route starts with a prediction. It then builds a first-order model, tests it with paired random samples, and compares two component improvements. The final decision uses exact corners as well as sampled counts. Read the sensitivity plot and the distribution plot with their worked calculations.",
+    "crumbs": [
+      "Monte Carlo · Feedback-divider worked example",
+      "<span class='chapter-number'>370</span>  <span class='chapter-title'>Learning outcomes and teaching route</span>"
+    ]
+  },
+  {
+    "objectID": "lesson-converter-tolerances/monte-carlo-example--1-which-tolerance-should-you-tighten.html",
+    "href": "lesson-converter-tolerances/monte-carlo-example--1-which-tolerance-should-you-tighten.html",
+    "title": "1 — Which tolerance should you tighten?",
+    "section": "",
+    "text": "A hypothetical converter has a 5 V output setting and a 4.925–5.075 V acceptance band. Its static feedback relation is\nV_o=V_{ref}\\left(1+\\frac{R_t}{R_b}\\right).\nAssume a 12 V input and sufficient regulation headroom. The input does not enter this static relation. No actual controller, magnetic component, or switching model is specified.\n\n\n\nQuantity\nNominal value\nInitial tolerance\n\n\n\n\nReference voltage V_{ref}\n0.800 V\n±1%\n\n\nTop resistor R_t\n52.5 kohm\n±1%\n\n\nBottom resistor R_b\n10.0 kohm\n±1%\n\n\nOutput setting V_o\n5.000 V\nCalculated\n\n\n\nAll values and tolerances are authored teaching assumptions (A). Each uncertain quantity has an independent uniform distribution within its tolerance limits. The model assumes an exact static feedback relation, negligible feedback-input current, and constant component values at a fixed temperature. It omits load regulation, reference drift, noise, resistor correlation, and dynamic behavior.\nTwo purchasing alternatives are available:\n\n\n\n\n\n\n\n\n\nOption\nReference tolerance\nEach resistor tolerance\nBenefit and cost\n\n\n\n\nInitial\n±1%\n±1%\nLowest assumed component cost\n\n\nPrecision reference\n±0.2%\n±1%\nSmaller reference error, higher assumed reference cost\n\n\nPrecision resistors\n±1%\n±0.1%\nSmaller ratio error, higher assumed resistor cost\n\n\n\nNo prices or component ratings are asserted. The alternatives change only the stated tolerances.\nPredict before reading further: Which improvement gives the smaller output spread? Which improvement can keep every allowed component combination inside the voltage band? Give one benefit, one cost, and one measurement that could change your choice.",
+    "crumbs": [
+      "Monte Carlo · Feedback-divider worked example",
+      "<span class='chapter-number'>371</span>  <span class='chapter-title'>1 — Which tolerance should you tighten?</span>"
+    ]
+  },
+  {
+    "objectID": "lesson-converter-tolerances/monte-carlo-example--2-calculate-the-nominal-point-and-sensitivities.html",
+    "href": "lesson-converter-tolerances/monte-carlo-example--2-calculate-the-nominal-point-and-sensitivities.html",
+    "title": "2 — Calculate the nominal point and sensitivities",
+    "section": "",
+    "text": "The nominal calculation gives\nV_{o0}=0.8\\left(1+\\frac{52500}{10000}\\right)=5.000\\ \\mathrm{V}.\nLet \\delta_{ref}, \\delta_t, and \\delta_b denote relative deviations from the three nominal values. The exact relation becomes\nV_o=0.8(1+\\delta_{ref})\\left(1+5.25\\frac{1+\\delta_t}{1+\\delta_b}\\right).\nThe first-order Taylor model is\nV_{lin}=5+5\\delta_{ref}+4.2\\delta_t-4.2\\delta_b\\quad\\mathrm{V}.\nThe minus sign matters. A lower bottom resistance increases the output voltage. With the initial ±1% limits, the first-order individual effects are ±50 mV, ±42 mV, and ±42 mV.\nFor independent uniform relative deviations with half-widths t_i, the linear variance is\n\\sigma_{lin}^2=\\frac{(5t_{ref})^2+(4.2t_t)^2+(4.2t_b)^2}{3}.\nThe initial analytical standard deviation is 44.825588 mV (C). The reference contributes 41.47% of this variance. Each resistor contributes 29.26%. The two resistors together therefore contribute more variance than the reference.\n\n\n\nOn a narrow screen, scroll the figure horizontally. Figure 1 — Initial deterministic sensitivity ranges (C). Each parameter moves between its limits while the others stay nominal. Bars show the first-order range. Diamonds show exact endpoints. The bottom-resistor endpoints are −41.58 and +42.42 mV. These ranges are neither confidence intervals nor joint worst-case bounds.",
+    "crumbs": [
+      "Monte Carlo · Feedback-divider worked example",
+      "<span class='chapter-number'>372</span>  <span class='chapter-title'>2 — Calculate the nominal point and sensitivities</span>"
+    ]
+  },
+  {
+    "objectID": "lesson-converter-tolerances/monte-carlo-example--3-sample-possible-component-sets.html",
+    "href": "lesson-converter-tolerances/monte-carlo-example--3-sample-possible-component-sets.html",
+    "title": "3 — Sample possible component sets",
+    "section": "",
+    "text": "Monte Carlo analysis repeatedly evaluates a model with sampled inputs. Here, one row represents one possible component set. It does not represent time, a switching cycle, or a hardware measurement.\nThe calculation uses 100,000 rows and NumPy seed 20261114. It draws one normalized array with default_rng(seed).uniform(-1, 1, (100000, 3)). The columns are reference, top resistor, and bottom resistor, in that order. Each option scales the same rows by its own tolerance widths. The exact and first-order models also use the same rows. This pairing makes changes comparable without adding unrelated sample differences.\n\n\n\n\n\n\n\n\n\nOption\nSample mean (V)\nSample standard deviation (mV)\nSamples inside band\n\n\n\n\nInitial\n5.000310\n44.858177\n90,177 / 100,000\n\n\nPrecision reference\n5.000259\n34.754789\n98,305 / 100,000\n\n\nPrecision resistors\n5.000076\n29.112146\n100,000 / 100,000\n\n\n\nTable 1 — Calculated Monte Carlo results (C). The sample standard deviation uses the N-1 denominator. The counts describe the authored distributions and model. They are not measured manufacturing yields.\n\n\n\nOn a narrow screen, scroll the figure horizontally. Figure 2 — Empirical cumulative distributions (C). Dashed lines mark the acceptance limits. The vertical coordinate is the percentage of sampled outputs at or below a deviation. No outer tails are intentionally excluded. The drawing uses representative order statistics and retains both extreme samples.\nThe precision reference reduces spread, but it leaves both resistor tolerances unchanged. The precision resistors reduce both ratio-error contributions. This explains their smaller total spread despite the remaining ±1% reference tolerance.",
+    "crumbs": [
+      "Monte Carlo · Feedback-divider worked example",
+      "<span class='chapter-number'>373</span>  <span class='chapter-title'>3 — Sample possible component sets</span>"
+    ]
+  },
+  {
+    "objectID": "lesson-converter-tolerances/monte-carlo-example--4-separate-spread-from-sampling-error.html",
+    "href": "lesson-converter-tolerances/monte-carlo-example--4-separate-spread-from-sampling-error.html",
+    "title": "4 — Separate spread from sampling error",
+    "section": "",
+    "text": "Output spread is a property of the assumed component population and the mathematical model. Monte Carlo error comes from evaluating a finite random sample. More samples reduce the latter without reducing the former.\nFor the initial option, the exact distribution has mean 5.000140008 V and standard deviation 44.828164 mV (C). The exact moments use independent uniform moments and reciprocal-resistance moments. They do not use the Monte Carlo samples. The small positive mean shift comes from the reciprocal bottom resistance.\nThe initial mean has an analytical standard error of 0.141759 mV at 100,000 samples. Its sampled displacement from the exact mean is about 1.20 standard errors. The sampled standard deviation differs from the exact value by about 0.067%. The independent check permits five mean standard errors and a 1% standard-deviation difference. These checks detect calculation errors without requiring a sample to equal its population moments.\nThe first-order analytical standard deviation differs from the exact value by only about 0.0057%. This supports the local approximation for these tolerance widths. It does not validate the static model against a physical converter.\nFor a sampled band fraction \\hat p, an approximate Monte Carlo standard error is\nSE(\\hat p)=\\sqrt{\\frac{\\hat p(1-\\hat p)}{N}}.\nThe initial fraction has a standard error of about 0.094 percentage points. The precision-reference fraction has a standard error of about 0.041 percentage points. An all-success sample does not establish a universal guarantee. Use the exact component corners for that different question.",
+    "crumbs": [
+      "Monte Carlo · Feedback-divider worked example",
+      "<span class='chapter-number'>374</span>  <span class='chapter-title'>4 — Separate spread from sampling error</span>"
+    ]
+  },
+  {
+    "objectID": "lesson-converter-tolerances/monte-carlo-example--5-check-all-allowed-component-combinations.html",
+    "href": "lesson-converter-tolerances/monte-carlo-example--5-check-all-allowed-component-combinations.html",
+    "title": "5 — Check all allowed component combinations",
+    "section": "",
+    "text": "The exact output increases with V_{ref} and R_t, and decreases with R_b throughout the stated ranges. Its minimum therefore uses the low reference, low top resistance, and high bottom resistance. Its maximum uses the opposite corner.\n\n\n\n\n\n\n\n\n\nOption\nExact minimum (V)\nExact maximum (V)\nEntire range inside band?\n\n\n\n\nInitial\n4.867663\n5.135697\nNo\n\n\nPrecision reference\n4.906998\n5.095018\nNo\n\n\nPrecision resistors\n4.941692\n5.058492\nYes\n\n\n\nTable 2 — Exact deterministic corner bounds (C), under the stated component limits and static relation. They are not percentile ranges or confidence intervals.\nIf every stated component combination must satisfy the static band, choose the precision resistors under these assumptions. Their calculated corner range stays inside the band. The additional resistor cost buys control of both ratio-error contributions.\nIf a statistical pass fraction is acceptable and reference error dominates another requirement, the precision reference can be preferable. The initial option can be sufficient when a wider band or calibration is available. Actual selection needs component prices, temperature data, correlation information, and a physical regulation test. The static corner result does not cover the omitted effects.",
+    "crumbs": [
+      "Monte Carlo · Feedback-divider worked example",
+      "<span class='chapter-number'>375</span>  <span class='chapter-title'>5 — Check all allowed component combinations</span>"
+    ]
+  },
+  {
+    "objectID": "lesson-converter-tolerances/monte-carlo-example--sources-and-reproducibility.html",
+    "href": "lesson-converter-tolerances/monte-carlo-example--sources-and-reproducibility.html",
+    "title": "Sources and reproducibility",
+    "section": "",
+    "text": "This is an original course example derived from the stated divider equation. The operating point and tolerance distributions are authored assumptions. All numerical results and plots are calculated (C). No vendor measurement, hardware validation, or switching simulation is claimed.\nThis standalone NumPy example reproduces the three sampled comparisons. The retained calculation uses NumPy 2.4.6 and its default PCG64 generator. The standard deviation uses ddof=1.\nimport numpy as np\n\nu = np.random.default_rng(20261114).uniform(-1, 1, (100_000, 3))\nnominal = np.array([0.8, 52_500.0, 10_000.0])\noptions = {\n    \"Initial\": [0.01, 0.01, 0.01],\n    \"Precision reference\": [0.002, 0.01, 0.01],\n    \"Precision resistors\": [0.01, 0.001, 0.001],\n}\nfor name, widths in options.items():\n    reference, top, bottom = (nominal * (1 + u * widths)).T\n    output = reference * (1 + top / bottom)\n    accepted = np.count_nonzero((output &gt;= 4.925) & (output &lt;= 5.075))\n    print(name, output.mean(), output.std(ddof=1), accepted)\nThe printed standard deviations are in volts. Multiply them by 1,000 to compare with Table 1. Independent numerical quadrature checks the population moments. All eight component corners check each deterministic range.\nThe separate assigned exercise uses different converter models and operating points. This worked example teaches the method without supplying its assigned results.",
+    "crumbs": [
+      "Monte Carlo · Feedback-divider worked example",
+      "<span class='chapter-number'>376</span>  <span class='chapter-title'>Sources and reproducibility</span>"
     ]
   }
 ]
