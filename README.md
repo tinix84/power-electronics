@@ -54,6 +54,12 @@ CircuiTikZ Designer JSON files are editable masters, not browser images. The [ci
 
 The teaching workspace's `power-electronics-recap/scripts/batch_circuitikz_exports.py merge` groups all 26 masters into a separated grid without rewriting the masters. It converts numeric text sizes to Designer 0.8.2's named sizes in the combined copy. Import `figures/circuitikz/batch/combined.json` into Designer with replacement enabled, then export the SVG once. Run the script's `split --svg PATH` command to split that export by its 26 native groups, measure tight bounds with Inkscape and retain each group's referenced symbols/glyphs. The manifest records source hashes, component counts and output hashes; an incomplete import/export fails the split. `sync_content.py` copies the explicit gallery assets into this repository. Do not rerun generators over hand-edited JSON.
 
+## Site style
+
+Every published page uses the editorial style of tinix84.github.io. `scripts/build_site.py` adds the site header to each page. The header links to a fixed list of site routes, such as `/projects/`, and the link check accepts only that list. `site/editorial.css` holds the site's colours, fonts, header and footer. Copy any change to the site's `editorial/editorial.css` tokens or header into this file. `site/site.css` styles the course home and the reading pages. `site/book.css` styles the Quarto book. The fonts in `site/fonts/` are copies of the site's fonts, with their licences.
+
+The book has light mode only. The build removes the dark stylesheets and the dark-mode toggle from each book page. The build fails if a book page has unexpected dark-mode markup. The exported book in `content/quarto-book/` keeps its own hashes. The build changes only the published copies.
+
 ## Analytics
 
 GA4 measurement ID: `G-H0BY8YR2Q8`. Google code loads only after analytics acceptance. Advertising consent stays denied; Google signals and ad personalization are disabled. Visitors can withdraw using the persistent settings button. Choices expire after 180 days; cookies are prefixed and scoped to this site's path. Query strings and URL fragments are excluded from configured page addresses.

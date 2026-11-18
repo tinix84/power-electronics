@@ -14,6 +14,35 @@ const server = http.createServer((req, res) => {
   fs.createReadStream(file).pipe(res);
 });
 
+// Every course page carries the site's header, fonts and colours (editorial style).
+async function checkEditorial(page, file) {
+  const style = await page.evaluate(() => {
+    const headers = document.querySelectorAll('header.site-header');
+    const current = document.querySelector('header.site-header .primary-nav a[aria-current="page"]');
+    const h1 = document.querySelector('h1');
+    return {
+      headers: headers.length,
+      wordmark: document.querySelector('header.site-header a.wordmark')?.textContent.trim(),
+      current: current?.textContent.trim(),
+      // Quarto rewrites book links to absolute URLs, so compare the path.
+      currentHref: current && new URL(current.getAttribute('href'), location.href).pathname,
+      body: getComputedStyle(document.body).fontFamily,
+      h1: h1 ? getComputedStyle(h1).fontFamily : null,
+      background: getComputedStyle(document.body).backgroundColor,
+      clearSans: document.fonts.check('16px "Clear Sans"'),
+      grotesk: document.fonts.check('700 16px "Schibsted Grotesk"'),
+    };
+  });
+  assert.equal(style.headers, 1, `${file}: one site header`);
+  assert.equal(style.wordmark, 'RT', `${file}: RT wordmark`);
+  assert.equal(style.current, 'Courses', `${file}: Courses is the current page`);
+  assert.equal(style.currentHref, '/power-electronics/', `${file}: Courses links to the course home`);
+  assert.match(style.body, /^"?Clear Sans/, `${file}: body font`);
+  if (style.h1 !== null) assert.match(style.h1, /^"?Schibsted Grotesk/, `${file}: heading font`);
+  assert.equal(style.background, 'rgb(251, 251, 249)', `${file}: paper ground`);
+  assert.ok(style.clearSans && style.grotesk, `${file}: editorial fonts load`);
+}
+
 (async () => {
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   const base = `http://127.0.0.1:${server.address().port}/power-electronics/`;
@@ -67,6 +96,7 @@ const server = http.createServer((req, res) => {
         }));
         assert.equal(result.overflow, false, `${file} overflows at ${width}px: ${JSON.stringify(result.wide)}`);
         assert.equal(result.broken, 0, `${file} has broken figures at ${width}px`);
+        await checkEditorial(page, file);
         if (file === 'lesson-converter-tolerances/exercise.html') {
           assert.ok(await page.getByRole('heading', {name: /Part H/}).count());
           assert.equal(await page.locator('.worked-plot, a[href*="solutions"]').count(), 0);
@@ -175,6 +205,10 @@ const server = http.createServer((req, res) => {
           assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,file+' overflows');
           assert.equal(await page.locator('.katex-error').count(),0);
           assert.equal(await page.evaluate(()=>[...document.querySelectorAll('span.math')].filter(e=>!e.querySelector('.katex')).length),0);
+          await checkEditorial(page, 'quarto-book/'+file);
+          // The site has light mode only, so the book has no dark mode.
+          assert.equal(await page.locator('.quarto-color-scheme-toggle').count(),0,file+' has a dark-mode toggle');
+          assert.equal(await page.locator('link[href*="-dark"]').count(),0,file+' links a dark stylesheet');
         }
       }
       await page.setViewportSize({width:1440,height:1000});
@@ -182,9 +216,43 @@ const server = http.createServer((req, res) => {
       await page.locator('input.aa-Input:visible').fill('LED');
       await page.locator('.aa-Item').first().waitFor();
       await page.keyboard.press('Escape');
-      await page.locator('.quarto-color-scheme-toggle:visible').first().click();
-      await page.waitForFunction(()=>document.body.classList.contains('quarto-dark'));
+      // A dark preference saved by the old book must not darken the new one.
+      await page.evaluate(()=>localStorage.setItem('quarto-color-scheme','alternate'));
+      await page.reload();
+      assert.equal(await page.evaluate(()=>document.body.classList.contains('quarto-dark')),false,'A saved dark preference must not apply');
       assert.equal(remote.length,1,'The book needs no remote reading dependencies');
+      // On a phone the book's contents panel opens below its toolbar, and the
+      // toolbar's button stays visible to close it again.
+      await page.setViewportSize({width:375,height:812});
+      await page.goto(base+'quarto-book/lesson-01-buck/lesson-01.html');
+      await page.getByRole('button',{name:'Toggle sidebar navigation'}).click();
+      await page.locator('#quarto-sidebar.show').waitFor();
+      await page.waitForTimeout(400);
+      const contents = await page.evaluate(()=>{
+        const toggle=document.querySelector('.quarto-btn-toggle').getBoundingClientRect();
+        const hit=document.elementFromPoint(toggle.left+toggle.width/2,toggle.top+toggle.height/2);
+        return {toolbarBottom:document.querySelector('#quarto-header').getBoundingClientRect().bottom,sidebarTop:document.querySelector('#quarto-sidebar').getBoundingClientRect().top,toggleVisible:!!hit?.closest('.quarto-btn-toggle')};
+      });
+      assert.ok(contents.toggleVisible,'The contents button is covered by the open contents panel');
+      assert.ok(contents.sidebarTop>=contents.toolbarBottom-1,`The contents panel (top ${contents.sidebarTop}) covers the toolbar (bottom ${contents.toolbarBottom})`);
+      // Representative pages of each kind at phone, tablet and desktop widths.
+      for (const width of [320,375,768,1440]) {
+        await page.setViewportSize({width,height:900});
+        for (const file of ['index.html','exercises.html','privacy.html','figures.html','power-electronics-recap/chapter-02-04.html','lesson-01-buck/lesson-01.html','quarto-book/index.html','quarto-book/lesson-01-buck/lesson-01.html']) {
+          await page.goto(base+file);
+          await page.evaluate(()=>document.fonts.ready);
+          assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,`${file} overflows at ${width}px`);
+          await checkEditorial(page, file);
+          const header = await page.evaluate(()=>{
+            const box=document.querySelector('header.site-header').getBoundingClientRect();
+            const sidebar=document.querySelector('#quarto-sidebar');
+            const side=sidebar && getComputedStyle(sidebar).display!=='none' ? sidebar.getBoundingClientRect() : null;
+            return {top:box.top,bottom:box.bottom,sidebarTop:side?side.top:null};
+          });
+          assert.ok(header.top>=0 && header.top<2,`${file}: header at the top at ${width}px`);
+          if (header.sidebarTop!==null) assert.ok(header.sidebarTop>=header.bottom-1,`${file}: the book sidebar overlaps the header at ${width}px`);
+        }
+      }
     }
     console.log(`PASS: consent, ${files.length} pages, chapter sequence, figures, desktop and mobile${foundationsOnly ? ' (foundation scope)' : ''}.`);
   } finally {

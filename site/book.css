@@ -1,0 +1,148 @@
+/* Quarto book pages in the site's editorial style. Loads after Bootstrap,
+   the book's reading.css and editorial.css. The book has light mode only. */
+
+/* body.quarto-light matches the theme's own light-mode rule, which sets a cream ground. */
+body,
+body.quarto-light {
+  --bs-body-font-family: var(--text);
+  --bs-body-bg: var(--paper);
+  --bs-body-color: var(--ink);
+  --bs-emphasis-color: var(--ink);
+  --bs-heading-color: var(--ink);
+  --bs-link-color: var(--ink);
+  --bs-link-color-rgb: 17, 17, 17;
+  --bs-link-hover-color: var(--ink);
+  --bs-link-hover-color-rgb: 17, 17, 17;
+  --bs-primary: var(--signal);
+  --bs-primary-rgb: 210, 58, 42;
+  --bs-border-color: var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.quarto-title .title,
+.chapter-title,
+.sidebar-title {
+  color: var(--ink);
+  font-family: var(--display);
+  letter-spacing: -0.02em;
+}
+
+h1, .quarto-title .title {
+  letter-spacing: -0.04em;
+}
+
+/* The theme sets Segoe UI on the navigation; the site uses one text face. */
+#quarto-sidebar,
+#quarto-margin-sidebar,
+.quarto-secondary-nav,
+.nav-page,
+.nav-footer,
+.quarto-title-meta,
+.quarto-search-results {
+  font-family: var(--text);
+}
+
+main a,
+#quarto-sidebar a,
+#TOC a {
+  text-underline-offset: 0.22em;
+}
+
+main a:hover {
+  text-decoration-color: var(--signal);
+}
+
+#quarto-sidebar,
+.sidebar-navigation,
+#quarto-margin-sidebar {
+  background: var(--paper);
+}
+
+/* The current page and section are marked in red, as on the site. */
+#quarto-sidebar .sidebar-item-text.active,
+#quarto-sidebar .sidebar-link.active,
+#TOC a.active,
+#TOC .nav-link.active {
+  color: var(--signal) !important;
+}
+
+#TOC a.active,
+#TOC .nav-link.active,
+#TOC .active {
+  border-left-color: var(--signal) !important;
+}
+
+/* The theme marks the current page with a teal box. */
+.sidebar-item-container:has(> .active) {
+  border-left-color: var(--signal);
+  border-radius: 0;
+  background: #efefeb;
+}
+
+blockquote {
+  border-left-color: var(--signal);
+  background: #f3f3f0;
+}
+
+/* Duty-cycle selector buttons in the lessons. */
+.dselect label {
+  border-color: var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.dselect input:checked + label {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.callout,
+.quarto-secondary-nav {
+  border-color: var(--line);
+}
+
+/* The phone toolbar: contents button, breadcrumbs and search, ink on paper. */
+#quarto-header,
+#quarto-header .quarto-secondary-nav {
+  background: var(--paper);
+}
+
+#quarto-header .quarto-secondary-nav {
+  border-bottom: 1px solid var(--line);
+}
+
+#quarto-header .breadcrumb,
+#quarto-header .breadcrumb-item,
+#quarto-header .breadcrumb-item a,
+#quarto-header .quarto-btn-toggle,
+#quarto-header .quarto-search-button {
+  color: var(--ink);
+}
+
+#quarto-header .breadcrumb-item + .breadcrumb-item::before {
+  color: var(--muted);
+}
+
+/* Below Quarto's 992px breakpoint the book toolbar (contents, breadcrumbs,
+   search) is fixed to the top. The site header comes first instead, and the
+   toolbar sticks to the top once the reader scrolls past it. */
+@media (max-width: 991.98px) {
+  body {
+    padding-top: 0 !important;
+  }
+
+  #quarto-header {
+    position: sticky;
+  }
+}
+
+/* Dark mode is removed at build time. This keeps any leftover toggle hidden. */
+.quarto-color-scheme-toggle,
+.quarto-color-scheme-toggle-container {
+  display: none !important;
+}

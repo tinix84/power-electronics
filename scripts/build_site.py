@@ -13,6 +13,46 @@ from sync_content import release_pages, figure_assets
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "_site"
 
+# The course is served at /power-electronics/ on tinix84.github.io and carries
+# the site's header. Its links leave the course for these site routes only,
+# and the link check allows exactly this list.
+SITE_NAV = (("/projects/", "Projects"), ("/work-experience/", "Work experience"), ("/topics/", "Topics"),
+            ("/about/", "About"), ("/blog/", "Blog"), ("/power-electronics/", "Courses"), ("/contact/", "Contact"))
+SITE_ROUTES = {"/", *(href for href, _ in SITE_NAV)}
+SITE_HEADER = ('<header class="site-header"><a class="wordmark" href="/">RT</a><nav class="primary-nav" aria-label="Primary">'
+               + "".join(f'<a href="{href}"' + (' aria-current="page"' if label == "Courses" else "") + f'>{label}</a>' for href, label in SITE_NAV)
+               + "</nav></header>")
+FONTS = ("ClearSansBold.ttf", "ClearSansRegular.ttf", "LICENSE.txt", "OFL-SchibstedGrotesk.txt", "SchibstedGrotesk-Variable.ttf")
+
+
+def editorial(text, relative, *stylesheets, scripts=()):
+    """Link the site style and put the site header at the top of one page."""
+    prefix = "../" * (len(Path(relative).parts) - 1)
+    links = "".join(f'<link rel="stylesheet" href="{prefix}{name}">' for name in ("editorial.css", *stylesheets))
+    links += "".join(f'<script defer src="{prefix}{name}"></script>' for name in scripts)
+    if "</head>" not in text:
+        raise ValueError(f"{relative}: no </head>")
+    text = text.replace("</head>", links + "\n</head>", 1)
+    text, count = re.subn(r"<body\b[^>]*>", lambda match: match.group(0) + SITE_HEADER, text, count=1)
+    if count != 1:
+        raise ValueError(f"{relative}: no <body>")
+    return text
+
+
+def light_only(text, relative):
+    """Remove the book's dark mode: the site has light mode only."""
+    if "quarto-color-scheme" not in text:
+        return text
+    text, sheets = re.subn(r'<link\b[^>]*\bquarto-color-alternate\b[^>]*>\n?', "", text)
+    text = re.sub(r'<button\b[^>]*\bquarto-color-scheme-toggle\b[^>]*>.*?</button>', "", text, flags=re.S)
+    # Without this, Quarto floats a new toggle into the page when none exists.
+    float_toggle = "if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {"
+    floats = text.count(float_toggle)
+    text = text.replace(float_toggle, "if (false) {")
+    if sheets != 2 or floats != 1:
+        raise ValueError(f"{relative}: unexpected dark-mode markup ({sheets} stylesheets, {floats} toggle scripts)")
+    return text
+
 
 class Page(HTMLParser):
     def __init__(self, text):
@@ -55,7 +95,14 @@ def copy_quarto_release():
     for name in [*names, 'release-manifest.json']:
         destination = OUTPUT / 'quarto-book' / name
         destination.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(source / name, destination)
+        if name.endswith('.html'):
+            # The manifest hashes the exported book; the website adds the site
+            # header and style and removes dark mode on the way out.
+            relative = 'quarto-book/' + name
+            text = light_only((source / name).read_text(encoding='utf-8'), relative)
+            destination.write_text(editorial(text, relative, 'book.css', scripts=('book.js',)), encoding='utf-8')
+        else:
+            shutil.copyfile(source / name, destination)
     return {'quarto-book/' + name for name in [*names, 'release-manifest.json']}
 
 
@@ -63,8 +110,14 @@ def build():
     OUTPUT.mkdir(exist_ok=True)
     pages_to_build = release_pages()
     # Do not publish arbitrary directories or the solutions companion.
-    for name in ("index.html", "exercises.html", "privacy.html", "analytics.js", "reading.js", "site.css"):
-        shutil.copyfile(ROOT / "site" / name, OUTPUT / name)
+    for name in ("index.html", "exercises.html", "privacy.html", "analytics.js", "reading.js", "site.css", "editorial.css", "book.css", "book.js"):
+        if name.endswith(".html"):
+            (OUTPUT / name).write_text(editorial((ROOT / "site" / name).read_text(encoding="utf-8"), name), encoding="utf-8")
+        else:
+            shutil.copyfile(ROOT / "site" / name, OUTPUT / name)
+    (OUTPUT / "fonts").mkdir(exist_ok=True)
+    for name in FONTS:
+        shutil.copyfile(ROOT / "site" / "fonts" / name, OUTPUT / "fonts" / name)
     (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
     manifest, assets = figure_assets()
     figures_output = OUTPUT / "circuit-figures"
@@ -83,7 +136,7 @@ def build():
         title = html.escape(entry["stem"].replace("_", " "))
         cards.append(f'<article class="figure-card" id="figure-{entry["stem"].split("_")[0]}"><h2>{title}</h2><a href="circuit-figures/{name}"><img src="circuit-figures/{name}" alt="{title}"></a><p><a href="circuit-figures/{name}" download>Download SVG</a> · {entry["components"]} components</p></article>')
     gallery = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Circuit figure gallery · Power electronics</title><link rel="stylesheet" href="site.css"><script defer src="analytics.js"></script></head><body class="course-home"><main><p><a href="index.html">← Course home</a></p><h1>Circuit figure gallery</h1><p>26 regenerated circuit drawings, merged into one Designer JSON, exported once and split into separate SVGs.</p><aside class="figure-review"><strong>Regenerated layouts for review.</strong> These exports preserve the saved JSON geometry. Some labels overlap and need adjustment in Designer. The established lesson illustrations remain in place while these layouts are reviewed. Figures 14, 15 and 60 contain circuits only; their plots and placement illustration remain in the lesson.</aside><p><a href="circuit-figures/combined.json" download>Download combined Designer JSON</a> · <a href="circuit-figures/combined.svg" download>Download combined SVG</a> · <a href="circuit-figures/manifest.json">Export manifest</a></p><p>Each export retains its vector symbols and text outlines. The manifest records the original JSON hashes, component counts and SVG hashes. Exported with <a href="https://circuit2tikz.tf.fau.de/designer/">CircuiTikZ Designer</a>.</p><div class="figure-gallery">' + ''.join(cards) + '</div></main></body></html>'
-    (OUTPUT / "figures.html").write_text(gallery, encoding="utf-8")
+    (OUTPUT / "figures.html").write_text(editorial(gallery, "figures.html"), encoding="utf-8")
     for relative in pages_to_build:
         text = (ROOT / "content" / relative).read_text(encoding="utf-8")
         matches = list(re.finditer(r'<img class="math"[^>]*alt="([^"]*)"[^>]*>', text))
@@ -113,11 +166,12 @@ def build():
         text = text.replace('<nav aria-label="Chapter contents">', '<nav aria-label="Chapter contents">' + course_links)
         text = text.replace('<body>', '<body class="reading-page">')
         text = text.replace("</head>", '<link rel="stylesheet" href="../site.css">\n<script defer src="../reading.js"></script>\n<script defer src="../analytics.js"></script>\n</head>')
+        text = editorial(text, relative)
         destination = OUTPUT / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(text, encoding="utf-8")
     book_files = copy_quarto_release()
-    expected = {"index.html", "exercises.html", "privacy.html", "analytics.js", "reading.js", "site.css", ".nojekyll", "figures.html", *pages_to_build, *("circuit-figures/" + name for name in assets), *book_files}
+    expected = {"index.html", "exercises.html", "privacy.html", "analytics.js", "reading.js", "site.css", "editorial.css", "book.css", "book.js", ".nojekyll", "figures.html", *("fonts/" + name for name in FONTS), *pages_to_build, *("circuit-figures/" + name for name in assets), *book_files}
     actual = {p.relative_to(OUTPUT).as_posix() for p in OUTPUT.rglob("*") if p.is_file()}
     if actual != expected:
         raise ValueError(f"Unexpected release contents: {actual ^ expected}. Inspect before publishing.")
@@ -127,6 +181,10 @@ def build():
         for link in page.links:
             parsed = urlsplit(link)
             if parsed.scheme or parsed.netloc:
+                continue
+            if parsed.path.startswith("/"):
+                if parsed.path not in SITE_ROUTES or parsed.query or parsed.fragment:
+                    errors.append(f"{path.name}: root link outside the site routes {link}")
                 continue
             target = (path.parent / unquote(parsed.path)).resolve() if parsed.path else path
             if target.is_dir():
