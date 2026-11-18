@@ -1,0 +1,190 @@
+/* Site editorial style for the course pages. Tokens, fonts, header and footer
+   are copied from tinix84.github.io (editorial/editorial.css, ADR 0002) so the
+   course reads as part of the site. Keep the values in step with that file. */
+
+@font-face {
+  font-family: "Clear Sans";
+  src: url("fonts/ClearSansRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clear Sans";
+  src: url("fonts/ClearSansBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Headings, numbers and labels. Self-hosted variable font, SIL OFL. */
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("fonts/SchibstedGrotesk-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+/* Swiss editorial palette. Red marks things; links stay ink. */
+:root {
+  color-scheme: light;
+  --paper: #fbfbf9;
+  --ink: #111;
+  --muted: #5a5a5a;
+  --line: #dcdcd8;
+  --signal: #d23a2a;
+  --display: "Schibsted Grotesk", "Clear Sans", Arial, sans-serif;
+  --text: "Clear Sans", Arial, sans-serif;
+  --measure: 74rem;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+}
+
+h1,
+h2,
+h3,
+.eyebrow,
+.wordmark {
+  font-family: var(--display);
+}
+
+/* The site header, the same markup on every page of tinix84.github.io.
+   Sizes are in px: the book theme changes the root font size, and the header
+   must look the same on every page (the site uses rem on a 16px root). */
+.site-header {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  width: min(calc(100% - 40px), 1184px);
+  min-height: 84px;
+  margin-inline: auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 48px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--text);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.site-header .wordmark {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.site-header .primary-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+/* Reading pages style every nav link as a sidebar row, so reset that here. */
+.site-header .primary-nav a {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  line-height: inherit;
+  color: var(--muted);
+  font-size: 14.72px;
+  text-decoration: none;
+}
+
+.site-header .primary-nav a:hover {
+  background: none;
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.site-header .primary-nav [aria-current="page"] {
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.site-header a:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 4px;
+}
+
+.eyebrow {
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 0.6rem;
+  background: var(--signal);
+  content: "";
+}
+
+.site-footer {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+/* Tablet and phone header, as on the site (62rem and 46rem breakpoints). */
+@media (max-width: 992px) {
+  .site-header {
+    gap: 6.4px 16px;
+    padding-block: 12px;
+    min-height: auto;
+  }
+
+  .site-header .primary-nav {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 0 16px;
+  }
+
+  .site-header .primary-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 736px) {
+  .site-header {
+    width: min(calc(100% - 32px), 1184px);
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-header .primary-nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media print {
+  .site-header {
+    display: none;
+  }
+}
